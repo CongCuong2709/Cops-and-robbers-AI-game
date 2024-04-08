@@ -48,9 +48,9 @@ namespace CopAndRobber
 				new Point(110, 100),  // destination for upper-right point of
                       // original
 				new Point(250, 30)};  // destination for lower-left point of
-					  // original
+									  // original
 
-			Image image = new Bitmap("menuInterface.png");
+			Image image = Properties.Resources.menuInterface;
 
 			// Draw the image unaltered with its upper-left corner at (0, 0).
 			pe.Graphics.DrawImage(image, 0, 0);

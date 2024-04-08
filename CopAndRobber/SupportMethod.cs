@@ -137,24 +137,6 @@ namespace CopAndRobber
 			AddChildFormDockFill(formContent, panelContainer);
 		}
 
-		public string loadContent(string filePath)
-		{
-			try
-			{
-				// Tạo một ứng dụng Word và một tài liệu Word
-				var wordApp = new Microsoft.Office.Interop.Word.Application();
-				var doc = wordApp.Documents.Open(filePath);
-
-				// Lấy nội dung của tài liệu và đóng ứng dụng Word
-				string content = doc.Content.Text;
-				wordApp.Quit();
-
-				return content;
-			}
-			catch (Exception ex)
-			{
-				return 0.ToString();
-			}
-		}
+		
 	}
 }

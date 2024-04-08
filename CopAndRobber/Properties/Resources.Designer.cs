@@ -63,9 +63,9 @@ namespace CopAndRobber.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap go_left0 {
+        internal static System.Drawing.Bitmap menuInterface {
             get {
-                object obj = ResourceManager.GetObject("go_left0", resourceCulture);
+                object obj = ResourceManager.GetObject("menuInterface", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

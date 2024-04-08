@@ -12,9 +12,10 @@ using System.Windows.Forms;
 
 namespace CopAndRobber
 {
-	public partial class NodeActor :Button
+	public partial class NodeActor : Button
 	{
 		private int _id;
+		private TRANSPORT_TYPE type;
 		private int position_X, position_Y;
 		private HashSet<int> nodeAdj;
 
@@ -25,6 +26,10 @@ namespace CopAndRobber
 			WALK
 		}
 
+		public NodeActor()
+		{
+			InitializeComponent();
+		}
 
 		public NodeActor (int id, TRANSPORT_TYPE transportType, int position_X, int position_Y, HashSet<int> nodeAdj)
 		{
@@ -32,22 +37,39 @@ namespace CopAndRobber
 			this.position_X = position_X;
 			this.position_Y = position_Y;
 			this.nodeAdj = nodeAdj;
+			this.type = transportType;
+
 			this.Location = new Point(position_X, position_Y);
-			this.BackgroundImage = GuiUtils.LOGO;
+			switch (type)
+			{
+				case TRANSPORT_TYPE.TRAIN:
+					this.BackgroundImage = GuiUtils.NODE_TRAIN;
+					break;
+				case TRANSPORT_TYPE.BUS:
+					this.BackgroundImage = GuiUtils.NODE_BUS;
+					break;
+				case TRANSPORT_TYPE.WALK:
+					this.BackgroundImage = GuiUtils.NODE_WALK;
+					break;
+				default:
+					break;
+			}
+			
+			this.BackgroundImageLayout = ImageLayout.Stretch;
+			
 			this.Visible = true;
 			this.Anchor = AnchorStyles.Left | AnchorStyles.Top;
-
 			this.Text = _id.ToString();
 		}
 
 		public int getPositionX()
 		{
-			return this.position_X;
+			return this.Location.X;
 		}
 
 		public int getPositionY()
 		{
-			return this.position_Y;
+			return this.Location.Y;
 		}
 
 		public int getID()
@@ -55,14 +77,8 @@ namespace CopAndRobber
 			return _id;
 		}
 
-		public NodeActor()
-		{
-			InitializeComponent();
-		}
-
 		protected override void OnPaint(PaintEventArgs pe)
 		{
-			
 			base.OnPaint(pe);
 		}
 

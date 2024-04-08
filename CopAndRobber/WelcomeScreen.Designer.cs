@@ -31,6 +31,7 @@
 			this.buttonSetting = new Guna.UI2.WinForms.Guna2GradientButton();
 			this.buttonHelp = new Guna.UI2.WinForms.Guna2GradientButton();
 			this.buttonPlay = new Guna.UI2.WinForms.Guna2GradientButton();
+			this.guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
 			this.SuspendLayout();
 			// 
 			// buttonSetting
@@ -81,11 +82,28 @@
 			this.buttonPlay.TabIndex = 3;
 			this.buttonPlay.Text = "Play";
 			// 
+			// guna2GradientButton1
+			// 
+			this.guna2GradientButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.guna2GradientButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+			this.guna2GradientButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+			this.guna2GradientButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+			this.guna2GradientButton1.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+			this.guna2GradientButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+			this.guna2GradientButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
+			this.guna2GradientButton1.ForeColor = System.Drawing.Color.White;
+			this.guna2GradientButton1.Location = new System.Drawing.Point(554, 577);
+			this.guna2GradientButton1.Name = "guna2GradientButton1";
+			this.guna2GradientButton1.Size = new System.Drawing.Size(180, 45);
+			this.guna2GradientButton1.TabIndex = 6;
+			this.guna2GradientButton1.Text = "Số mồn lèo";
+			// 
 			// WelcomeScreen
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1600, 900);
+			this.Controls.Add(this.guna2GradientButton1);
 			this.Controls.Add(this.buttonSetting);
 			this.Controls.Add(this.buttonHelp);
 			this.Controls.Add(this.buttonPlay);
@@ -101,5 +119,6 @@
 		private Guna.UI2.WinForms.Guna2GradientButton buttonSetting;
 		private Guna.UI2.WinForms.Guna2GradientButton buttonHelp;
 		private Guna.UI2.WinForms.Guna2GradientButton buttonPlay;
+		private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
 	}
 }

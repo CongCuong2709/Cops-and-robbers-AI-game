@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,23 +15,45 @@ namespace CopAndRobber
 
 	public partial class Character : UserControl
 	{
-
 		private NodeActor atNode;
 		private NodeActor endNode;
 		private STATE_CHARACTER state;
-		private CHARACTER character;
+		private CHARACTER_NAME character;
 		private Timer animationTimer;
 		private Image[] frames;
 
 		private int distanceX, distanceY; //Khoang cach toa do tu atNode -> endNode
+		private int deltaX = 0, deltaY = 0;
 		private int speed = 4;
 
 		private int currentFrame;
-		
+
+		private SoundPlayer soundPlayer;
+		private bool isPlayable;
+		private Boolean isChased;
+
 
 		public Character()
+		{		
+			InitializeComponent();
+			animationTimer = new Timer();
+			animationTimer.Interval = 100;
+			animationTimer.Tick += animation_Tick;
+			setState(STATE_CHARACTER.WAIT);
+			//frames = new Image[4];
+
+			frames = GuiUtils.TOM_GO_LEFT_SPRITE;
+			this.Location = new Point(400, 400);
+			this.BackColor = Color.Transparent;
+			pictureBoxCat.SizeMode = PictureBoxSizeMode.Zoom;
+			//this.Size = new Size(Size.Width, Size.Height);
+		
+			soundPlayer = new SoundPlayer();
+			startAnimation();
+		}
+
+		/*public Character(int character)
 		{
-			
 			InitializeComponent();
 			animationTimer = new Timer();
 			animationTimer.Interval = 100;
@@ -43,22 +66,50 @@ namespace CopAndRobber
 			pictureBoxCat.SizeMode = PictureBoxSizeMode.Zoom;
 			//this.Size = new Size(Size.Width, Size.Height);
 			startAnimation();
-		}
+
+		}*/
 
 		public void moveTo(NodeActor nodeActor)
 		{
-			int destinationX = nodeActor.getPositionX();
-			int destinationY = nodeActor.getPositionY();
+			this.endNode = nodeActor;
 
+			int destinationX = endNode.getPositionX();
+			int destinationY = endNode.getPositionY() - this.Height;
+
+			distanceX = Math.Abs(destinationX - this.Location.X);
+			distanceY = Math.Abs(destinationY - this.Location.Y);
+
+			double angle = 0;
+			//Tính tốc độ theo trục 
+			try
+			{
+				angle = Math.Atan2(distanceY, distanceX);
+				
+			} catch(DivideByZeroException ex)
+			{
+
+			}
+			finally
+			{
+				deltaX = (int)Math.Ceiling(Math.Cos(angle) * speed);
+				deltaY = (int)Math.Ceiling(Math.Sin(angle) * speed);
+			}
+
+			DialogResult dialogResult = MessageBox.Show(deltaX + " " + deltaY
+				, "", MessageBoxButtons.YesNo);
+
+			/*if(distanceX != 0 && distanceY != 0)
+			{
+				deltaX = Convert.ToInt32(deltaY / (distanceY / distanceX));
+			}*/
+
+			//Set up hướng đi
 			if (destinationX < this.Location.X)
 			{
 				setState(STATE_CHARACTER.GO_LEFT);
-				if(this.Location.X <= destinationX)
-				{
-					
-				}
 			}
 			else setState(STATE_CHARACTER.GO_RIGHT);
+
 		}
 
 		public Image[] getFrames()
@@ -82,6 +133,7 @@ namespace CopAndRobber
 			animationTimer.Stop();
 		}
 
+
 		private void setState(STATE_CHARACTER state)
 		{
 			currentFrame = 0;
@@ -90,19 +142,24 @@ namespace CopAndRobber
 			switch (state)
 			{
 				case STATE_CHARACTER.WAIT:
+					stopSound();
 					frames = GuiUtils.TOM_WAIT;
 					break;
 				case STATE_CHARACTER.GO_LEFT:
+					playSound();
 					frames = GuiUtils.TOM_GO_LEFT_SPRITE;
 					break;
 				case STATE_CHARACTER.GO_RIGHT:
+					playSound();
 					frames = GuiUtils.TOM_GO_LEFT_SPRITE;
 					break;
-				case STATE_CHARACTER.CATCH: 
+				case STATE_CHARACTER.CATCH:
+					playSound();
 					frames = GuiUtils.TOM_GO_LEFT_SPRITE;
 					break;
 				default: break;
 			}
+
 		}
 
 		private void animation_Tick(object sender, EventArgs e)
@@ -118,12 +175,21 @@ namespace CopAndRobber
 						{
 							currentFrame = 0;
 						}
-
-						int deltaX = this.Location.X - endNode.getPositionY();
-						int deltaY = Math.Abs(this.Location.Y - endNode.getPositionY());
-
-
 						
+						if(this.Location.Y <= endNode.getPositionY())
+						{
+							int newLocationX = this.Location.X - deltaX;
+							int newLocationY = this.Location.Y + deltaY;
+
+							this.Location = new Point(newLocationX, newLocationY);
+						}
+						else
+						{
+							int newLocationX = this.Location.X - deltaX;
+							int newLocationY = this.Location.Y - deltaY;
+
+							this.Location = new Point(newLocationX, newLocationY);
+						}
 						break;
 					}
 
@@ -137,6 +203,40 @@ namespace CopAndRobber
 						{
 							currentFrame = 0;
 						}
+
+						if (this.Location.Y <= endNode.getPositionY() - this.Height)
+						{
+							int newLocationX = this.Location.X + deltaX;
+							int newLocationY = this.Location.Y + deltaY;
+
+							if (newLocationX <= endNode.getPositionX() && newLocationY >= endNode.getPositionY() - this.Height)
+							{
+								setState(STATE_CHARACTER.WAIT);
+								break;
+							}
+
+
+							this.Location = new Point(newLocationX, newLocationY);
+						}
+						else
+						{
+							int newLocationX = this.Location.X + deltaX;
+							int newLocationY = this.Location.Y - deltaY;
+
+							if (newLocationX <= endNode.getPositionX() && newLocationY <= endNode.getPositionY() - this.Height)
+							{
+								setState(STATE_CHARACTER.WAIT);
+								break;
+							}
+
+							this.Location = new Point(newLocationX, newLocationY);
+						}
+
+						if(this.Location.X <= endNode.getPositionX() && this.Location.Y <= endNode.getPositionY() + this.Height)
+						{
+							setState(STATE_CHARACTER.WAIT);
+						}
+
 						break;
 					}
 
@@ -152,12 +252,31 @@ namespace CopAndRobber
 						}
 						break;
 					}
-
 				default:
 					{
 						break;
 					}
 			}
+		}
+
+		private void playSound()
+		{
+			if(this.state == STATE_CHARACTER.GO_LEFT || this.state == STATE_CHARACTER.GO_RIGHT)
+			{
+				soundPlayer = GuiUtils.SOUND_CAT_WALK;
+				soundPlayer.PlayLooping();
+			}
+			if(this.state == STATE_CHARACTER.CATCH)
+			{
+				soundPlayer = GuiUtils.SOUND_CAT_CATCH;
+				soundPlayer.PlayLooping();
+			}
+		}
+
+		private void stopSound()
+		{
+			if(soundPlayer != null)
+				soundPlayer.Stop();
 		}
 	}
 }

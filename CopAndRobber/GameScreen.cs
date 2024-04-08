@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,14 +17,39 @@ namespace CopAndRobber
 	public partial class GameScreen : Form
 	{
 		private Dictionary<int, NodeActor> listNode;
+		private GameLogic game;
+		private Panel panel_GameScreen;
+		private Panel panelTurnTable;
+		private Panel panelMoveLog;
 
+		private SoundPlayer soundGame;
 		public GameScreen()
 		{
 			InitializeComponent();
 			listNode = new Dictionary<int, NodeActor>();
+			game = new GameLogic(this);
 		}
 
+		public GameScreen(int numCat)
+		{
+			InitializeComponent();
 
+		}
+
+		public Panel GetPanelTurnTable()
+		{
+			return panelTurnTable;
+		}
+
+		public Panel GetPanelMoveLog()
+		{
+			return panelMoveLog;
+		}
+
+		public Panel GetPanelGameScreen()
+		{
+			return panel_GameScreen;
+		}
 
 		public void generateAllNode()
 		{
@@ -97,6 +123,7 @@ namespace CopAndRobber
 		{
 			
 			generateAllNode();
+			//generateAllEdge();
 
 			Character cat = new Character();
 			pictureBox1.Image = cat.getFrames()[0];
@@ -105,7 +132,31 @@ namespace CopAndRobber
 			pictureBox4.Image = cat.getFrames()[3];
 			panelGameScreen.Controls.Add(cat);
 
-			//generateAllEdge();
+			NodeActor nodeActor1 = new NodeActor(13, TRANSPORT_TYPE.TRAIN, 500, 0, null);
+			NodeActor nodeActor2 = new NodeActor(20, TRANSPORT_TYPE.TRAIN, 500, 190, null);
+
+			//panelGameScreen.Controls.Add(new EdgeActor(nodeActor1, nodeActor2));
+
+			cat.moveTo(GetNodeActorByID(46));
+
+
+			/*
+			 generate Game
+			 */
+			
 		}
+
+
+		private void generateGame(int numCat)
+		{
+			//Init turn table
+			//Init clock
+			//put character
+		}
+
+		//event nút tắt bật âm mà sound bật
+		//event nút tắt bật dừng
+		//event menu 3 gạch -> show dialog
+
 	}
 }

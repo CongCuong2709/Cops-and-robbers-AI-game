@@ -85,7 +85,7 @@
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.Location = new System.Drawing.Point(620, 342);
+			this.pictureBox1.Location = new System.Drawing.Point(608, 342);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(105, 100);
 			this.pictureBox1.TabIndex = 1;
@@ -93,9 +93,10 @@
 			// 
 			// textBoxConsole
 			// 
-			this.textBoxConsole.Location = new System.Drawing.Point(80, 494);
+			this.textBoxConsole.Location = new System.Drawing.Point(165, 467);
+			this.textBoxConsole.Multiline = true;
 			this.textBoxConsole.Name = "textBoxConsole";
-			this.textBoxConsole.Size = new System.Drawing.Size(621, 26);
+			this.textBoxConsole.Size = new System.Drawing.Size(794, 211);
 			this.textBoxConsole.TabIndex = 0;
 			// 
 			// logMove1

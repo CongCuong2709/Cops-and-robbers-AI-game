@@ -34,7 +34,7 @@
 			// 
 			// pictureBoxCat
 			// 
-			this.pictureBoxCat.BackColor = System.Drawing.Color.Transparent;
+			this.pictureBoxCat.BackColor = System.Drawing.Color.Silver;
 			this.pictureBoxCat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.pictureBoxCat.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.pictureBoxCat.ImageRotate = 0F;
@@ -44,13 +44,13 @@
 			this.pictureBoxCat.TabIndex = 0;
 			this.pictureBoxCat.TabStop = false;
 			// 
-			// Cat
+			// Character
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Transparent;
 			this.Controls.Add(this.pictureBoxCat);
-			this.Name = "Cat";
+			this.Name = "Character";
 			this.Size = new System.Drawing.Size(112, 107);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxCat)).EndInit();
 			this.ResumeLayout(false);
