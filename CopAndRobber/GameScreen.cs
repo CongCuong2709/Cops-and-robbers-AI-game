@@ -137,6 +137,7 @@ namespace CopAndRobber
 
 			//panelGameScreen.Controls.Add(new EdgeActor(nodeActor1, nodeActor2));
 
+			cat.moveTo(GetNodeActorByID(1));
 			cat.moveTo(GetNodeActorByID(46));
 
 
@@ -153,6 +154,8 @@ namespace CopAndRobber
 			//Init clock
 			//put character
 		}
+
+		
 
 		//event nút tắt bật âm mà sound bật
 		//event nút tắt bật dừng

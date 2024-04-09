@@ -42,8 +42,9 @@ namespace CopAndRobber
 			setState(STATE_CHARACTER.WAIT);
 			//frames = new Image[4];
 
+			this.BringToFront();
 			frames = GuiUtils.TOM_GO_LEFT_SPRITE;
-			this.Location = new Point(400, 400);
+			this.Location = new Point(400, 200);
 			this.BackColor = Color.Transparent;
 			pictureBoxCat.SizeMode = PictureBoxSizeMode.Zoom;
 			//this.Size = new Size(Size.Width, Size.Height);
@@ -52,22 +53,27 @@ namespace CopAndRobber
 			startAnimation();
 		}
 
-		/*public Character(int character)
+		public Character(int character, NodeActor atNode)
 		{
 			InitializeComponent();
 			animationTimer = new Timer();
 			animationTimer.Interval = 100;
 			animationTimer.Tick += animation_Tick;
+
 			setState(STATE_CHARACTER.WAIT);
-			frames = new Image[4];
+			//frames = new Image[4];
+
 			frames = GuiUtils.TOM_GO_LEFT_SPRITE;
-			this.Location = new Point(100, 100);
+			this.BringToFront();
+			this.Location = new Point(atNode.getPositionX(), atNode.getPositionY());
 			this.BackColor = Color.Transparent;
 			pictureBoxCat.SizeMode = PictureBoxSizeMode.Zoom;
 			//this.Size = new Size(Size.Width, Size.Height);
+
+			soundPlayer = new SoundPlayer();
 			startAnimation();
 
-		}*/
+		}
 
 		public void moveTo(NodeActor nodeActor)
 		{
@@ -87,7 +93,7 @@ namespace CopAndRobber
 				
 			} catch(DivideByZeroException ex)
 			{
-
+				
 			}
 			finally
 			{
@@ -176,19 +182,45 @@ namespace CopAndRobber
 							currentFrame = 0;
 						}
 						
-						if(this.Location.Y <= endNode.getPositionY())
+						if(this.Location.Y <= endNode.getPositionY() - this.Height)
 						{
 							int newLocationX = this.Location.X - deltaX;
 							int newLocationY = this.Location.Y + deltaY;
 
+
+
+							if (newLocationX <= endNode.getPositionX() && newLocationY >= (endNode.getPositionY() - this.Height))
+							{
+								if(newLocationX <= endNode.getPositionX()) newLocationX += deltaX;
+								if(newLocationY <= endNode.getPositionY() - this.Height) newLocationY -= deltaY;
+								setState(STATE_CHARACTER.WAIT);
+								return;
+							}
+
 							this.Location = new Point(newLocationX, newLocationY);
+							/*textBoxX.Text = newLocationX.ToString();
+							textBoxY.Text = newLocationY.ToString();*/
+							textBoxX.Text = (endNode.getPositionY() - this.Height).ToString();
+							//textBoxY.Text = newLocationY.ToString();
+							textBoxY.Text = state.ToString();
 						}
 						else
 						{
 							int newLocationX = this.Location.X - deltaX;
 							int newLocationY = this.Location.Y - deltaY;
 
+							if (newLocationX <= endNode.getPositionX() && newLocationY <= endNode.getPositionY() - this.Height)
+							{
+								if (newLocationX <= endNode.getPositionX()) newLocationX += deltaX;
+								if (newLocationY <= endNode.getPositionY() - this.Height) newLocationY += deltaY;
+								setState(STATE_CHARACTER.WAIT);
+								return;
+							}
+
 							this.Location = new Point(newLocationX, newLocationY);
+							textBoxX.Text = (endNode.getPositionY() - this.Height).ToString();
+							//textBoxY.Text = newLocationY.ToString();
+							textBoxY.Text = state.ToString();
 						}
 						break;
 					}
@@ -209,7 +241,7 @@ namespace CopAndRobber
 							int newLocationX = this.Location.X + deltaX;
 							int newLocationY = this.Location.Y + deltaY;
 
-							if (newLocationX <= endNode.getPositionX() && newLocationY >= endNode.getPositionY() - this.Height)
+							if (newLocationX >= endNode.getPositionX() && newLocationY >= endNode.getPositionY() - this.Height)
 							{
 								setState(STATE_CHARACTER.WAIT);
 								break;
@@ -223,16 +255,12 @@ namespace CopAndRobber
 							int newLocationX = this.Location.X + deltaX;
 							int newLocationY = this.Location.Y - deltaY;
 
-							if (newLocationX <= endNode.getPositionX() && newLocationY <= endNode.getPositionY() - this.Height)
-							{
-								setState(STATE_CHARACTER.WAIT);
-								break;
-							}
+							
 
 							this.Location = new Point(newLocationX, newLocationY);
 						}
 
-						if(this.Location.X <= endNode.getPositionX() && this.Location.Y <= endNode.getPositionY() + this.Height)
+						if(this.Location.X >= endNode.getPositionX() && this.Location.Y <= endNode.getPositionY() + this.Height)
 						{
 							setState(STATE_CHARACTER.WAIT);
 						}
@@ -252,6 +280,9 @@ namespace CopAndRobber
 						}
 						break;
 					}
+				case STATE_CHARACTER.CATCH:
+					
+					break;
 				default:
 					{
 						break;

@@ -29,13 +29,13 @@
 		private void InitializeComponent()
 		{
 			this.panelGameScreen = new Guna.UI2.WinForms.Guna2Panel();
+			this.logMove1 = new CopAndRobber.LogMove();
+			this.turnTable1 = new CopAndRobber.TurnTable();
 			this.pictureBox4 = new System.Windows.Forms.PictureBox();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.textBoxConsole = new System.Windows.Forms.TextBox();
-			this.logMove1 = new CopAndRobber.LogMove();
-			this.turnTable1 = new CopAndRobber.TurnTable();
 			this.panelGameScreen.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -58,6 +58,22 @@
 			this.panelGameScreen.Name = "panelGameScreen";
 			this.panelGameScreen.Size = new System.Drawing.Size(1600, 900);
 			this.panelGameScreen.TabIndex = 1;
+			// 
+			// logMove1
+			// 
+			this.logMove1.BackColor = System.Drawing.Color.MistyRose;
+			this.logMove1.Location = new System.Drawing.Point(1230, 688);
+			this.logMove1.Name = "logMove1";
+			this.logMove1.Size = new System.Drawing.Size(370, 212);
+			this.logMove1.TabIndex = 8;
+			// 
+			// turnTable1
+			// 
+			this.turnTable1.BackColor = System.Drawing.SystemColors.Info;
+			this.turnTable1.Location = new System.Drawing.Point(0, 705);
+			this.turnTable1.Name = "turnTable1";
+			this.turnTable1.Size = new System.Drawing.Size(435, 195);
+			this.turnTable1.TabIndex = 7;
 			// 
 			// pictureBox4
 			// 
@@ -93,27 +109,11 @@
 			// 
 			// textBoxConsole
 			// 
-			this.textBoxConsole.Location = new System.Drawing.Point(165, 467);
+			this.textBoxConsole.Location = new System.Drawing.Point(902, 80);
 			this.textBoxConsole.Multiline = true;
 			this.textBoxConsole.Name = "textBoxConsole";
 			this.textBoxConsole.Size = new System.Drawing.Size(794, 211);
 			this.textBoxConsole.TabIndex = 0;
-			// 
-			// logMove1
-			// 
-			this.logMove1.BackColor = System.Drawing.Color.MistyRose;
-			this.logMove1.Location = new System.Drawing.Point(1230, 688);
-			this.logMove1.Name = "logMove1";
-			this.logMove1.Size = new System.Drawing.Size(370, 212);
-			this.logMove1.TabIndex = 8;
-			// 
-			// turnTable1
-			// 
-			this.turnTable1.BackColor = System.Drawing.SystemColors.Info;
-			this.turnTable1.Location = new System.Drawing.Point(0, 705);
-			this.turnTable1.Name = "turnTable1";
-			this.turnTable1.Size = new System.Drawing.Size(435, 195);
-			this.turnTable1.TabIndex = 7;
 			// 
 			// GameScreen
 			// 

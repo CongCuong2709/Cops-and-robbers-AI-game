@@ -11,12 +11,15 @@ namespace CopAndRobber
 	{
 		private Panel panelMoveLog;
 		private Panel panelTurnTable;
+		private Panel panelGameScreen;
 		private Queue<Character> listTurnAction;
-		public GameLogic() { }
+		public GameLogic() {
+			
+		}
 
 
 
-		public GameLogic(GameScreen screen) { 
+		public GameLogic(GameScreen screen, int numCat) { 
 			
 		}
 
@@ -40,6 +43,33 @@ namespace CopAndRobber
 
 		}
 
-
+		public void generateGame(GameScreen gameScreen , int numCat)
+		{
+			Character jerry = new Character();
+			
+			for(int num = 0; num < numCat; num++)
+			{
+				int nodeID = num; //random
+				NodeActor nodeActor = gameScreen.GetNodeActorByID(nodeID);
+				switch(num)
+				{
+					case 0:
+						Character tom = new Character(0, nodeActor);
+						panelGameScreen.Controls.Add(tom);
+						break;
+					case 1:
+						Character butch = new Character(0, nodeActor);
+						break;
+					case 2:
+						Character jones = new Character(0, nodeActor);
+						break;
+					case 3:
+						Character chigo = new Character(0, nodeActor);
+						break;
+					default:
+						break;
+				}
+			}
+		}
 	}
 }

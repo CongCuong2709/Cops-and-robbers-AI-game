@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace CopAndRobber
 {
 	internal class GuiUtils
@@ -33,6 +34,19 @@ namespace CopAndRobber
 		public static Image[] TOM_GO_RIGHT_SPRITE = getSprite("Tom", "go_right", GO_RIGHT_NUM_FRAME);
 		public static Image[] TOM_CATCH = getSprite("Tom", "go_left", CATCH_NUM_FRAME);
 		public static Image[] TOM_WAIT = getSprite("Tom", "go_right", WAIT_NUM_FRAME);
+
+		public static Image[] BUTCH_GO_LEFT_SPRITE = getSprite("Tom", "go_left", GO_LEFT_NUM_FRAME);
+		public static Image[] BUTCH_GO_RIGHT_SPRITE = getSprite("Tom", "go_right", GO_RIGHT_NUM_FRAME);
+		public static Image[] BUTCH_CATCH = getSprite("Tom", "go_left", CATCH_NUM_FRAME);
+		public static Image[] BUTCH_WAIT = getSprite("Tom", "go_right", WAIT_NUM_FRAME);
+
+		public static Image[] JONES_GO_LEFT_SPRITE = getSprite("Tom", "go_left", GO_LEFT_NUM_FRAME);
+		public static Image[] JONES_GO_RIGHT_SPRITE = getSprite("Tom", "go_right", GO_RIGHT_NUM_FRAME);
+		public static Image[] JONES_CATCH = getSprite("Tom", "go_left", CATCH_NUM_FRAME);
+		public static Image[] JONES_WAIT = getSprite("Tom", "go_right", WAIT_NUM_FRAME);
+
+		public static Image[] JERRY_GO_LEFT_SPRITE = getSprite("Tom", "go_left", GO_LEFT_NUM_FRAME);
+		public static Image[] JERRY_GO_RIGHT_SPRITE = getSprite("Tom", "go_right", GO_RIGHT_NUM_FRAME);
 
 		public static Image NODE_TRAIN = LOGO;
 		public static Image NODE_BUS = LOGO;
