@@ -29,8 +29,8 @@
 		private void InitializeComponent()
 		{
 			this.panelGameScreen = new Guna.UI2.WinForms.Guna2Panel();
-			this.logMove1 = new CopAndRobber.LogMove();
-			this.turnTable1 = new CopAndRobber.TurnTable();
+			this.panelLogMove = new CopAndRobber.LogMove();
+			this.panelTurnTable = new CopAndRobber.TurnTable();
 			this.pictureBox4 = new System.Windows.Forms.PictureBox();
 			this.pictureBox3 = new System.Windows.Forms.PictureBox();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -46,8 +46,8 @@
 			// panelGameScreen
 			// 
 			this.panelGameScreen.BackColor = System.Drawing.SystemColors.ActiveCaption;
-			this.panelGameScreen.Controls.Add(this.logMove1);
-			this.panelGameScreen.Controls.Add(this.turnTable1);
+			this.panelGameScreen.Controls.Add(this.panelLogMove);
+			this.panelGameScreen.Controls.Add(this.panelTurnTable);
 			this.panelGameScreen.Controls.Add(this.pictureBox4);
 			this.panelGameScreen.Controls.Add(this.pictureBox3);
 			this.panelGameScreen.Controls.Add(this.pictureBox2);
@@ -59,21 +59,21 @@
 			this.panelGameScreen.Size = new System.Drawing.Size(1600, 900);
 			this.panelGameScreen.TabIndex = 1;
 			// 
-			// logMove1
+			// panelLogMove
 			// 
-			this.logMove1.BackColor = System.Drawing.Color.MistyRose;
-			this.logMove1.Location = new System.Drawing.Point(1230, 688);
-			this.logMove1.Name = "logMove1";
-			this.logMove1.Size = new System.Drawing.Size(370, 212);
-			this.logMove1.TabIndex = 8;
+			this.panelLogMove.BackColor = System.Drawing.Color.MistyRose;
+			this.panelLogMove.Location = new System.Drawing.Point(1230, 688);
+			this.panelLogMove.Name = "panelLogMove";
+			this.panelLogMove.Size = new System.Drawing.Size(370, 212);
+			this.panelLogMove.TabIndex = 8;
 			// 
-			// turnTable1
+			// panelTurnTable
 			// 
-			this.turnTable1.BackColor = System.Drawing.SystemColors.Info;
-			this.turnTable1.Location = new System.Drawing.Point(0, 705);
-			this.turnTable1.Name = "turnTable1";
-			this.turnTable1.Size = new System.Drawing.Size(435, 195);
-			this.turnTable1.TabIndex = 7;
+			this.panelTurnTable.BackColor = System.Drawing.SystemColors.Info;
+			this.panelTurnTable.Location = new System.Drawing.Point(0, 705);
+			this.panelTurnTable.Name = "panelTurnTable";
+			this.panelTurnTable.Size = new System.Drawing.Size(435, 195);
+			this.panelTurnTable.TabIndex = 7;
 			// 
 			// pictureBox4
 			// 
@@ -142,7 +142,7 @@
 		private System.Windows.Forms.PictureBox pictureBox3;
 		private System.Windows.Forms.PictureBox pictureBox2;
 		private System.Windows.Forms.PictureBox pictureBox1;
-		private TurnTable turnTable1;
-		private LogMove logMove1;
+		private TurnTable panelTurnTable;
+		private LogMove panelLogMove;
 	}
 }

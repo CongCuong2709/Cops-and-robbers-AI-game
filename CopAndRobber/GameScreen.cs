@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Media;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static CopAndRobber.NodeActor;
 
@@ -16,101 +10,37 @@ namespace CopAndRobber
 {
 	public partial class GameScreen : Form
 	{
-		private Dictionary<int, NodeActor> listNode;
 		private GameLogic game;
-		private Panel panel_GameScreen;
-		private Panel panelTurnTable;
-		private Panel panelMoveLog;
+
 
 		private SoundPlayer soundGame;
 		public GameScreen()
 		{
 			InitializeComponent();
-			listNode = new Dictionary<int, NodeActor>();
-			game = new GameLogic(this, 3);
+			game = new GameLogic(this, 1);
 		}
 
 		public GameScreen(int numCat)
 		{
 			InitializeComponent();
-
+			game = new GameLogic(this, numCat);
 		}
 
-		public Panel GetPanelTurnTable()
+		public TurnTable GetPanelTurnTable()
 		{
-			return panelTurnTable;
+			return this.panelTurnTable;
 		}
 
-		public Panel GetPanelMoveLog()
+		public LogMove GetPanelMoveLog()
 		{
-			return panelMoveLog;
+			return this.panelLogMove;
 		}
 
 		public Panel GetPanelGameScreen()
 		{
-			return panel_GameScreen;
+			return this.panelGameScreen;
 		}
 
-		public void generateAllNode()
-		{
-			try
-			{
-				string path = Path.Combine(Directory.GetCurrentDirectory(), "Assets\\NodeList.txt");
-				textBoxConsole.Text = path;
-				using (StreamReader sr = new StreamReader(path))
-				{
-					while (!sr.EndOfStream)
-					{
-						string line = sr.ReadLine();
-						string[] paths = line.Split(' ');
-						int id = int.Parse(paths[0]);
-						TRANSPORT_TYPE transportType;
-						if (paths[1].Equals("T"))
-						{
-							transportType = TRANSPORT_TYPE.TRAIN;
-						}
-						else if (paths[1].Equals("B"))
-						{
-							transportType = TRANSPORT_TYPE.BUS;
-						}
-						else
-						{
-							transportType = TRANSPORT_TYPE.WALK;
-						}
-						int locationX = int.Parse(paths[2]);
-						int locationY = int.Parse(paths[3]);
-						HashSet<int> nodeAdj = new HashSet<int>();
-						if (paths.Length > 4)
-						{
-
-							for (int index = 4; index < paths.Length; index++)
-							{
-								nodeAdj.Add(int.Parse(paths[index]));
-							}
-						}
-
-						NodeActor nodeActor = new NodeActor(id, transportType, locationX, locationY, nodeAdj);
-						listNode.Add(id, nodeActor);
-						this.panelGameScreen.Controls.Add(nodeActor);
-						Console.WriteLine(nodeActor);
-					}
-				}
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine(e.ToString());
-				DialogResult = MessageBox.Show("he", "canh bao", MessageBoxButtons.YesNo);
-			}
-		}
-
-		public NodeActor GetNodeActorByID(int id)
-		{
-			if (listNode.ContainsKey(id))
-			{
-				return listNode[id];
-			}
-			return null;
-		}
 
 		public void generateAllEdge() {
 			NodeActor nodeActor1 = new NodeActor(13, TRANSPORT_TYPE.TRAIN, 30, 80, null);
@@ -121,45 +51,12 @@ namespace CopAndRobber
 
 		private void GameScreen_Load(object sender, EventArgs e)
 		{
-			
-			generateAllNode();
-			//generateAllEdge();
-
-			Character cat = new Character();
-			Image[] images = GuiUtils.getSprite(GuiUtils.CHARACTER_NAME.TOM, GuiUtils.STATE_CHARACTER.GO_LEFT
-				, GuiUtils.getNumFrame(GuiUtils.CHARACTER_NAME.TOM, GuiUtils.STATE_CHARACTER.GO_LEFT));
-			pictureBox1.Image = images[0];
-			pictureBox2.Image = images[1];
-			pictureBox3.Image = images[2];
-			pictureBox4.Image = images[3];
-			panelGameScreen.Controls.Add(cat);
-
-			NodeActor nodeActor1 = new NodeActor(13, TRANSPORT_TYPE.TRAIN, 500, 0, null);
-			NodeActor nodeActor2 = new NodeActor(20, TRANSPORT_TYPE.TRAIN, 500, 190, null);
-
-			//panelGameScreen.Controls.Add(new EdgeActor(nodeActor1, nodeActor2));
-
-			cat.moveTo(GetNodeActorByID(1));
-			cat.moveTo(GetNodeActorByID(46));
-
-			
-
+			game.startGame(this);
 			/*
 			 generate Game
 			 */
 			
 		}
-
-
-		private void generateGame(int numCat)
-		{
-			//Init turn table
-			//Init clock
-			//put character
-		}
-
-		
-
 		//event nút tắt bật âm mà sound bật
 		//event nút tắt bật dừng
 		//event menu 3 gạch -> show dialog

@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace CopAndRobber
 {
-	internal class GuiUtils
+	public class GuiUtils
 	{
 		public static int GO_LEFT_NUM_FRAME = 4;
 		public static int GO_RIGHT_NUM_FRAME = 4;
@@ -60,7 +60,7 @@ namespace CopAndRobber
 
 		public static int getNumFrame(CHARACTER_NAME name, STATE_CHARACTER state)
 		{
-			int numFrame = 0;
+			
 			if(name != CHARACTER_NAME.JERRY)
 			{
 				if (state != STATE_CHARACTER.CATCH)
@@ -74,7 +74,7 @@ namespace CopAndRobber
 			{
 				return 2;
 			}
-			return numFrame;
+			
 		}
 
 		private static SoundPlayer getSoundPlayer(string fileName)

@@ -53,7 +53,7 @@ namespace CopAndRobber
 			startAnimation();
 		}
 
-		public Character(int characterName, NodeActor atNode)
+		public Character(CHARACTER_NAME name, NodeActor atNode)
 		{
 			InitializeComponent();
 			animationTimer = new Timer();
@@ -61,15 +61,17 @@ namespace CopAndRobber
 			animationTimer.Tick += animation_Tick;
 
 			setState(STATE_CHARACTER.WAIT);
-			//frames = new Image[4];
+			
+			this.atNode = atNode;
+			this.endNode = null;
 
-			frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
 			this.BringToFront();
-			this.Location = new Point(atNode.getPositionX(), atNode.getPositionY());
+			this.Location = new Point(atNode.getPositionX(), atNode.getPositionY() - this.Height);
 			this.BackColor = Color.Transparent;
 			pictureBoxCat.SizeMode = PictureBoxSizeMode.Zoom;
 			//this.Size = new Size(Size.Width, Size.Height);
 
+			frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
 			soundPlayer = new SoundPlayer();
 			startAnimation();
 
@@ -278,6 +280,12 @@ namespace CopAndRobber
 						{
 							currentFrame = 0;
 						}
+
+						/*if(endNode != null)
+						{
+							atNode = endNode;
+							endNode = null;
+						}*/
 						break;
 					}
 				case STATE_CHARACTER.CATCH:
