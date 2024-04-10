@@ -43,7 +43,7 @@ namespace CopAndRobber
 			//frames = new Image[4];
 
 			this.BringToFront();
-			frames = GuiUtils.TOM_GO_LEFT_SPRITE;
+			frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
 			this.Location = new Point(400, 200);
 			this.BackColor = Color.Transparent;
 			pictureBoxCat.SizeMode = PictureBoxSizeMode.Zoom;
@@ -53,7 +53,7 @@ namespace CopAndRobber
 			startAnimation();
 		}
 
-		public Character(int character, NodeActor atNode)
+		public Character(int characterName, NodeActor atNode)
 		{
 			InitializeComponent();
 			animationTimer = new Timer();
@@ -63,7 +63,7 @@ namespace CopAndRobber
 			setState(STATE_CHARACTER.WAIT);
 			//frames = new Image[4];
 
-			frames = GuiUtils.TOM_GO_LEFT_SPRITE;
+			frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
 			this.BringToFront();
 			this.Location = new Point(atNode.getPositionX(), atNode.getPositionY());
 			this.BackColor = Color.Transparent;
@@ -149,19 +149,19 @@ namespace CopAndRobber
 			{
 				case STATE_CHARACTER.WAIT:
 					stopSound();
-					frames = GuiUtils.TOM_WAIT;
+					frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
 					break;
 				case STATE_CHARACTER.GO_LEFT:
 					playSound();
-					frames = GuiUtils.TOM_GO_LEFT_SPRITE;
+					frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
 					break;
 				case STATE_CHARACTER.GO_RIGHT:
 					playSound();
-					frames = GuiUtils.TOM_GO_LEFT_SPRITE;
+					frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
 					break;
 				case STATE_CHARACTER.CATCH:
 					playSound();
-					frames = GuiUtils.TOM_GO_LEFT_SPRITE;
+					frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
 					break;
 				default: break;
 			}

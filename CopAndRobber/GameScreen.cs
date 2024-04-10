@@ -27,7 +27,7 @@ namespace CopAndRobber
 		{
 			InitializeComponent();
 			listNode = new Dictionary<int, NodeActor>();
-			game = new GameLogic(this);
+			game = new GameLogic(this, 3);
 		}
 
 		public GameScreen(int numCat)
@@ -126,10 +126,12 @@ namespace CopAndRobber
 			//generateAllEdge();
 
 			Character cat = new Character();
-			pictureBox1.Image = cat.getFrames()[0];
-			pictureBox2.Image = cat.getFrames()[1];
-			pictureBox3.Image = cat.getFrames()[2];
-			pictureBox4.Image = cat.getFrames()[3];
+			Image[] images = GuiUtils.getSprite(GuiUtils.CHARACTER_NAME.TOM, GuiUtils.STATE_CHARACTER.GO_LEFT
+				, GuiUtils.getNumFrame(GuiUtils.CHARACTER_NAME.TOM, GuiUtils.STATE_CHARACTER.GO_LEFT));
+			pictureBox1.Image = images[0];
+			pictureBox2.Image = images[1];
+			pictureBox3.Image = images[2];
+			pictureBox4.Image = images[3];
 			panelGameScreen.Controls.Add(cat);
 
 			NodeActor nodeActor1 = new NodeActor(13, TRANSPORT_TYPE.TRAIN, 500, 0, null);
@@ -140,6 +142,7 @@ namespace CopAndRobber
 			cat.moveTo(GetNodeActorByID(1));
 			cat.moveTo(GetNodeActorByID(46));
 
+			
 
 			/*
 			 generate Game
