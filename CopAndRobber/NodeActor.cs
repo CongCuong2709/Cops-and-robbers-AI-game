@@ -14,11 +14,14 @@ namespace CopAndRobber
 {
 	public partial class NodeActor : Button
 	{
+		public event EventHandler nodeClicked;
+
 		private int _id;
 		private TRANSPORT_TYPE type;
 		private int position_X, position_Y;
 		private HashSet<int> nodeAdj;
 
+		private bool isChoosen;
 		public enum TRANSPORT_TYPE
 		{
 			TRAIN,
@@ -39,6 +42,7 @@ namespace CopAndRobber
 			this.nodeAdj = nodeAdj;
 			this.type = transportType;
 
+			this.Click += nodeActor_click;
 			this.Location = new Point(position_X, position_Y);
 			switch (type)
 			{
@@ -77,6 +81,16 @@ namespace CopAndRobber
 			return _id;
 		}
 
+		public void makeLightNodeActor()
+		{
+
+		}
+
+		public void notChoosen()
+		{
+			this.Enabled = isChoosen;
+		}
+
 		protected override void OnPaint(PaintEventArgs pe)
 		{
 			base.OnPaint(pe);
@@ -85,6 +99,11 @@ namespace CopAndRobber
 		public override string ToString()
 		{
 			return _id + " " + position_X + " " + position_Y;
+		}
+
+		private void nodeActor_click(object sender, EventArgs e)
+		{
+			nodeClicked?.Invoke(this, EventArgs.Empty);
 		}
 	}
 }

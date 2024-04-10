@@ -25,6 +25,7 @@ namespace CopAndRobber
 		public GameLogic(GameScreen screen, int numCat) {
 
 			listNode = new Dictionary<int, NodeActor>();
+			listTurnAction = new Queue<Character>();
 			this.numCat = numCat;
 		}
 
@@ -41,12 +42,28 @@ namespace CopAndRobber
 		public void startGame(GameScreen screen)
 		{
 			generateGame(screen, numCat);
+			
+			foreach(NodeActor node in listNode.Values)
+			{
+				node.nodeClicked += (sender, args) =>
+				{
+					Character character = listTurnAction.Peek();
+					NodeActor nodeActor = (NodeActor)sender;
 
+					character.moveTo(nodeActor);
+
+					
+				};
+			}
 		}
 
-		private void changeTurnTo(Character character)
+		private void Turn(Character character)
 		{
-			
+			/*
+			 High light các node actor khả thi
+			Nếu người dùng click 1 node actor trong số đó thì di chuyển nhân vật đến đó. 
+			chuyển sang lượt nhân vật khác
+			 */
 		}
 
 		public void generateAllNode(GameScreen gameScreen)
@@ -133,8 +150,8 @@ namespace CopAndRobber
 					case 0:
 						Character tom = new Character(GuiUtils.CHARACTER_NAME.TOM, nodeActor);
 						gameScreen.GetPanelGameScreen().Controls.Add(tom);
-						tom.moveTo(GetNodeActorByID(46));
-						//listTurnAction.Enqueue(tom);
+						//tom.moveTo(GetNodeActorByID(46));
+						listTurnAction.Enqueue(tom);
 						break;
 					case 1:
 						Character butch = new Character(GuiUtils.CHARACTER_NAME.BUTCH, nodeActor);

@@ -80,6 +80,7 @@ namespace CopAndRobber
 		public void moveTo(NodeActor nodeActor)
 		{
 			this.endNode = nodeActor;
+			this.textBoxX.Text = endNode.getID().ToString();
 
 			int destinationX = endNode.getPositionX();
 			int destinationY = endNode.getPositionY() - this.Height;
@@ -102,14 +103,6 @@ namespace CopAndRobber
 				deltaX = (int)Math.Ceiling(Math.Cos(angle) * speed);
 				deltaY = (int)Math.Ceiling(Math.Sin(angle) * speed);
 			}
-
-			DialogResult dialogResult = MessageBox.Show(deltaX + " " + deltaY
-				, "", MessageBoxButtons.YesNo);
-
-			/*if(distanceX != 0 && distanceY != 0)
-			{
-				deltaX = Convert.ToInt32(deltaY / (distanceY / distanceX));
-			}*/
 
 			//Set up hướng đi
 			if (destinationX < this.Location.X)
@@ -152,18 +145,22 @@ namespace CopAndRobber
 				case STATE_CHARACTER.WAIT:
 					stopSound();
 					frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
+					this.textBoxY.Text = state.ToString();
 					break;
 				case STATE_CHARACTER.GO_LEFT:
 					playSound();
 					frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
+					this.textBoxY.Text = state.ToString();
 					break;
 				case STATE_CHARACTER.GO_RIGHT:
 					playSound();
 					frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
+					this.textBoxY.Text = state.ToString();
 					break;
 				case STATE_CHARACTER.CATCH:
 					playSound();
 					frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
+					this.textBoxY.Text = state.ToString();
 					break;
 				default: break;
 			}
@@ -200,11 +197,7 @@ namespace CopAndRobber
 							}
 
 							this.Location = new Point(newLocationX, newLocationY);
-							/*textBoxX.Text = newLocationX.ToString();
-							textBoxY.Text = newLocationY.ToString();*/
-							textBoxX.Text = (endNode.getPositionY() - this.Height).ToString();
-							//textBoxY.Text = newLocationY.ToString();
-							textBoxY.Text = state.ToString();
+							
 						}
 						else
 						{
@@ -220,9 +213,7 @@ namespace CopAndRobber
 							}
 
 							this.Location = new Point(newLocationX, newLocationY);
-							textBoxX.Text = (endNode.getPositionY() - this.Height).ToString();
-							//textBoxY.Text = newLocationY.ToString();
-							textBoxY.Text = state.ToString();
+							
 						}
 						break;
 					}

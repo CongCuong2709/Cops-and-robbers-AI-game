@@ -12,7 +12,6 @@ namespace CopAndRobber
 	{
 		private GameLogic game;
 
-
 		private SoundPlayer soundGame;
 		public GameScreen()
 		{
@@ -41,13 +40,6 @@ namespace CopAndRobber
 			return this.panelGameScreen;
 		}
 
-
-		public void generateAllEdge() {
-			NodeActor nodeActor1 = new NodeActor(13, TRANSPORT_TYPE.TRAIN, 30, 80, null);
-			NodeActor nodeActor2 = new NodeActor(20, TRANSPORT_TYPE.TRAIN, 130, 190, null);
-
-			panelGameScreen.Controls.Add(new EdgeActor(nodeActor1, nodeActor2));
-		}
 
 		private void GameScreen_Load(object sender, EventArgs e)
 		{
