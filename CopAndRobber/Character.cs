@@ -43,7 +43,7 @@ namespace CopAndRobber
 			//frames = new Image[4];
 
 			this.BringToFront();
-			frames = GuiUtils.TOM_GO_LEFT_SPRITE;
+			frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
 			this.Location = new Point(400, 200);
 			this.BackColor = Color.Transparent;
 			pictureBoxCat.SizeMode = PictureBoxSizeMode.Zoom;
@@ -53,7 +53,7 @@ namespace CopAndRobber
 			startAnimation();
 		}
 
-		public Character(int character, NodeActor atNode)
+		public Character(CHARACTER_NAME name, NodeActor atNode)
 		{
 			InitializeComponent();
 			animationTimer = new Timer();
@@ -61,15 +61,17 @@ namespace CopAndRobber
 			animationTimer.Tick += animation_Tick;
 
 			setState(STATE_CHARACTER.WAIT);
-			//frames = new Image[4];
+			
+			this.atNode = atNode;
+			this.endNode = null;
 
-			frames = GuiUtils.TOM_GO_LEFT_SPRITE;
 			this.BringToFront();
-			this.Location = new Point(atNode.getPositionX(), atNode.getPositionY());
+			this.Location = new Point(atNode.getPositionX(), atNode.getPositionY() - this.Height);
 			this.BackColor = Color.Transparent;
 			pictureBoxCat.SizeMode = PictureBoxSizeMode.Zoom;
 			//this.Size = new Size(Size.Width, Size.Height);
 
+			frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
 			soundPlayer = new SoundPlayer();
 			startAnimation();
 
@@ -78,6 +80,7 @@ namespace CopAndRobber
 		public void moveTo(NodeActor nodeActor)
 		{
 			this.endNode = nodeActor;
+			this.textBoxX.Text = endNode.getID().ToString();
 
 			int destinationX = endNode.getPositionX();
 			int destinationY = endNode.getPositionY() - this.Height;
@@ -100,14 +103,6 @@ namespace CopAndRobber
 				deltaX = (int)Math.Ceiling(Math.Cos(angle) * speed);
 				deltaY = (int)Math.Ceiling(Math.Sin(angle) * speed);
 			}
-
-			DialogResult dialogResult = MessageBox.Show(deltaX + " " + deltaY
-				, "", MessageBoxButtons.YesNo);
-
-			/*if(distanceX != 0 && distanceY != 0)
-			{
-				deltaX = Convert.ToInt32(deltaY / (distanceY / distanceX));
-			}*/
 
 			//Set up hướng đi
 			if (destinationX < this.Location.X)
@@ -149,19 +144,23 @@ namespace CopAndRobber
 			{
 				case STATE_CHARACTER.WAIT:
 					stopSound();
-					frames = GuiUtils.TOM_WAIT;
+					frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
+					this.textBoxY.Text = state.ToString();
 					break;
 				case STATE_CHARACTER.GO_LEFT:
 					playSound();
-					frames = GuiUtils.TOM_GO_LEFT_SPRITE;
+					frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
+					this.textBoxY.Text = state.ToString();
 					break;
 				case STATE_CHARACTER.GO_RIGHT:
 					playSound();
-					frames = GuiUtils.TOM_GO_LEFT_SPRITE;
+					frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
+					this.textBoxY.Text = state.ToString();
 					break;
 				case STATE_CHARACTER.CATCH:
 					playSound();
-					frames = GuiUtils.TOM_GO_LEFT_SPRITE;
+					frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
+					this.textBoxY.Text = state.ToString();
 					break;
 				default: break;
 			}
@@ -198,11 +197,7 @@ namespace CopAndRobber
 							}
 
 							this.Location = new Point(newLocationX, newLocationY);
-							/*textBoxX.Text = newLocationX.ToString();
-							textBoxY.Text = newLocationY.ToString();*/
-							textBoxX.Text = (endNode.getPositionY() - this.Height).ToString();
-							//textBoxY.Text = newLocationY.ToString();
-							textBoxY.Text = state.ToString();
+							
 						}
 						else
 						{
@@ -218,9 +213,7 @@ namespace CopAndRobber
 							}
 
 							this.Location = new Point(newLocationX, newLocationY);
-							textBoxX.Text = (endNode.getPositionY() - this.Height).ToString();
-							//textBoxY.Text = newLocationY.ToString();
-							textBoxY.Text = state.ToString();
+							
 						}
 						break;
 					}
@@ -278,6 +271,12 @@ namespace CopAndRobber
 						{
 							currentFrame = 0;
 						}
+
+						/*if(endNode != null)
+						{
+							atNode = endNode;
+							endNode = null;
+						}*/
 						break;
 					}
 				case STATE_CHARACTER.CATCH:

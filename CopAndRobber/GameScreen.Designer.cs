@@ -219,9 +219,5 @@
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private TurnTable turnTable1;
 		private LogMove logMove1;
-        private Guna.UI2.WinForms.Guna2ImageButton PauseButton;
-        private Guna.UI2.WinForms.Guna2ImageButton SoundButton;
-        private Guna.UI2.WinForms.Guna2ImageButton SettingButton;
-        private Guna.UI2.WinForms.Guna2ImageButton buttonBack;
-    }
+	}
 }

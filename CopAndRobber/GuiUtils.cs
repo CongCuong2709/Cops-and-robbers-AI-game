@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace CopAndRobber
 {
-	internal class GuiUtils
+	public class GuiUtils
 	{
 		public static int GO_LEFT_NUM_FRAME = 4;
 		public static int GO_RIGHT_NUM_FRAME = 4;
-		public static int CATCH_NUM_FRAME = 4;
+		public static int CATCH_NUM_FRAME = 2;
 		public static int WAIT_NUM_FRAME = 4;
 
 		public static int CAT_WIDTH;
@@ -29,24 +29,9 @@ namespace CopAndRobber
 		public static int NODE_BUS_SIZEX, NODE_BUS_SIZEY;
 		public static int NODE_WALK_SIZEX, NODE_WALK_SIZEY;
 
-		public static Image LOGO = Image.FromFile(Application.StartupPath + "\\Assets\\menuInterface.png");
-		public static Image[] TOM_GO_LEFT_SPRITE = getSprite("Tom", "go_left", GO_LEFT_NUM_FRAME);
-		public static Image[] TOM_GO_RIGHT_SPRITE = getSprite("Tom", "go_right", GO_RIGHT_NUM_FRAME);
-		public static Image[] TOM_CATCH = getSprite("Tom", "go_left", CATCH_NUM_FRAME);
-		public static Image[] TOM_WAIT = getSprite("Tom", "go_right", WAIT_NUM_FRAME);
+		public static Image LOGO = Image.FromFile(Application.StartupPath + "\\Assets\\menuInterface.png");	
 
-		public static Image[] BUTCH_GO_LEFT_SPRITE = getSprite("Tom", "go_left", GO_LEFT_NUM_FRAME);
-		public static Image[] BUTCH_GO_RIGHT_SPRITE = getSprite("Tom", "go_right", GO_RIGHT_NUM_FRAME);
-		public static Image[] BUTCH_CATCH = getSprite("Tom", "go_left", CATCH_NUM_FRAME);
-		public static Image[] BUTCH_WAIT = getSprite("Tom", "go_right", WAIT_NUM_FRAME);
-
-		public static Image[] JONES_GO_LEFT_SPRITE = getSprite("Tom", "go_left", GO_LEFT_NUM_FRAME);
-		public static Image[] JONES_GO_RIGHT_SPRITE = getSprite("Tom", "go_right", GO_RIGHT_NUM_FRAME);
-		public static Image[] JONES_CATCH = getSprite("Tom", "go_left", CATCH_NUM_FRAME);
-		public static Image[] JONES_WAIT = getSprite("Tom", "go_right", WAIT_NUM_FRAME);
-
-		public static Image[] JERRY_GO_LEFT_SPRITE = getSprite("Tom", "go_left", GO_LEFT_NUM_FRAME);
-		public static Image[] JERRY_GO_RIGHT_SPRITE = getSprite("Tom", "go_right", GO_RIGHT_NUM_FRAME);
+		
 
 		public static Image NODE_TRAIN = LOGO;
 		public static Image NODE_BUS = LOGO;
@@ -56,19 +41,41 @@ namespace CopAndRobber
 		public static SoundPlayer SOUND_CAT_CATCH = getSoundPlayer("bruh.wav");
 		public static String BGM = "Not A Hero.wav";
 
-        private static Image[] getSprite(string nameCharacter ,string nameAction, int numFrame)
+		
+
+		public static Image[] getSprite(CHARACTER_NAME name, STATE_CHARACTER state, int numFrame)
 		{
 			Image[] sprite;
 			sprite = new Image[numFrame];
-
-			for(int index = 0; index < numFrame; index++)
+			string path;
+			for (int index = 0; index < numFrame; index++)
 			{
-				string path = Application.StartupPath + "\\Assets\\" + nameCharacter + "\\" + nameAction + index + ".png";
+				path = Application.StartupPath + "\\Assets\\" + name.ToString() + "\\" + state.ToString() + index + ".png";
 				//DialogResult dialogResult = MessageBox.Show(path, "", MessageBoxButtons.YesNo);
 				sprite[index] = Image.FromFile(path);
+				
 			}
 
 			return sprite;
+		}
+
+		public static int getNumFrame(CHARACTER_NAME name, STATE_CHARACTER state)
+		{
+			
+			if(name != CHARACTER_NAME.JERRY)
+			{
+				if (state != STATE_CHARACTER.CATCH)
+				{
+					return 4;
+				}
+				else
+					return 2;
+			}
+			else
+			{
+				return 2;
+			}
+			
 		}
 
 		private static SoundPlayer getSoundPlayer(string fileName)
