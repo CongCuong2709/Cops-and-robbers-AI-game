@@ -45,6 +45,7 @@ namespace CopAndRobber
 		{
 			generateGame(screen, numCat);
 
+			Character currentCharacter = listTurnAction.Peek();
 			//changeTurn(jerry);
 			//listTurnAction.Enqueue(jerry);
 			
@@ -52,15 +53,20 @@ namespace CopAndRobber
 			{
 				node.nodeClicked += (sender, args) =>
 				{
-					Character character = listTurnAction.Dequeue();
+					Character character = listTurnAction.Peek();
 					NodeActor nodeActor = (NodeActor)sender;
 
-					character.moveTo(nodeActor);
+					if(currentCharacter == listTurnAction.Peek())
+					{
+						character.moveTo(nodeActor);
 
-					setNodeAdjDisable(listTurnAction.Peek());
-					updateLogMove(screen, character , character.getAtNode(), nodeActor);
-					changeTurn(character);
-					listTurnAction.Enqueue(character);
+						setNodeAdjDisable(listTurnAction.Peek());
+						updateLogMove(screen, character, character.getAtNode(), nodeActor);
+						changeTurn(character);
+						listTurnAction.Enqueue(listTurnAction.Dequeue());
+						
+					}
+					
 				};
 			}
 		}
