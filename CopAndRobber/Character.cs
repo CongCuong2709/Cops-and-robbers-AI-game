@@ -60,10 +60,11 @@ namespace CopAndRobber
             animationTimer.Interval = 100;
             animationTimer.Tick += animation_Tick;
 
-            setState(STATE_CHARACTER.WAIT);
+			setState(STATE_CHARACTER.WAIT);
 
-            this.atNode = atNode;
-            this.endNode = null;
+			this.character = name;
+			this.atNode = atNode;
+			this.endNode = null;
 
             this.BringToFront();
             this.Location = new Point(atNode.getPositionX(), atNode.getPositionY() - this.Height);
@@ -77,10 +78,15 @@ namespace CopAndRobber
 
         }
 
-        public void moveTo(NodeActor nodeActor)
-        {
-            this.endNode = nodeActor;
-            this.textBoxX.Text = endNode.getID().ToString();
+		public NodeActor getAtNode()
+		{
+			return atNode;
+		}
+
+		public void moveTo(NodeActor nodeActor)
+		{
+			this.endNode = nodeActor;
+			this.textBoxX.Text = endNode.getID().ToString();
 
             int destinationX = endNode.getPositionX();
             int destinationY = endNode.getPositionY() - this.Height;
@@ -119,10 +125,16 @@ namespace CopAndRobber
             return frames;
         }
 
-        private void setAtNode(NodeActor node)
-        {
-            this.atNode = node;
-        }
+		public CHARACTER_NAME getCharacterName()
+		{
+			return this.character;
+		}
+
+
+		private void setAtNode(NodeActor node)
+		{
+			this.atNode = node;
+		}
 
         private void startAnimation()
         {
@@ -177,25 +189,31 @@ namespace CopAndRobber
                         pictureBoxCat.Image = frames[currentFrame];
                         currentFrame++;
 
-                        if (currentFrame >= frames.Length)
-                        {
-                            currentFrame = 0;
-                        }
+						if(currentFrame >= frames.Length)
+						{
+							currentFrame = 0;
+						}
+						/*if(endNode.getPositionX() == atNode.getPositionX())
+						{
+							int newLocationX = this.Location.X;
+							int newLocationY = this.Location.Y + deltaY;
 
-                        if (this.Location.Y <= endNode.getPositionY() - this.Height)
-                        {
-                            int newLocationX = this.Location.X - deltaX;
-                            int newLocationY = this.Location.Y + deltaY;
+							this.Location = new Point(newLocationX, newLocationY);
+						}*/
+
+						if(this.Location.Y <= endNode.getPositionY() - this.Height)
+						{
+							int newLocationX = this.Location.X - deltaX;
+							int newLocationY = this.Location.Y + deltaY;
 
 
 
-                            if (newLocationX <= endNode.getPositionX() && newLocationY >= (endNode.getPositionY() - this.Height))
-                            {
-                                if (newLocationX <= endNode.getPositionX()) newLocationX += deltaX;
-                                if (newLocationY <= endNode.getPositionY() - this.Height) newLocationY -= deltaY;
-                                setState(STATE_CHARACTER.WAIT);
-                                return;
-                            }
+							if (newLocationX <= endNode.getPositionX() && newLocationY >= (endNode.getPositionY() - this.Height))
+							{
+								
+								setState(STATE_CHARACTER.WAIT);
+								return;
+							}
 
                             this.Location = new Point(newLocationX, newLocationY);
 

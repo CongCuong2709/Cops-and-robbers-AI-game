@@ -12,12 +12,12 @@ using System.Windows.Forms;
 
 namespace CopAndRobber
 {
-    public class GuiUtils
-    {
-        public static int GO_LEFT_NUM_FRAME = 4;
-        public static int GO_RIGHT_NUM_FRAME = 4;
-        public static int CATCH_NUM_FRAME = 2;
-        public static int WAIT_NUM_FRAME = 4;
+	public class GuiUtils
+	{
+		public static int GO_LEFT_NUM_FRAME = 4;
+		public static int GO_RIGHT_NUM_FRAME = 4; 
+		public static int CATCH_NUM_FRAME = 2;
+		public static int WAIT_NUM_FRAME = 4;
 
         public static int CAT_WIDTH;
         public static int CAT_HEIGHT;
@@ -77,13 +77,30 @@ namespace CopAndRobber
             return numFrame;
         }
 
-        private static SoundPlayer getSoundPlayer(string fileName)
-        {
-            SoundPlayer soundPlayer;
-            string path = Application.StartupPath + "\\Assets\\" + "Sound" + "\\" + fileName;
-            soundPlayer = new SoundPlayer(path);
-            return soundPlayer;
-        }
+		public static Image getIcon(Character character)
+		{
+			Image image;
+			CHARACTER_NAME name = character.getCharacterName();
+			try
+			{
+				string path = Application.StartupPath + "\\Assets\\" + name.ToString() + ".png";
+				image = Image.FromFile(path);
+			}
+			catch (Exception e)
+			{
+				image = null;
+			}
+
+			return image;
+		}
+
+		private static SoundPlayer getSoundPlayer(string fileName)
+		{
+			SoundPlayer soundPlayer;
+			string path = Application.StartupPath + "\\Assets\\" + "Sound" + "\\" +  fileName;
+			soundPlayer = new SoundPlayer(path);
+			return soundPlayer;
+		}
 
         public enum STATE_CHARACTER
         {

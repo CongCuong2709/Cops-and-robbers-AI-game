@@ -42,29 +42,30 @@ namespace CopAndRobber
             this.nodeAdj = nodeAdj;
             this.type = transportType;
 
-            this.Click += nodeActor_click;
-            this.Location = new Point(position_X, position_Y);
-            switch (type)
-            {
-                case TRANSPORT_TYPE.TRAIN:
-                    this.BackgroundImage = GuiUtils.NODE_TRAIN;
-                    break;
-                case TRANSPORT_TYPE.BUS:
-                    this.BackgroundImage = GuiUtils.NODE_BUS;
-                    break;
-                case TRANSPORT_TYPE.WALK:
-                    this.BackgroundImage = GuiUtils.NODE_WALK;
-                    break;
-                default:
-                    break;
-            }
-
-            this.BackgroundImageLayout = ImageLayout.Stretch;
-
-            this.Visible = true;
-            this.Anchor = AnchorStyles.Left | AnchorStyles.Top;
-            this.Text = _id.ToString();
-        }
+			this.Click += nodeActor_click;
+			//this.Enabled = false;
+			this.Location = new Point(position_X, position_Y);
+			switch (type)
+			{
+				case TRANSPORT_TYPE.TRAIN:
+					this.BackgroundImage = GuiUtils.NODE_TRAIN;
+					break;
+				case TRANSPORT_TYPE.BUS:
+					this.BackgroundImage = GuiUtils.NODE_BUS;
+					break;
+				case TRANSPORT_TYPE.WALK:
+					this.BackgroundImage = GuiUtils.NODE_WALK;
+					break;
+				default:
+					break;
+			}
+			
+			this.BackgroundImageLayout = ImageLayout.Stretch;
+			
+			this.Visible = true;
+			this.Anchor = AnchorStyles.Left | AnchorStyles.Top;
+			this.Text = _id.ToString();
+		}
 
         public int getPositionX()
         {
@@ -81,8 +82,13 @@ namespace CopAndRobber
             return _id;
         }
 
-        public void makeLightNodeActor()
-        {
+		public HashSet<int> getNodeAdj()
+		{
+			return this.nodeAdj;
+		}
+
+		public void makeLightNodeActor()
+		{
 
         }
 
