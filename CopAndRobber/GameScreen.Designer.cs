@@ -48,6 +48,7 @@
 			// panelLogMove
 			// 
 			this.panelLogMove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.panelLogMove.AutoScroll = true;
 			this.panelLogMove.BackColor = System.Drawing.Color.MistyRose;
 			this.panelLogMove.Location = new System.Drawing.Point(1230, 688);
 			this.panelLogMove.Name = "panelLogMove";

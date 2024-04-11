@@ -14,6 +14,7 @@ namespace CopAndRobber
 	{
 		private Dictionary<int, NodeActor> listNode;
 		private Queue<Character> listTurnAction;
+		private Stack<Move> moveStack;
 
 		private int numCat;
 
@@ -26,6 +27,7 @@ namespace CopAndRobber
 
 			listNode = new Dictionary<int, NodeActor>();
 			listTurnAction = new Queue<Character>();
+			moveStack = new Stack<Move>();
 			this.numCat = numCat;
 		}
 
@@ -42,28 +44,85 @@ namespace CopAndRobber
 		public void startGame(GameScreen screen)
 		{
 			generateGame(screen, numCat);
+
+			//changeTurn(jerry);
+			//listTurnAction.Enqueue(jerry);
 			
 			foreach(NodeActor node in listNode.Values)
 			{
 				node.nodeClicked += (sender, args) =>
 				{
-					Character character = listTurnAction.Peek();
+					Character character = listTurnAction.Dequeue();
 					NodeActor nodeActor = (NodeActor)sender;
 
 					character.moveTo(nodeActor);
 
-					
+					setNodeAdjDisable(listTurnAction.Peek());
+					updateLogMove(screen, character , character.getAtNode(), nodeActor);
+					changeTurn(character);
+					listTurnAction.Enqueue(character);
 				};
 			}
 		}
 
-		private void Turn(Character character)
+		private void changeTurn(Character character)
 		{
-			/*
-			 High light các node actor khả thi
-			Nếu người dùng click 1 node actor trong số đó thì di chuyển nhân vật đến đó. 
-			chuyển sang lượt nhân vật khác
-			 */
+			highLightAllNodeCanMove(character);
+
+		}
+
+		public void highLightAllNodeCanMove(Character character)
+		{
+			NodeActor nodeActor = character.getAtNode();
+			foreach(int id in nodeActor.getNodeAdj())
+			{
+				NodeActor nodeAdj = GetNodeActorByID(id);
+				nodeAdj.Enabled = true;
+				nodeAdj.makeLightNodeActor();
+				
+			}
+
+			//make light edge
+			
+		}
+
+		public void setNodeAdjDisable(Character character)
+		{
+			foreach(int id in character.getAtNode().getNodeAdj())
+			{
+				try
+				{
+					NodeActor nodeAdj = GetNodeActorByID(id);
+					//nodeAdj.Enabled = false;
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex.Message);
+				}
+			}
+		}
+
+		public void updateLogMove(GameScreen screen ,Character character, NodeActor atNode, NodeActor endNode)
+		{
+			Move move = new Move(character, atNode, endNode);
+			moveStack.Push(move);
+			Stack<Move> moves = new Stack<Move>();
+
+            foreach (var item in moveStack)
+            {
+				moves.Push(item);
+            }
+            screen.GetPanelMoveLog().Controls.Clear();
+			foreach(Move move1 in moves)
+			{
+				screen.GetPanelMoveLog().Controls.Add(move1);
+			}
+			
+		}
+
+		public void updateActionTable(Character character)
+		{
+
 		}
 
 		public void generateAllNode(GameScreen gameScreen)
@@ -150,15 +209,17 @@ namespace CopAndRobber
 					case 0:
 						Character tom = new Character(GuiUtils.CHARACTER_NAME.TOM, nodeActor);
 						gameScreen.GetPanelGameScreen().Controls.Add(tom);
-						//tom.moveTo(GetNodeActorByID(46));
 						listTurnAction.Enqueue(tom);
 						break;
 					case 1:
 						Character butch = new Character(GuiUtils.CHARACTER_NAME.BUTCH, nodeActor);
+						gameScreen.GetPanelGameScreen().Controls.Add(butch);
 						listTurnAction.Enqueue(butch);
+						
 						break;
 					case 2:
 						Character jones = new Character(GuiUtils.CHARACTER_NAME.JONES, nodeActor);
+						gameScreen.GetPanelGameScreen().Controls.Add(jones);
 						listTurnAction.Enqueue(jones);
 						break;				
 					default:

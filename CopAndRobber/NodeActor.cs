@@ -43,6 +43,7 @@ namespace CopAndRobber
 			this.type = transportType;
 
 			this.Click += nodeActor_click;
+			//this.Enabled = false;
 			this.Location = new Point(position_X, position_Y);
 			switch (type)
 			{
@@ -79,6 +80,11 @@ namespace CopAndRobber
 		public int getID()
 		{
 			return _id;
+		}
+
+		public HashSet<int> getNodeAdj()
+		{
+			return this.nodeAdj;
 		}
 
 		public void makeLightNodeActor()

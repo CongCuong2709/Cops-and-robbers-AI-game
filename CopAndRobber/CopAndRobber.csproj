@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ActionBar.Designer.cs">
+      <DependentUpon>ActionBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Character.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -70,6 +76,12 @@
     </Compile>
     <Compile Include="LogMove.Designer.cs">
       <DependentUpon>LogMove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Move.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Move.Designer.cs">
+      <DependentUpon>Move.cs</DependentUpon>
     </Compile>
     <Compile Include="NodeActor.cs">
       <SubType>Component</SubType>
@@ -116,11 +128,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ActionBar.resx">
+      <DependentUpon>ActionBar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Character.resx">
       <DependentUpon>Character.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogMove.resx">
       <DependentUpon>LogMove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Move.resx">
+      <DependentUpon>Move.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NodeActor.resx">
       <DependentUpon>NodeActor.cs</DependentUpon>

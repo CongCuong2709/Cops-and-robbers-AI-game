@@ -16,7 +16,7 @@ namespace CopAndRobber
 		public GameScreen()
 		{
 			InitializeComponent();
-			game = new GameLogic(this, 1);
+			game = new GameLogic(this, 2);
 		}
 
 		public GameScreen(int numCat)

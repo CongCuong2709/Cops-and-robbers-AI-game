@@ -15,7 +15,7 @@ namespace CopAndRobber
 	public class GuiUtils
 	{
 		public static int GO_LEFT_NUM_FRAME = 4;
-		public static int GO_RIGHT_NUM_FRAME = 4;
+		public static int GO_RIGHT_NUM_FRAME = 4; 
 		public static int CATCH_NUM_FRAME = 2;
 		public static int WAIT_NUM_FRAME = 4;
 
@@ -75,6 +75,23 @@ namespace CopAndRobber
 				return 2;
 			}
 			
+		}
+
+		public static Image getIcon(Character character)
+		{
+			Image image;
+			CHARACTER_NAME name = character.getCharacterName();
+			try
+			{
+				string path = Application.StartupPath + "\\Assets\\" + name.ToString() + ".png";
+				image = Image.FromFile(path);
+			}
+			catch (Exception e)
+			{
+				image = null;
+			}
+
+			return image;
 		}
 
 		private static SoundPlayer getSoundPlayer(string fileName)

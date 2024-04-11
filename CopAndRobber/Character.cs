@@ -61,7 +61,8 @@ namespace CopAndRobber
 			animationTimer.Tick += animation_Tick;
 
 			setState(STATE_CHARACTER.WAIT);
-			
+
+			this.character = name;
 			this.atNode = atNode;
 			this.endNode = null;
 
@@ -75,6 +76,11 @@ namespace CopAndRobber
 			soundPlayer = new SoundPlayer();
 			startAnimation();
 
+		}
+
+		public NodeActor getAtNode()
+		{
+			return atNode;
 		}
 
 		public void moveTo(NodeActor nodeActor)
@@ -117,6 +123,12 @@ namespace CopAndRobber
 		{
 			return frames;
 		}
+
+		public CHARACTER_NAME getCharacterName()
+		{
+			return this.character;
+		}
+
 
 		private void setAtNode(NodeActor node)
 		{
@@ -180,7 +192,14 @@ namespace CopAndRobber
 						{
 							currentFrame = 0;
 						}
-						
+						/*if(endNode.getPositionX() == atNode.getPositionX())
+						{
+							int newLocationX = this.Location.X;
+							int newLocationY = this.Location.Y + deltaY;
+
+							this.Location = new Point(newLocationX, newLocationY);
+						}*/
+
 						if(this.Location.Y <= endNode.getPositionY() - this.Height)
 						{
 							int newLocationX = this.Location.X - deltaX;
@@ -190,8 +209,7 @@ namespace CopAndRobber
 
 							if (newLocationX <= endNode.getPositionX() && newLocationY >= (endNode.getPositionY() - this.Height))
 							{
-								if(newLocationX <= endNode.getPositionX()) newLocationX += deltaX;
-								if(newLocationY <= endNode.getPositionY() - this.Height) newLocationY -= deltaY;
+								
 								setState(STATE_CHARACTER.WAIT);
 								return;
 							}
