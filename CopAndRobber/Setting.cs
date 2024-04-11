@@ -15,9 +15,7 @@ namespace CopAndRobber
 {
     public partial class Setting : Form       
     {
-        WaveOutEvent waveOut;
-        private const int MIN_VOLUME = 0;
-        private const int MAX_VOLUME = 100;
+        WaveOutEvent waveOut;        
         private Boolean isMute = false;
 
 

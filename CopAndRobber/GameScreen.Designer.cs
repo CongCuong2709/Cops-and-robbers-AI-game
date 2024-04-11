@@ -1,4 +1,7 @@
-﻿namespace CopAndRobber
+﻿using System;
+using System.Windows.Forms;
+
+namespace CopAndRobber
 {
 	partial class GameScreen
 	{
@@ -29,22 +32,14 @@
 		private void InitializeComponent()
 		{
             this.panelGameScreen = new Guna.UI2.WinForms.Guna2Panel();
-            this.textBoxConsole = new System.Windows.Forms.TextBox();
-            this.buttonBack = new Guna.UI2.WinForms.Guna2ImageButton();
             this.SettingButton = new Guna.UI2.WinForms.Guna2ImageButton();
             this.PauseButton = new Guna.UI2.WinForms.Guna2ImageButton();
             this.SoundButton = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.logMove1 = new CopAndRobber.LogMove();
-            this.turnTable1 = new CopAndRobber.TurnTable();
+            this.panelLogMove = new CopAndRobber.LogMove();
+            this.panelTurnTable = new CopAndRobber.TurnTable();
+            this.textBoxConsole = new System.Windows.Forms.TextBox();
+            this.buttonBack = new Guna.UI2.WinForms.Guna2ImageButton();
             this.panelGameScreen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelGameScreen
@@ -53,12 +48,8 @@
             this.panelGameScreen.Controls.Add(this.SettingButton);
             this.panelGameScreen.Controls.Add(this.PauseButton);
             this.panelGameScreen.Controls.Add(this.SoundButton);
-            this.panelGameScreen.Controls.Add(this.logMove1);
-            this.panelGameScreen.Controls.Add(this.turnTable1);
-            this.panelGameScreen.Controls.Add(this.pictureBox4);
-            this.panelGameScreen.Controls.Add(this.pictureBox3);
-            this.panelGameScreen.Controls.Add(this.pictureBox2);
-            this.panelGameScreen.Controls.Add(this.pictureBox1);
+            this.panelGameScreen.Controls.Add(this.panelLogMove);
+            this.panelGameScreen.Controls.Add(this.panelTurnTable);
             this.panelGameScreen.Controls.Add(this.textBoxConsole);
             this.panelGameScreen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGameScreen.Location = new System.Drawing.Point(0, 0);
@@ -66,30 +57,6 @@
             this.panelGameScreen.Name = "panelGameScreen";
             this.panelGameScreen.Size = new System.Drawing.Size(1422, 720);
             this.panelGameScreen.TabIndex = 1;
-            // 
-            // textBoxConsole
-            // 
-            this.textBoxConsole.Location = new System.Drawing.Point(381, 550);
-            this.textBoxConsole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxConsole.Multiline = true;
-            this.textBoxConsole.Name = "textBoxConsole";
-            this.textBoxConsole.Size = new System.Drawing.Size(706, 170);
-            this.textBoxConsole.TabIndex = 0;
-            // 
-            // buttonBack
-            // 
-            this.buttonBack.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonBack.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.buttonBack.HoverState.ImageSize = new System.Drawing.Size(64, 64);
-            this.buttonBack.Image = global::CopAndRobber.Properties.Resources.buttonback;
-            this.buttonBack.ImageOffset = new System.Drawing.Point(0, 0);
-            this.buttonBack.ImageRotate = 0F;
-            this.buttonBack.Location = new System.Drawing.Point(1194, 12);
-            this.buttonBack.Name = "buttonBack";
-            this.buttonBack.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.buttonBack.Size = new System.Drawing.Size(64, 54);
-            this.buttonBack.TabIndex = 12;
-            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // SettingButton
             // 
@@ -132,61 +99,49 @@
             this.SoundButton.TabIndex = 9;
             this.SoundButton.Click += new System.EventHandler(this.SoundButton_Click);
             // 
-            // pictureBox4
+            // panelLogMove
             // 
-            this.pictureBox4.Location = new System.Drawing.Point(901, 274);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(93, 80);
-            this.pictureBox4.TabIndex = 4;
-            this.pictureBox4.TabStop = false;
+            this.panelLogMove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelLogMove.BackColor = System.Drawing.Color.MistyRose;
+            this.panelLogMove.Location = new System.Drawing.Point(1093, 550);
+            this.panelLogMove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelLogMove.Name = "panelLogMove";
+            this.panelLogMove.Size = new System.Drawing.Size(329, 170);
+            this.panelLogMove.TabIndex = 8;
             // 
-            // pictureBox3
+            // panelTurnTable
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(782, 274);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(93, 80);
-            this.pictureBox3.TabIndex = 3;
-            this.pictureBox3.TabStop = false;
+            this.panelTurnTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelTurnTable.BackColor = System.Drawing.SystemColors.Info;
+            this.panelTurnTable.Location = new System.Drawing.Point(0, 564);
+            this.panelTurnTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelTurnTable.Name = "panelTurnTable";
+            this.panelTurnTable.Size = new System.Drawing.Size(387, 156);
+            this.panelTurnTable.TabIndex = 7;
             // 
-            // pictureBox2
+            // textBoxConsole
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(672, 274);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(93, 80);
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
+            this.textBoxConsole.Location = new System.Drawing.Point(381, 550);
+            this.textBoxConsole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxConsole.Multiline = true;
+            this.textBoxConsole.Name = "textBoxConsole";
+            this.textBoxConsole.Size = new System.Drawing.Size(706, 170);
+            this.textBoxConsole.TabIndex = 0;
             // 
-            // pictureBox1
+            // buttonBack
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(540, 274);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(93, 80);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // logMove1
-            // 
-            this.logMove1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.logMove1.BackColor = System.Drawing.Color.MistyRose;
-            this.logMove1.Location = new System.Drawing.Point(1093, 550);
-            this.logMove1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.logMove1.Name = "logMove1";
-            this.logMove1.Size = new System.Drawing.Size(329, 170);
-            this.logMove1.TabIndex = 8;
-            // 
-            // turnTable1
-            // 
-            this.turnTable1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.turnTable1.BackColor = System.Drawing.SystemColors.Info;
-            this.turnTable1.Location = new System.Drawing.Point(0, 564);
-            this.turnTable1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.turnTable1.Name = "turnTable1";
-            this.turnTable1.Size = new System.Drawing.Size(387, 156);
-            this.turnTable1.TabIndex = 7;
+            this.buttonBack.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonBack.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.buttonBack.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.buttonBack.Image = global::CopAndRobber.Properties.Resources.buttonback;
+            this.buttonBack.ImageOffset = new System.Drawing.Point(0, 0);
+            this.buttonBack.ImageRotate = 0F;
+            this.buttonBack.Location = new System.Drawing.Point(1194, 12);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.buttonBack.Size = new System.Drawing.Size(64, 54);
+            this.buttonBack.TabIndex = 12;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
             // GameScreen
             // 
@@ -202,22 +157,20 @@
             this.Load += new System.EventHandler(this.GameScreen_Load);
             this.panelGameScreen.ResumeLayout(false);
             this.panelGameScreen.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
 		}
 
-		#endregion
-		private Guna.UI2.WinForms.Guna2Panel panelGameScreen;
+       
+
+        #endregion
+        private Guna.UI2.WinForms.Guna2Panel panelGameScreen;
 		private System.Windows.Forms.TextBox textBoxConsole;
-		private System.Windows.Forms.PictureBox pictureBox4;
-		private System.Windows.Forms.PictureBox pictureBox3;
-		private System.Windows.Forms.PictureBox pictureBox2;
-		private System.Windows.Forms.PictureBox pictureBox1;
-		private TurnTable turnTable1;
-		private LogMove logMove1;
-	}
+        private Guna.UI2.WinForms.Guna2ImageButton PauseButton;
+        private Guna.UI2.WinForms.Guna2ImageButton SoundButton;
+        private Guna.UI2.WinForms.Guna2ImageButton SettingButton;
+        private Guna.UI2.WinForms.Guna2ImageButton buttonBack;
+		private LogMove panelLogMove;
+        private TurnTable panelTurnTable;
+    }
 }
