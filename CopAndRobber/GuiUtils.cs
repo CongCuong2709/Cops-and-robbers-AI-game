@@ -54,8 +54,9 @@ namespace CopAndRobber
 
 		public static SoundPlayer SOUND_CAT_WALK = getSoundPlayer("bruh.wav");
 		public static SoundPlayer SOUND_CAT_CATCH = getSoundPlayer("bruh.wav");
+		public static String BGM = "Not A Hero.wav";
 
-		private static Image[] getSprite(string nameCharacter ,string nameAction, int numFrame)
+        private static Image[] getSprite(string nameCharacter ,string nameAction, int numFrame)
 		{
 			Image[] sprite;
 			sprite = new Image[numFrame];

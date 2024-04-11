@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,16 +22,28 @@ namespace CopAndRobber
 		private Panel panel_GameScreen;
 		private Panel panelTurnTable;
 		private Panel panelMoveLog;
+		WaveOutEvent waveOut;
+        private Form activeForm = null;
+        MainScreen mainScreen = null;
+        SupportMethod supportMethod = new SupportMethod();
 
-		private SoundPlayer soundGame;
-		public GameScreen()
+
+
+
+        private Boolean isMute = false;
+		public GameScreen(WaveOutEvent waveout, MainScreen mainccreen)
 		{
 			InitializeComponent();
 			listNode = new Dictionary<int, NodeActor>();
-			game = new GameLogic(this);
-		}
+			mainScreen = mainccreen;
+			waveOut = waveout;
 
-		public GameScreen(int numCat)
+
+            //game = new GameLogic(this);
+        }
+		
+
+        public GameScreen(int numCat)
 		{
 			InitializeComponent();
 
@@ -99,7 +112,7 @@ namespace CopAndRobber
 			catch (Exception e)
 			{
 				Console.WriteLine(e.ToString());
-				DialogResult = MessageBox.Show("he", "canh bao", MessageBoxButtons.YesNo);
+				DialogResult = MessageBox.Show("Huh?", "canh bao", MessageBoxButtons.YesNo);
 			}
 		}
 
@@ -138,7 +151,7 @@ namespace CopAndRobber
 			//panelGameScreen.Controls.Add(new EdgeActor(nodeActor1, nodeActor2));
 
 			cat.moveTo(GetNodeActorByID(1));
-			cat.moveTo(GetNodeActorByID(46));
+			
 
 
 			/*
@@ -155,11 +168,39 @@ namespace CopAndRobber
 			//put character
 		}
 
-		
+        //event nút tắt bật âm mà sound bật
+        private void SoundButton_Click(object sender, EventArgs e)
+        {
+            if (!isMute)
+            {
+                waveOut.Pause();
+                isMute = true;
+                SoundButton.Image = Properties.Resources.soundbuttonmute;
 
-		//event nút tắt bật âm mà sound bật
-		//event nút tắt bật dừng
-		//event menu 3 gạch -> show dialog
+            }
+            else
+            {
+                waveOut.Play();
+                isMute = false;
+                SoundButton.Image = Properties.Resources.soundbutton;
+            }
+        }
 
-	}
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+			this.Close();
+        }
+
+        private void SettingButton_Click(object sender, EventArgs e)
+        {
+            supportMethod.openChildFormDockFill(this.activeForm, new Setting(waveOut, waveOut.Volume), mainScreen.getPanel());
+        }
+
+
+
+
+        //event nút tắt bật dừng
+        //event menu 3 gạch -> show dialog
+
+    }
 }

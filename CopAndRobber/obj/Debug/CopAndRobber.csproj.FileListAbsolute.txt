@@ -16,3 +16,42 @@ D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\obj\
 D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\obj\Debug\CopAndRobber.Character.resources
 D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\obj\Debug\CopAndRobber.LogMove.resources
 D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\obj\Debug\CopAndRobber.TurnTable.resources
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.csproj.AssemblyReference.cache
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.Character.resources
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.LogMove.resources
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.NodeActor.resources
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.GameScreen.resources
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.MainScreen.resources
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.Properties.Resources.resources
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.TurnTable.resources
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.WelcomeScreen.resources
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.csproj.GenerateResource.cache
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.csproj.CoreCompileInputs.cache
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.exe
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.pdb
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\CopAndRobber.exe.config
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\CopAndRobber.exe
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\CopAndRobber.pdb
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\Guna.UI2.dll
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRo.693BB046.Up2Date
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\Microsoft.Win32.Registry.dll
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\NAudio.Asio.dll
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\NAudio.Core.dll
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\NAudio.dll
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\NAudio.Midi.dll
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\NAudio.Wasapi.dll
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\NAudio.WinForms.dll
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\NAudio.WinMM.dll
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\System.Security.AccessControl.dll
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\System.Security.Principal.Windows.dll
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\Microsoft.Win32.Registry.xml
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\NAudio.xml
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\NAudio.Asio.xml
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\NAudio.Core.xml
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\NAudio.Midi.xml
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\NAudio.Wasapi.xml
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\NAudio.WinForms.xml
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\NAudio.WinMM.xml
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\System.Security.AccessControl.xml
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\System.Security.Principal.Windows.xml
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.Setting.resources

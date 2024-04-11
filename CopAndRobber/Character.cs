@@ -292,12 +292,12 @@ namespace CopAndRobber
 
 		private void playSound()
 		{
-			if(this.state == STATE_CHARACTER.GO_LEFT || this.state == STATE_CHARACTER.GO_RIGHT)
+			if (this.state == STATE_CHARACTER.GO_LEFT || this.state == STATE_CHARACTER.GO_RIGHT)
 			{
 				soundPlayer = GuiUtils.SOUND_CAT_WALK;
 				soundPlayer.PlayLooping();
 			}
-			if(this.state == STATE_CHARACTER.CATCH)
+			if (this.state == STATE_CHARACTER.CATCH)
 			{
 				soundPlayer = GuiUtils.SOUND_CAT_CATCH;
 				soundPlayer.PlayLooping();

@@ -55,7 +55,7 @@ namespace CopAndRobber
 				{
 					case 0:
 						Character tom = new Character(0, nodeActor);
-						panelGameScreen.Controls.Add(tom);
+						//panelGameScreen.Controls.Add(tom);
 						break;
 					case 1:
 						Character butch = new Character(0, nodeActor);
