@@ -58,13 +58,9 @@ D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\bin\Debug\System.Security.
 D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.Setting.resources
 =======
 D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\obj\Debug\CopAndRobber.Move.resources
-<<<<<<< HEAD
 D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\obj\Debug\CopAndRobber.ActionBar.resources
-=======
 >>>>>>> 42c52e6d64acf0191ea5567f3794ba6472474313
-<<<<<<< HEAD
 D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.ActionBar.resources
 D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.Move.resources
-=======
 >>>>>>> f18722f739dd8d9ceecaad0cade4c7f13408b9ba
 >>>>>>> 47b1092aa538030fe9be1902f1b31af4f8e9dcf6

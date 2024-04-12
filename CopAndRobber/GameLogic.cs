@@ -74,7 +74,7 @@ namespace CopAndRobber
 						
 						
 					}
-					
+					character.setAtNode(nodeActor);
 				};
 			}
 		}

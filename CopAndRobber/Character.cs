@@ -137,6 +137,10 @@ namespace CopAndRobber
 		{
 			this.atNode = node;
 		}
+        public STATE_CHARACTER getState()
+        {
+            return this.state;
+        }
 
         public void startAnimation()
         {
