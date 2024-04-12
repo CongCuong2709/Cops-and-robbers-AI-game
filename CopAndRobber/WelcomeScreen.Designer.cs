@@ -28,97 +28,111 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.buttonSetting = new Guna.UI2.WinForms.Guna2GradientButton();
-			this.buttonHelp = new Guna.UI2.WinForms.Guna2GradientButton();
-			this.buttonPlay = new Guna.UI2.WinForms.Guna2GradientButton();
-			this.guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
-			this.SuspendLayout();
-			// 
-			// buttonSetting
-			// 
-			this.buttonSetting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.buttonSetting.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-			this.buttonSetting.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-			this.buttonSetting.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-			this.buttonSetting.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-			this.buttonSetting.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-			this.buttonSetting.Font = new System.Drawing.Font("Segoe UI", 9F);
-			this.buttonSetting.ForeColor = System.Drawing.Color.White;
-			this.buttonSetting.Location = new System.Drawing.Point(420, 729);
-			this.buttonSetting.Name = "buttonSetting";
-			this.buttonSetting.Size = new System.Drawing.Size(180, 45);
-			this.buttonSetting.TabIndex = 5;
-			this.buttonSetting.Text = " ";
-			// 
-			// buttonHelp
-			// 
-			this.buttonHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.buttonHelp.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-			this.buttonHelp.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-			this.buttonHelp.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-			this.buttonHelp.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-			this.buttonHelp.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-			this.buttonHelp.Font = new System.Drawing.Font("Segoe UI", 9F);
-			this.buttonHelp.ForeColor = System.Drawing.Color.White;
-			this.buttonHelp.Location = new System.Drawing.Point(201, 729);
-			this.buttonHelp.Name = "buttonHelp";
-			this.buttonHelp.Size = new System.Drawing.Size(180, 45);
-			this.buttonHelp.TabIndex = 4;
-			this.buttonHelp.Text = " ";
-			// 
-			// buttonPlay
-			// 
-			this.buttonPlay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.buttonPlay.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-			this.buttonPlay.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-			this.buttonPlay.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-			this.buttonPlay.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-			this.buttonPlay.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-			this.buttonPlay.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.buttonPlay.ForeColor = System.Drawing.Color.White;
-			this.buttonPlay.Location = new System.Drawing.Point(201, 577);
-			this.buttonPlay.Name = "buttonPlay";
-			this.buttonPlay.Size = new System.Drawing.Size(219, 100);
-			this.buttonPlay.TabIndex = 3;
-			this.buttonPlay.Text = "Play";
-			// 
-			// guna2GradientButton1
-			// 
-			this.guna2GradientButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.guna2GradientButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-			this.guna2GradientButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-			this.guna2GradientButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-			this.guna2GradientButton1.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-			this.guna2GradientButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-			this.guna2GradientButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
-			this.guna2GradientButton1.ForeColor = System.Drawing.Color.White;
-			this.guna2GradientButton1.Location = new System.Drawing.Point(554, 577);
-			this.guna2GradientButton1.Name = "guna2GradientButton1";
-			this.guna2GradientButton1.Size = new System.Drawing.Size(180, 45);
-			this.guna2GradientButton1.TabIndex = 6;
-			this.guna2GradientButton1.Text = "Số mồn lèo";
-			// 
-			// WelcomeScreen
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1600, 900);
-			this.Controls.Add(this.guna2GradientButton1);
-			this.Controls.Add(this.buttonSetting);
-			this.Controls.Add(this.buttonHelp);
-			this.Controls.Add(this.buttonPlay);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			this.Name = "WelcomeScreen";
-			this.Text = "Form1";
-			this.ResumeLayout(false);
+            this.buttonSetting = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.buttonExit = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.buttonPlay = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.buttonNumCat = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.SuspendLayout();
+            // 
+            // buttonSetting
+            // 
+            this.buttonSetting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonSetting.BorderRadius = 15;
+            this.buttonSetting.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonSetting.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.buttonSetting.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.buttonSetting.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.buttonSetting.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.buttonSetting.Font = new System.Drawing.Font("Courier New", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSetting.ForeColor = System.Drawing.Color.White;
+            this.buttonSetting.Location = new System.Drawing.Point(173, 362);
+            this.buttonSetting.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonSetting.Name = "buttonSetting";
+            this.buttonSetting.Size = new System.Drawing.Size(195, 80);
+            this.buttonSetting.TabIndex = 5;
+            this.buttonSetting.Text = "Setting";
+            this.buttonSetting.Click += new System.EventHandler(this.buttonSetting_Click);
+            // 
+            // buttonExit
+            // 
+            this.buttonExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonExit.BorderRadius = 15;
+            this.buttonExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonExit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.buttonExit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.buttonExit.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.buttonExit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.buttonExit.Font = new System.Drawing.Font("Courier New", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExit.ForeColor = System.Drawing.Color.White;
+            this.buttonExit.Location = new System.Drawing.Point(171, 483);
+            this.buttonExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(195, 80);
+            this.buttonExit.TabIndex = 4;
+            this.buttonExit.Text = " Exit";
+            this.buttonExit.Click += new System.EventHandler(this.buttonHelp_Click);
+            // 
+            // buttonPlay
+            // 
+            this.buttonPlay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonPlay.BorderRadius = 15;
+            this.buttonPlay.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonPlay.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.buttonPlay.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.buttonPlay.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.buttonPlay.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.buttonPlay.Font = new System.Drawing.Font("Courier New", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPlay.ForeColor = System.Drawing.Color.White;
+            this.buttonPlay.Location = new System.Drawing.Point(171, 131);
+            this.buttonPlay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonPlay.Name = "buttonPlay";
+            this.buttonPlay.Size = new System.Drawing.Size(195, 80);
+            this.buttonPlay.TabIndex = 3;
+            this.buttonPlay.Text = "Play";
+            this.buttonPlay.Click += new System.EventHandler(this.buttonPlay_Click);
+            // 
+            // buttonNumCat
+            // 
+            this.buttonNumCat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonNumCat.BorderRadius = 15;
+            this.buttonNumCat.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonNumCat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.buttonNumCat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.buttonNumCat.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.buttonNumCat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.buttonNumCat.Font = new System.Drawing.Font("Courier New", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNumCat.ForeColor = System.Drawing.Color.White;
+            this.buttonNumCat.Location = new System.Drawing.Point(171, 258);
+            this.buttonNumCat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonNumCat.Name = "buttonNumCat";
+            this.buttonNumCat.Size = new System.Drawing.Size(195, 80);
+            this.buttonNumCat.TabIndex = 6;
+            this.buttonNumCat.Text = "Level";
+            // 
+            // WelcomeScreen
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::CopAndRobber.Properties.Resources.minimalism_tom_and_jerry_wallpaper_preview;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1422, 720);
+            this.Controls.Add(this.buttonNumCat);
+            this.Controls.Add(this.buttonSetting);
+            this.Controls.Add(this.buttonExit);
+            this.Controls.Add(this.buttonPlay);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "WelcomeScreen";
+            this.Text = "Form1";
+            this.ResumeLayout(false);
 
 		}
 
 		#endregion
 
 		private Guna.UI2.WinForms.Guna2GradientButton buttonSetting;
-		private Guna.UI2.WinForms.Guna2GradientButton buttonHelp;
+		private Guna.UI2.WinForms.Guna2GradientButton buttonExit;
 		private Guna.UI2.WinForms.Guna2GradientButton buttonPlay;
-		private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
+		private Guna.UI2.WinForms.Guna2GradientButton buttonNumCat;
 	}
 }

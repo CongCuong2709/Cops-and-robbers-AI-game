@@ -23,7 +23,13 @@ namespace CopAndRobber
 
 		private void MainScreen_Load(object sender, EventArgs e)
 		{
-			supportMethod.openChildFormDockFill(this.activeForm, new GameScreen(), this.panelMainScreen);
+			supportMethod.openChildFormDockFill(this.activeForm, new WelcomeScreen(this), this.panelMainScreen);
 		}
+		public Panel getPanel()
+		{
+			return panelMainScreen;
+
+        }
+		
 	}
 }

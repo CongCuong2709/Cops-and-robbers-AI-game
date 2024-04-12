@@ -12,35 +12,35 @@ using System.Windows.Forms;
 
 namespace CopAndRobber
 {
-	public partial class NodeActor : Button
-	{
-		public event EventHandler nodeClicked;
+    public partial class NodeActor : Button
+    {
+        public event EventHandler nodeClicked;
 
-		private int _id;
-		private TRANSPORT_TYPE type;
-		private int position_X, position_Y;
-		private HashSet<int> nodeAdj;
+        private int _id;
+        private TRANSPORT_TYPE type;
+        private int position_X, position_Y;
+        private HashSet<int> nodeAdj;
 
-		private bool isChoosen;
-		public enum TRANSPORT_TYPE
-		{
-			TRAIN,
-			BUS,
-			WALK
-		}
+        private bool isChoosen;
+        public enum TRANSPORT_TYPE
+        {
+            TRAIN,
+            BUS,
+            WALK
+        }
 
-		public NodeActor()
-		{
-			InitializeComponent();
-		}
+        public NodeActor()
+        {
+            InitializeComponent();
+        }
 
-		public NodeActor (int id, TRANSPORT_TYPE transportType, int position_X, int position_Y, HashSet<int> nodeAdj)
-		{
-			_id = id;
-			this.position_X = position_X;
-			this.position_Y = position_Y;
-			this.nodeAdj = nodeAdj;
-			this.type = transportType;
+        public NodeActor(int id, TRANSPORT_TYPE transportType, int position_X, int position_Y, HashSet<int> nodeAdj)
+        {
+            _id = id;
+            this.position_X = position_X;
+            this.position_Y = position_Y;
+            this.nodeAdj = nodeAdj;
+            this.type = transportType;
 
 			this.Click += nodeActor_click;
 			//this.Enabled = false;
@@ -67,20 +67,20 @@ namespace CopAndRobber
 			this.Text = _id.ToString();
 		}
 
-		public int getPositionX()
-		{
-			return this.Location.X;
-		}
+        public int getPositionX()
+        {
+            return this.Location.X;
+        }
 
-		public int getPositionY()
-		{
-			return this.Location.Y;
-		}
+        public int getPositionY()
+        {
+            return this.Location.Y;
+        }
 
-		public int getID()
-		{
-			return _id;
-		}
+        public int getID()
+        {
+            return _id;
+        }
 
 		public HashSet<int> getNodeAdj()
 		{
@@ -90,26 +90,26 @@ namespace CopAndRobber
 		public void makeLightNodeActor()
 		{
 
-		}
+        }
 
-		public void notChoosen()
-		{
-			this.Enabled = isChoosen;
-		}
+        public void notChoosen()
+        {
+            this.Enabled = isChoosen;
+        }
 
-		protected override void OnPaint(PaintEventArgs pe)
-		{
-			base.OnPaint(pe);
-		}
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            base.OnPaint(pe);
+        }
 
-		public override string ToString()
-		{
-			return _id + " " + position_X + " " + position_Y;
-		}
+        public override string ToString()
+        {
+            return _id + " " + position_X + " " + position_Y;
+        }
 
-		private void nodeActor_click(object sender, EventArgs e)
-		{
-			nodeClicked?.Invoke(this, EventArgs.Empty);
-		}
-	}
+        private void nodeActor_click(object sender, EventArgs e)
+        {
+            nodeClicked?.Invoke(this, EventArgs.Empty);
+        }
+    }
 }
