@@ -43,7 +43,7 @@ namespace CopAndRobber
             this.type = transportType;
 
 			this.Click += nodeActor_click;
-			//this.Enabled = false;
+			this.Enabled = false;
 			this.Location = new Point(position_X, position_Y);
 			switch (type)
 			{

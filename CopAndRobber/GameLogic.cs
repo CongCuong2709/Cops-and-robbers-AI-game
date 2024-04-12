@@ -48,31 +48,39 @@ namespace CopAndRobber
 			generateGame(screen, numCat);
 
 			Character currentCharacter = listTurnAction.Peek();
-			//changeTurn(jerry);
+
+			changeTurn(currentCharacter);
 			//listTurnAction.Enqueue(jerry);
-			
-			foreach(NodeActor node in listNode.Values)
+
+			foreach (NodeActor node in listNode.Values)
 			{
 				node.nodeClicked += (sender, args) =>
 				{
-					Character character = listTurnAction.Peek();
 					NodeActor nodeActor = (NodeActor)sender;
 					if (currentCharacter.getState() == GuiUtils.STATE_CHARACTER.WAIT)
 					{
 						currentCharacter = listTurnAction.Peek();
 						//init button ...	
-						setNodeAdjDisable(currentCharacter);
+						changeTurn(currentCharacter);
 					}
 					if (currentCharacter == listTurnAction.Peek())
 					{
-						character.moveTo(nodeActor);
+						currentCharacter.moveTo(nodeActor);
+						
+						updateLogMove(screen, currentCharacter, currentCharacter.getAtNode(), nodeActor);
+						setNodeAdjDisable(currentCharacter);
 
-						
-						updateLogMove(screen, character, character.getAtNode(), nodeActor);
-						//changeTurn(character);
-						listTurnAction.Enqueue(listTurnAction.Dequeue());
-						
-						
+						currentCharacter.StateChanged += (s, e) =>
+						{
+							Character character = (Character)s;
+							if(character.getState() == GuiUtils.STATE_CHARACTER.WAIT)
+							{
+								character.setAtNode(nodeActor);
+								listTurnAction.Enqueue(listTurnAction.Dequeue());
+								changeTurn(listTurnAction.Peek());
+
+							}
+						};						
 					}
 					
 				};
@@ -107,7 +115,7 @@ namespace CopAndRobber
 				try
 				{
 					NodeActor nodeAdj = GetNodeActorByID(id);
-					//nodeAdj.Enabled = false;
+					nodeAdj.Enabled = false;
 				}
 				catch (Exception ex)
 				{

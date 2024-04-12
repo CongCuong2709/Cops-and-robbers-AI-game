@@ -15,6 +15,8 @@ namespace CopAndRobber
 		public TurnTable()
 		{
 			InitializeComponent();
+			ActionBar actionBar = new ActionBar();
+			this.Controls.Add(actionBar);
 		}
 	}
 }

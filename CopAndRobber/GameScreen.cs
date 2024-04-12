@@ -22,11 +22,11 @@ namespace CopAndRobber
 
 
         private Boolean isMute = false;
-        public GameScreen(WaveOutEvent waveout, MainScreen mainccreen)
+        public GameScreen(WaveOutEvent waveout, MainScreen mainscreen)
         {
             InitializeComponent();
-            game = new GameLogic(this, 1);
-            mainScreen = mainccreen;
+            game = new GameLogic(this, 2);
+            mainScreen = mainscreen;
             waveOut = waveout;
         }
 
