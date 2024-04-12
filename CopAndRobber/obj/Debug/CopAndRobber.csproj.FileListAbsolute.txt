@@ -59,3 +59,5 @@ D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.Set
 =======
 D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\obj\Debug\CopAndRobber.Move.resources
 >>>>>>> 42c52e6d64acf0191ea5567f3794ba6472474313
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.ActionBar.resources
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.Move.resources

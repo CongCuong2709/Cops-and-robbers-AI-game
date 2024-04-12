@@ -84,6 +84,7 @@ namespace CopAndRobber
             this.PauseButton.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.PauseButton.Size = new System.Drawing.Size(64, 54);
             this.PauseButton.TabIndex = 10;
+            this.PauseButton.Click += new System.EventHandler(this.PauseButton_Click);
             // 
             // SoundButton
             // 

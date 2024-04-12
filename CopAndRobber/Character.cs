@@ -24,7 +24,7 @@ namespace CopAndRobber
 
         private int distanceX, distanceY; //Khoang cach toa do tu atNode -> endNode
         private int deltaX = 0, deltaY = 0;
-        private int speed = 4;
+        private int speed = 12;
 
         private int currentFrame;
 
@@ -39,6 +39,7 @@ namespace CopAndRobber
             animationTimer = new Timer();
             animationTimer.Interval = 100;
             animationTimer.Tick += animation_Tick;
+            
             setState(STATE_CHARACTER.WAIT);
             //frames = new Image[4];
 
@@ -117,6 +118,7 @@ namespace CopAndRobber
                 setState(STATE_CHARACTER.GO_LEFT);
             }
             else setState(STATE_CHARACTER.GO_RIGHT);
+            
 
         }
 
@@ -131,18 +133,18 @@ namespace CopAndRobber
 		}
 
 
-		private void setAtNode(NodeActor node)
+		public void setAtNode(NodeActor node)
 		{
 			this.atNode = node;
 		}
 
-        private void startAnimation()
+        public void startAnimation()
         {
             currentFrame = 0;
             animationTimer.Start();
         }
 
-        private void stopAnimation()
+        public void stopAnimation()
         {
             animationTimer.Stop();
         }
@@ -308,7 +310,7 @@ namespace CopAndRobber
             }
         }
 
-        private void playSound()
+        public void playSound()
         {
             if (this.state == STATE_CHARACTER.GO_LEFT || this.state == STATE_CHARACTER.GO_RIGHT)
             {
@@ -322,10 +324,15 @@ namespace CopAndRobber
             }
         }
 
-        private void stopSound()
+        public void stopSound()
         {
             if (soundPlayer != null)
                 soundPlayer.Stop();
+        }
+
+        public Timer getTimer()
+        {
+            return animationTimer;
         }
     }
 }
