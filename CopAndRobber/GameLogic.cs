@@ -55,15 +55,21 @@ namespace CopAndRobber
 				{
 					Character character = listTurnAction.Peek();
 					NodeActor nodeActor = (NodeActor)sender;
-
-					if(currentCharacter == listTurnAction.Peek())
+					if (currentCharacter.getState() == GuiUtils.STATE_CHARACTER.WAIT)
+					{
+						currentCharacter = listTurnAction.Peek();
+						//init button ...	
+						setNodeAdjDisable(currentCharacter);
+					}
+					if (currentCharacter == listTurnAction.Peek())
 					{
 						character.moveTo(nodeActor);
 
-						setNodeAdjDisable(listTurnAction.Peek());
+						
 						updateLogMove(screen, character, character.getAtNode(), nodeActor);
-						changeTurn(character);
+						//changeTurn(character);
 						listTurnAction.Enqueue(listTurnAction.Dequeue());
+						
 						
 					}
 					
