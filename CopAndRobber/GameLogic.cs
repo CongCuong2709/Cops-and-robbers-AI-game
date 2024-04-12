@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace CopAndRobber
 {
-	internal class GameLogic
-	{
-		private Dictionary<int, NodeActor> listNode;
-		private Queue<Character> listTurnAction;
-		private Stack<Move> moveStack;
+    public class GameLogic
+    {
+        private Dictionary<int, NodeActor> listNode;
+        private Queue<Character> listTurnAction;
+        private Stack<Move> moveStack;
 
         private int numCat;
 
@@ -27,25 +27,25 @@ namespace CopAndRobber
         public GameLogic(GameScreen screen, int numCat)
         {
 
-			listNode = new Dictionary<int, NodeActor>();
-			listTurnAction = new Queue<Character>();
-			moveStack = new Stack<Move>();
-			this.numCat = numCat;
-		}
-
-        private void stopGame()
-        {
-
+            listNode = new Dictionary<int, NodeActor>();
+            listTurnAction = new Queue<Character>();
+            moveStack = new Stack<Move>();
+            this.numCat = numCat;
         }
 
-        private void continueGame(GameScreen screen)
+        public void stopGame(Character c)
         {
-
+            
         }
 
-		public void startGame(GameScreen screen)
-		{
-			generateGame(screen, numCat);
+        public void continueGame(GameScreen screen)
+        {
+            
+        }
+
+        public void startGame(GameScreen screen)
+        {
+            generateGame(screen, numCat);
 
 			Character currentCharacter = listTurnAction.Peek();
 
@@ -87,26 +87,26 @@ namespace CopAndRobber
 			}
 		}
 
-		private void changeTurn(Character character)
-		{
-			highLightAllNodeCanMove(character);
+        private void changeTurn(Character character)
+        {
+            highLightAllNodeCanMove(character);
 
-		}
+        }
 
-		public void highLightAllNodeCanMove(Character character)
-		{
-			NodeActor nodeActor = character.getAtNode();
-			foreach(int id in nodeActor.getNodeAdj())
-			{
-				NodeActor nodeAdj = GetNodeActorByID(id);
-				nodeAdj.Enabled = true;
-				nodeAdj.makeLightNodeActor();
-				
-			}
+        public void highLightAllNodeCanMove(Character character)
+        {
+            NodeActor nodeActor = character.getAtNode();
+            foreach (int id in nodeActor.getNodeAdj())
+            {
+                NodeActor nodeAdj = GetNodeActorByID(id);
+                nodeAdj.Enabled = true;
+                nodeAdj.makeLightNodeActor();
 
-			//make light edge
-			
-		}
+            }
+
+            //make light edge
+
+        }
 
 		public void setNodeAdjDisable(Character character)
 		{
@@ -124,28 +124,28 @@ namespace CopAndRobber
 			}
 		}
 
-		public void updateLogMove(GameScreen screen ,Character character, NodeActor atNode, NodeActor endNode)
-		{
-			Move move = new Move(character, atNode, endNode);
-			moveStack.Push(move);
-			Stack<Move> moves = new Stack<Move>();
+        public void updateLogMove(GameScreen screen, Character character, NodeActor atNode, NodeActor endNode)
+        {
+            Move move = new Move(character, atNode, endNode);
+            moveStack.Push(move);
+            Stack<Move> moves = new Stack<Move>();
 
             foreach (var item in moveStack)
             {
-				moves.Push(item);
+                moves.Push(item);
             }
             screen.GetPanelMoveLog().Controls.Clear();
-			foreach(Move move1 in moves)
-			{
-				screen.GetPanelMoveLog().Controls.Add(move1);
-			}
-			
-		}
+            foreach (Move move1 in moves)
+            {
+                screen.GetPanelMoveLog().Controls.Add(move1);
+            }
 
-		public void updateActionTable(Character character)
-		{
+        }
 
-		}
+        public void updateActionTable(Character character)
+        {
+
+        }
 
         public void generateAllNode(GameScreen gameScreen)
         {
@@ -214,6 +214,11 @@ namespace CopAndRobber
             gameScreen.GetPanelGameScreen().Controls.Add(new EdgeActor(nodeActor1, nodeActor2));
         }
 
+        public Queue<Character> getListTurnAction()
+        {
+            return listTurnAction;
+        }
+
         public void generateGame(GameScreen gameScreen, int numCat)
         {
 
@@ -221,33 +226,33 @@ namespace CopAndRobber
             /*Character jerry = new Character();
 
 			listTurnAction.Enqueue(jerry);*/
-			
-			for(int num = 0; num < numCat; num++)
-			{
-				int nodeID = 1; //random
-				NodeActor nodeActor = GetNodeActorByID(nodeID);
-				switch(num)
-				{
-					case 0:
-						Character tom = new Character(GuiUtils.CHARACTER_NAME.TOM, nodeActor);
-						gameScreen.GetPanelGameScreen().Controls.Add(tom);
-						listTurnAction.Enqueue(tom);
-						break;
-					case 1:
-						Character butch = new Character(GuiUtils.CHARACTER_NAME.BUTCH, nodeActor);
-						gameScreen.GetPanelGameScreen().Controls.Add(butch);
-						listTurnAction.Enqueue(butch);
-						
-						break;
-					case 2:
-						Character jones = new Character(GuiUtils.CHARACTER_NAME.JONES, nodeActor);
-						gameScreen.GetPanelGameScreen().Controls.Add(jones);
-						listTurnAction.Enqueue(jones);
-						break;				
-					default:
-						break;
-				}
-			}
-		}
-	}
+
+            for (int num = 0; num < numCat; num++)
+            {
+                int nodeID = 1; //random
+                NodeActor nodeActor = GetNodeActorByID(nodeID);
+                switch (num)
+                {
+                    case 0:
+                        Character tom = new Character(GuiUtils.CHARACTER_NAME.TOM, nodeActor);
+                        gameScreen.GetPanelGameScreen().Controls.Add(tom);
+                        listTurnAction.Enqueue(tom);
+                        break;
+                    case 1:
+                        Character butch = new Character(GuiUtils.CHARACTER_NAME.BUTCH, nodeActor);
+                        gameScreen.GetPanelGameScreen().Controls.Add(butch);
+                        listTurnAction.Enqueue(butch);
+
+                        break;
+                    case 2:
+                        Character jones = new Character(GuiUtils.CHARACTER_NAME.JONES, nodeActor);
+                        gameScreen.GetPanelGameScreen().Controls.Add(jones);
+                        listTurnAction.Enqueue(jones);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
 }

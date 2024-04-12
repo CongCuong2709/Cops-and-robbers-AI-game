@@ -17,19 +17,39 @@ namespace CopAndRobber
     {
         WaveOutEvent waveOut;        
         private Boolean isMute = false;
+        GameScreen gamescreen;
 
-
-        public Setting(WaveOutEvent waveout, float volume)
+        public Setting(WaveOutEvent waveout, float volume, GameScreen gameScreen)
         {
             InitializeComponent();
             waveOut = waveout;
             volSlider.Volume = volume;
-            
+            gamescreen = gameScreen;
+
+
 
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (gamescreen.getGameLogic().getListTurnAction().Any())
+                {
+                    foreach (Character c in gamescreen.getGameLogic().getListTurnAction())
+                    {
+                        c.startAnimation();
+                    }
+                }
+            }
+            catch (NullReferenceException ex)
+            {
+                // Xử lý lỗi ở đây
+                Console.WriteLine("Đã xảy ra lỗi NullReferenceException: " + ex.Message);
+            }
+
+
+
             this.Close();
         }
 

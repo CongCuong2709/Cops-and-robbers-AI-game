@@ -3,20 +3,40 @@
   "WorkspaceRootPath": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|d:\\workspace\\ai\\cops-and-robbers-ai-game\\copandrobber\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|solutionrelative:copandrobber\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|d:\\workspace\\ai\\cops-and-robbers-ai-game\\copandrobber\\gamelogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\copandrobber\\gamelogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|solutionrelative:copandrobber\\gamelogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|d:\\workspace\\ai\\cops-and-robbers-ai-game\\copandrobber\\gamescreen.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|solutionrelative:copandrobber\\gamescreen.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\copandrobber\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|solutionrelative:copandrobber\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|d:\\workspace\\ai\\cops-and-robbers-ai-game\\copandrobber\\gamescreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|solutionrelative:copandrobber\\gamescreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|d:\\workspace\\ai\\cops-and-robbers-ai-game\\copandrobber\\gamescreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|solutionrelative:copandrobber\\gamescreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\copandrobber\\setting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|solutionrelative:copandrobber\\setting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\copandrobber\\setting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|solutionrelative:copandrobber\\setting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\copandrobber\\welcomescreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|solutionrelative:copandrobber\\welcomescreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\copandrobber\\guiutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|solutionrelative:copandrobber\\guiutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\copandrobber\\move.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|solutionrelative:copandrobber\\move.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\copandrobber\\nodeactor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|solutionrelative:copandrobber\\nodeactor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 299,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,58 +66,123 @@
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "GameScreen.cs [Design]",
-              "DocumentMoniker": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\GameScreen.cs",
-              "RelativeDocumentMoniker": "CopAndRobber\\GameScreen.cs",
-              "ToolTip": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\GameScreen.cs [Design]",
-              "RelativeToolTip": "CopAndRobber\\GameScreen.cs [Design]",
+              "Title": "Setting.cs [Design]",
+              "DocumentMoniker": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\Setting.cs",
+              "RelativeDocumentMoniker": "CopAndRobber\\Setting.cs",
+              "ToolTip": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\Setting.cs [Design]",
+              "RelativeToolTip": "CopAndRobber\\Setting.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-11T06:27:34.935Z",
+              "WhenOpened": "2024-04-12T05:11:59.121Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "GameScreen.Designer.cs",
-              "DocumentMoniker": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\GameScreen.Designer.cs",
-              "RelativeDocumentMoniker": "CopAndRobber\\GameScreen.Designer.cs",
-              "ToolTip": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\GameScreen.Designer.cs",
-              "RelativeToolTip": "CopAndRobber\\GameScreen.Designer.cs",
-              "ViewState": "AQIAAIgAAAAAAAAAAAAgwJEAAAAWAAAA",
+              "DocumentIndex": 4,
+              "Title": "Setting.cs",
+              "DocumentMoniker": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\Setting.cs",
+              "RelativeDocumentMoniker": "CopAndRobber\\Setting.cs",
+              "ToolTip": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\Setting.cs",
+              "RelativeToolTip": "CopAndRobber\\Setting.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAwwBEAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-11T06:25:57.152Z",
+              "WhenOpened": "2024-04-12T03:42:12.309Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GameScreen.cs",
+              "DocumentMoniker": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\GameScreen.cs",
+              "RelativeDocumentMoniker": "CopAndRobber\\GameScreen.cs",
+              "ToolTip": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\GameScreen.cs",
+              "RelativeToolTip": "CopAndRobber\\GameScreen.cs",
+              "ViewState": "AQIAAEkAAAAAAAAAAAAwwEwAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-11T14:07:49.691Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "GameLogic.cs",
-              "DocumentMoniker": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\GameLogic.cs",
-              "RelativeDocumentMoniker": "CopAndRobber\\GameLogic.cs",
-              "ToolTip": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\GameLogic.cs",
-              "RelativeToolTip": "CopAndRobber\\GameLogic.cs",
-              "ViewState": "AQIAAH4AAAAAAAAAAAAnwJkAAABGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-11T06:21:53.399Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "Character.cs",
               "DocumentMoniker": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\Character.cs",
               "RelativeDocumentMoniker": "CopAndRobber\\Character.cs",
               "ToolTip": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\Character.cs",
               "RelativeToolTip": "CopAndRobber\\Character.cs",
-              "ViewState": "AQIAADEAAAAAAAAAAAAtwDoAAAApAAAA",
+              "ViewState": "AQIAABkAAAAAAAAAAAAiwI4AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-11T06:22:25.63Z",
+              "WhenOpened": "2024-04-11T13:30:46.653Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GameLogic.cs",
+              "DocumentMoniker": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\GameLogic.cs",
+              "RelativeDocumentMoniker": "CopAndRobber\\GameLogic.cs",
+              "ToolTip": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\GameLogic.cs",
+              "RelativeToolTip": "CopAndRobber\\GameLogic.cs",
+              "ViewState": "AQIAADIAAAAAAAAAAIAwwEwAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-11T12:52:36.983Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "WelcomeScreen.cs",
+              "DocumentMoniker": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\WelcomeScreen.cs",
+              "RelativeDocumentMoniker": "CopAndRobber\\WelcomeScreen.cs",
+              "ToolTip": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\WelcomeScreen.cs",
+              "RelativeToolTip": "CopAndRobber\\WelcomeScreen.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAwwBgAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T03:47:40.662Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Move.cs",
+              "DocumentMoniker": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\Move.cs",
+              "RelativeDocumentMoniker": "CopAndRobber\\Move.cs",
+              "ToolTip": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\Move.cs",
+              "RelativeToolTip": "CopAndRobber\\Move.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-11T13:28:04.668Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GuiUtils.cs",
+              "DocumentMoniker": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\GuiUtils.cs",
+              "RelativeDocumentMoniker": "CopAndRobber\\GuiUtils.cs",
+              "ToolTip": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\GuiUtils.cs",
+              "RelativeToolTip": "CopAndRobber\\GuiUtils.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAAABIAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-11T12:50:01.566Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "NodeActor.cs",
+              "DocumentMoniker": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\NodeActor.cs",
+              "RelativeDocumentMoniker": "CopAndRobber\\NodeActor.cs",
+              "ToolTip": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\NodeActor.cs",
+              "RelativeToolTip": "CopAndRobber\\NodeActor.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAArwCwAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-11T12:48:25.679Z"
             }
           ]
         },

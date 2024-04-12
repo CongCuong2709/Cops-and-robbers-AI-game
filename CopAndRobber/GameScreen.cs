@@ -18,11 +18,12 @@ namespace CopAndRobber
         private Form activeForm = null;
         MainScreen mainScreen = null;
         SupportMethod supportMethod = new SupportMethod();
-
+        
 
 
         private Boolean isMute = false;
-        public GameScreen(WaveOutEvent waveout, MainScreen mainscreen)
+        private Boolean isPause = false;
+        public GameScreen(WaveOutEvent waveout, MainScreen mainccreen)
         {
             InitializeComponent();
             game = new GameLogic(this, 2);
@@ -50,7 +51,10 @@ namespace CopAndRobber
         {
             return this.panelGameScreen;
         }
-
+        public GameLogic getGameLogic()
+        {
+            return game;
+        }
 
         private void GameScreen_Load(object sender, EventArgs e)
         {
@@ -81,14 +85,54 @@ namespace CopAndRobber
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Close();
+            this.Dispose();
+            
         }
 
         private void SettingButton_Click(object sender, EventArgs e)
         {
-            supportMethod.openChildFormDockFill(this.activeForm, new Setting(waveOut, waveOut.Volume), mainScreen.getPanel());
-        }
-        //event nút tắt bật dừng
-        //event menu 3 gạch -> show dialog
+            supportMethod.openChildFormDockFill(this.activeForm, new Setting(waveOut, waveOut.Volume, this), mainScreen.getPanel());
+            PauseButton_Click(sender,e);
+            isPause = true;
+            
 
+        }
+
+        //event nút tắt bật dừng
+        private void PauseButton_Click(object sender, EventArgs e)
+        {
+            if (!isPause)
+            {
+                foreach (Character c in game.getListTurnAction())
+                {
+                    c.stopAnimation();
+                    c.stopSound();
+                }
+                isPause = true;
+            }
+            else
+            {
+                foreach (Character c in game.getListTurnAction())
+                {
+                    c.startAnimation();
+                    c.playSound();
+                }
+                isPause = false;
+            }
+            
+        }
+
+        public Boolean getIsPause()
+        {
+            return isPause;
+        }
+
+        public void setIsPause(Boolean b)
+        {
+            isPause = b;
+        }
+        
+        //event menu 3 gạch -> show dialog
+        
     }
 }

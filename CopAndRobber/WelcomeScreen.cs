@@ -15,11 +15,12 @@ namespace CopAndRobber
 	{
         SupportMethod supportMethod = new SupportMethod();
         private Form activeForm = null;
-        MainScreen mainScreen = null;
+        public static MainScreen mainScreen = null;
 
         AudioFileReader audioFile = new AudioFileReader(GuiUtils.BGM);
         // Tạo một đối tượng WaveOut để phát âm thanh
-        WaveOutEvent waveOut = new WaveOutEvent();
+        public static WaveOutEvent waveOut = new WaveOutEvent();
+        GameScreen gameScreen = new GameScreen(waveOut, mainScreen);
 
         public WelcomeScreen(MainScreen screen)
 		{
@@ -46,7 +47,7 @@ namespace CopAndRobber
 
         private void buttonSetting_Click(object sender, EventArgs e)
         {
-            supportMethod.openChildFormDockFill(this.activeForm, new Setting(waveOut, waveOut.Volume), mainScreen.getPanel());
+            supportMethod.openChildFormDockFill(this.activeForm, new Setting(waveOut, waveOut.Volume, gameScreen), mainScreen.getPanel());
         }
     }
 }

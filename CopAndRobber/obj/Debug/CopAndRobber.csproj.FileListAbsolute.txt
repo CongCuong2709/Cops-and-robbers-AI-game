@@ -60,6 +60,8 @@ D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.Set
 D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\obj\Debug\CopAndRobber.Move.resources
 D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\obj\Debug\CopAndRobber.ActionBar.resources
 >>>>>>> 42c52e6d64acf0191ea5567f3794ba6472474313
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.ActionBar.resources
+D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.Move.resources
 >>>>>>> f18722f739dd8d9ceecaad0cade4c7f13408b9ba
 D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\obj\Debug\CopAndRobber.Setting.resources
 D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\Microsoft.Win32.Registry.dll
@@ -82,3 +84,5 @@ D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\
 D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\NAudio.WinMM.xml
 D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\System.Security.AccessControl.xml
 D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\System.Security.Principal.Windows.xml
+>>>>>>> 47b1092aa538030fe9be1902f1b31af4f8e9dcf6
+>>>>>>> e4c232c229eb18f784eab19477bbadc02a7ac017

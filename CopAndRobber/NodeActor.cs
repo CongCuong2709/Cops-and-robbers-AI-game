@@ -82,13 +82,13 @@ namespace CopAndRobber
             return _id;
         }
 
-		public HashSet<int> getNodeAdj()
-		{
-			return this.nodeAdj;
-		}
+        public HashSet<int> getNodeAdj()
+        {
+            return this.nodeAdj;
+        }
 
-		public void makeLightNodeActor()
-		{
+        public void makeLightNodeActor()
+        {
 
         }
 
