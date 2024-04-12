@@ -47,26 +47,37 @@ namespace CopAndRobber
         {
             generateGame(screen, numCat);
 
-            //changeTurn(jerry);
-            //listTurnAction.Enqueue(jerry);
+			Character currentCharacter = listTurnAction.Peek();
+			//changeTurn(jerry);
+			//listTurnAction.Enqueue(jerry);
+			
+			foreach(NodeActor node in listNode.Values)
+			{
+				node.nodeClicked += (sender, args) =>
+				{
+					Character character = listTurnAction.Peek();
+					NodeActor nodeActor = (NodeActor)sender;
+					if (currentCharacter.getState() == GuiUtils.STATE_CHARACTER.WAIT)
+					{
+						currentCharacter = listTurnAction.Peek();
+						//init button ...	
+						setNodeAdjDisable(currentCharacter);
+					}
+					if (currentCharacter == listTurnAction.Peek())
+					{
+						character.moveTo(nodeActor);
 
-            foreach (NodeActor node in listNode.Values)
-            {
-                node.nodeClicked += (sender, args) =>
-                {
-                    Character character = listTurnAction.Dequeue();
-                    NodeActor nodeActor = (NodeActor)sender;
-                    
-                    character.moveTo(nodeActor);
-                    
-                    //setNodeAdjDisable(listTurnAction.Peek());
-                    updateLogMove(screen, character, character.getAtNode(), nodeActor);
-                    changeTurn(character);
-                    character.setAtNode(nodeActor); ///thay đổi vị trí hiện tại của mèo 
-                    listTurnAction.Enqueue(character);
-                };
-            }
-        }
+						
+						updateLogMove(screen, character, character.getAtNode(), nodeActor);
+						//changeTurn(character);
+						listTurnAction.Enqueue(listTurnAction.Dequeue());
+						
+						
+					}
+					
+				};
+			}
+		}
 
         private void changeTurn(Character character)
         {
