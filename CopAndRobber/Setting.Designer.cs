@@ -31,10 +31,12 @@
             this.btnExit = new Guna.UI2.WinForms.Guna2Button();
             this.volSlider = new NAudio.Gui.VolumeSlider();
             this.SoundButton = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnExit
             // 
+            this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.BorderRadius = 15;
             this.btnExit.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnExit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -74,12 +76,22 @@
             this.SoundButton.TabIndex = 10;
             this.SoundButton.Click += new System.EventHandler(this.SoundButton_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(528, 273);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Setting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(1422, 720);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.SoundButton);
             this.Controls.Add(this.volSlider);
             this.Controls.Add(this.btnExit);
@@ -95,5 +107,6 @@
         private Guna.UI2.WinForms.Guna2Button btnExit;
         private NAudio.Gui.VolumeSlider volSlider;
         private Guna.UI2.WinForms.Guna2ImageButton SoundButton;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -25,9 +25,9 @@ namespace CopAndRobber
         public static int MOUSE_WIDTH;
         public static int MOUSE_HEIGHT;
 
-        public static int NODE_TRAIN_SIZEX, NODE_TRAIN_SIZEY;
-        public static int NODE_BUS_SIZEX, NODE_BUS_SIZEY;
-        public static int NODE_WALK_SIZEX, NODE_WALK_SIZEY;
+        public static int NODE_TRAIN_SIZEX = 30, NODE_TRAIN_SIZEY = 30;
+        public static int NODE_BUS_SIZEX = 30, NODE_BUS_SIZEY = 30;
+        public static int NODE_WALK_SIZEX = 30, NODE_WALK_SIZEY = 30;
 
         public static Image LOGO = Image.FromFile(Application.StartupPath + "\\Assets\\menuInterface.png");
 
@@ -40,6 +40,8 @@ namespace CopAndRobber
         public static SoundPlayer SOUND_CAT_WALK = getSoundPlayer("bruh.wav");
         public static SoundPlayer SOUND_CAT_CATCH = getSoundPlayer("bruh.wav");
         public static String  BGM = "Not A Hero.wav";
+
+        
 
 
         public static Image[] getSprite(CHARACTER_NAME name, STATE_CHARACTER state, int numFrame)
