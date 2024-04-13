@@ -138,7 +138,7 @@ namespace CopAndRobber
                     character.setState(GuiUtils.STATE_CHARACTER.CATCH);
                     //do end game
                     //stop game
-                    //Hiện kết quả, 
+                    //Hiện kết quả, lưu vào file 
                 }
             }
         }

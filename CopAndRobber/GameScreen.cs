@@ -18,8 +18,9 @@ namespace CopAndRobber
         private Form activeForm = null;
         MainScreen mainScreen = null;
         SupportMethod supportMethod = new SupportMethod();
-        
 
+        private Timer timer;
+        private int seconds;
 
         private Boolean isMute = false;
         private Boolean isPause = false;
@@ -29,7 +30,24 @@ namespace CopAndRobber
             game = new GameLogic(this, 2);
             mainScreen = mainscreen;
             waveOut = waveout;
+
+            timer = new Timer();
+            timer.Interval = 1000;
+
+            // Đăng ký sự kiện Tick của Timer
+            timer.Tick += Timer_Tick;
+            timer.Start();
         }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Tăng biến đếm thời gian mỗi giây
+            seconds++;
+
+            // Hiển thị thời gian đếm trên Label
+            lblTime.Text = TimeSpan.FromSeconds(seconds).ToString(@"mm\:ss");
+        }
+
 
         public GameScreen(int numCat)
         {
@@ -94,7 +112,7 @@ namespace CopAndRobber
             supportMethod.openChildFormDockFill(this.activeForm, new Setting(waveOut, waveOut.Volume, this), mainScreen.getPanel());
             PauseButton_Click(sender,e);
             isPause = true;
-            
+            timer.Stop();
 
         }
 
@@ -107,6 +125,7 @@ namespace CopAndRobber
                 {
                     c.stopAnimation();
                     c.stopSound();
+                    timer.Stop();
                 }
                 isPause = true;
             }
@@ -116,6 +135,7 @@ namespace CopAndRobber
                 {
                     c.startAnimation();
                     c.playSound();
+                    timer.Start();
                 }
                 isPause = false;
             }
