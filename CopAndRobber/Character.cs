@@ -15,6 +15,8 @@ namespace CopAndRobber
 
     public partial class Character : UserControl
     {
+        public event EventHandler StateChanged;
+
         private NodeActor atNode;
         private NodeActor endNode;
         private STATE_CHARACTER state;
@@ -142,11 +144,12 @@ namespace CopAndRobber
             return this.state;
         }
 
-        public void startAnimation()
-        {
-            currentFrame = 0;
-            animationTimer.Start();
-        }
+
+		public void startAnimation()
+		{
+			currentFrame = 0;
+			animationTimer.Start();
+		}
 
         public void stopAnimation()
         {
@@ -154,9 +157,15 @@ namespace CopAndRobber
         }
 
 
-        private void setState(STATE_CHARACTER state)
+        public void setState(STATE_CHARACTER state)
         {
             currentFrame = 0;
+
+            if(this.state != state)
+            {
+                this.state = state;
+                onStateChanged(EventArgs.Empty);
+            }
             this.state = state;
 
             switch (state)
@@ -185,6 +194,11 @@ namespace CopAndRobber
             }
 
         }
+
+        protected virtual void onStateChanged(EventArgs e)
+        {
+			StateChanged?.Invoke(this, e);
+		}
 
         private void animation_Tick(object sender, EventArgs e)
         {

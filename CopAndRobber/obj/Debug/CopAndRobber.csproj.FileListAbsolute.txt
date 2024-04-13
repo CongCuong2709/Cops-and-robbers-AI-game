@@ -63,4 +63,26 @@ D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\obj\
 D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.ActionBar.resources
 D:\Workspace\AI\Cops-and-robbers-AI-game\CopAndRobber\obj\Debug\CopAndRobber.Move.resources
 >>>>>>> f18722f739dd8d9ceecaad0cade4c7f13408b9ba
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\obj\Debug\CopAndRobber.Setting.resources
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\Microsoft.Win32.Registry.dll
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\NAudio.Asio.dll
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\NAudio.Core.dll
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\NAudio.dll
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\NAudio.Midi.dll
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\NAudio.Wasapi.dll
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\NAudio.WinForms.dll
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\NAudio.WinMM.dll
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\System.Security.AccessControl.dll
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\System.Security.Principal.Windows.dll
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\Microsoft.Win32.Registry.xml
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\NAudio.xml
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\NAudio.Asio.xml
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\NAudio.Core.xml
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\NAudio.Midi.xml
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\NAudio.Wasapi.xml
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\NAudio.WinForms.xml
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\NAudio.WinMM.xml
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\System.Security.AccessControl.xml
+D:\CNTT5 year 3\Lập trình trực quan\Code\TH1\CopAndRobber\CopAndRobber\bin\Debug\System.Security.Principal.Windows.xml
 >>>>>>> 47b1092aa538030fe9be1902f1b31af4f8e9dcf6
+>>>>>>> e4c232c229eb18f784eab19477bbadc02a7ac017

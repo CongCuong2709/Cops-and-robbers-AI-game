@@ -16,9 +16,11 @@ namespace CopAndRobber
         private Queue<Character> listTurnAction;
         private Stack<Move> moveStack;
 
+        private NodeActor JerryAtNode;
         private int numCat;
 
-        private bool isEndGame = false;
+        private Graph graph;
+        private A_star a_Star;
         public GameLogic()
         {
 
@@ -31,6 +33,11 @@ namespace CopAndRobber
             listTurnAction = new Queue<Character>();
             moveStack = new Stack<Move>();
             this.numCat = numCat;
+
+            graph = new Graph(256);
+            graph.readFromFile("NodeList.txt");
+            graph.updateDistance();
+            a_Star = new A_star(graph);
         }
 
         public void stopGame(Character c)
@@ -48,33 +55,51 @@ namespace CopAndRobber
             generateGame(screen, numCat);
 
 			Character currentCharacter = listTurnAction.Peek();
-			//changeTurn(jerry);
+
+			changeTurn(currentCharacter);
 			//listTurnAction.Enqueue(jerry);
-			
-			foreach(NodeActor node in listNode.Values)
+
+			foreach (NodeActor node in listNode.Values)
 			{
 				node.nodeClicked += (sender, args) =>
 				{
-					Character character = listTurnAction.Peek();
 					NodeActor nodeActor = (NodeActor)sender;
 					if (currentCharacter.getState() == GuiUtils.STATE_CHARACTER.WAIT)
 					{
 						currentCharacter = listTurnAction.Peek();
 						//init button ...	
-						setNodeAdjDisable(currentCharacter);
+						changeTurn(currentCharacter);
 					}
 					if (currentCharacter == listTurnAction.Peek())
 					{
-						character.moveTo(nodeActor);
+                        if(currentCharacter.getCharacterName() == GuiUtils.CHARACTER_NAME.JERRY)
+                        {
+                            JerryAtNode = nodeActor;
+                        }
 
+						currentCharacter.moveTo(nodeActor);
 						
-						updateLogMove(screen, character, character.getAtNode(), nodeActor);
-						//changeTurn(character);
-						listTurnAction.Enqueue(listTurnAction.Dequeue());
-						
-						
+						updateLogMove(screen, currentCharacter, currentCharacter.getAtNode(), nodeActor);
+						setNodeAdjDisable(currentCharacter);
+
+						currentCharacter.StateChanged += (s, e) =>
+						{
+							Character character = (Character)s;
+							if(character.getState() == GuiUtils.STATE_CHARACTER.WAIT)
+							{
+                                //isEndGame(character);
+
+								character.setAtNode(nodeActor);
+								listTurnAction.Enqueue(listTurnAction.Dequeue());
+								changeTurn(listTurnAction.Peek());
+
+							}
+							
+						};
+
+						currentCharacter.setAtNode(nodeActor);
 					}
-					character.setAtNode(nodeActor);
+					
 				};
 			}
 		}
@@ -83,6 +108,20 @@ namespace CopAndRobber
         {
             highLightAllNodeCanMove(character);
 
+        }
+
+        private void isEndGame(Character character)
+        {
+            if(character.getCharacterName() != GuiUtils.CHARACTER_NAME.JERRY)
+            {
+                if(character.getAtNode() == JerryAtNode)
+                {
+                    character.setState(GuiUtils.STATE_CHARACTER.CATCH);
+                    //do end game
+                    //stop game
+                    //Hiện kết quả, 
+                }
+            }
         }
 
         public void highLightAllNodeCanMove(Character character)
@@ -100,21 +139,21 @@ namespace CopAndRobber
 
         }
 
-        public void setNodeAdjDisable(Character character)
-        {
-            foreach (int id in character.getAtNode().getNodeAdj())
-            {
-                try
-                {
-                    NodeActor nodeAdj = GetNodeActorByID(id);
-                    //nodeAdj.Enabled = false;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
-        }
+		public void setNodeAdjDisable(Character character)
+		{
+			foreach(int id in character.getAtNode().getNodeAdj())
+			{
+				try
+				{
+					NodeActor nodeAdj = GetNodeActorByID(id);
+					nodeAdj.Enabled = false;
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex.Message);
+				}
+			}
+		}
 
         public void updateLogMove(GameScreen screen, Character character, NodeActor atNode, NodeActor endNode)
         {

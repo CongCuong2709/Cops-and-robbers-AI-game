@@ -15,6 +15,9 @@ namespace CopAndRobber
 		public ActionBar()
 		{
 			InitializeComponent();
+			initProgressBar();
+			startCountDown(10000);
+			this.Dock = DockStyle.Top;
 		}
 
 		public ActionBar(Character character)
@@ -22,6 +25,7 @@ namespace CopAndRobber
 			InitializeComponent();
 			pictureBoxIcon.Image = GuiUtils.getIcon(character);
 			initProgressBar();
+			startCountDown(10000);
 		}
 
 		public void initProgressBar()
@@ -55,9 +59,6 @@ namespace CopAndRobber
 			countTimer.Start();
 		}
 
-		private void CountTimer_Tick(object sender, EventArgs e)
-		{
-			throw new NotImplementedException();
-		}
+		
 	}
 }
