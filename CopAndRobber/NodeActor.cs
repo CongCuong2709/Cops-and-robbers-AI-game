@@ -42,30 +42,35 @@ namespace CopAndRobber
             this.nodeAdj = nodeAdj;
             this.type = transportType;
 
-			this.Click += nodeActor_click;
-			this.Enabled = false;
-			this.Location = new Point(position_X, position_Y);
-			switch (type)
-			{
-				case TRANSPORT_TYPE.TRAIN:
-					this.BackgroundImage = GuiUtils.NODE_TRAIN;
-					break;
-				case TRANSPORT_TYPE.BUS:
-					this.BackgroundImage = GuiUtils.NODE_BUS;
-					break;
-				case TRANSPORT_TYPE.WALK:
-					this.BackgroundImage = GuiUtils.NODE_WALK;
-					break;
-				default:
-					break;
-			}
-			
-			this.BackgroundImageLayout = ImageLayout.Stretch;
-			
-			this.Visible = true;
-			this.Anchor = AnchorStyles.Left | AnchorStyles.Top;
-			this.Text = _id.ToString();
-		}
+            this.Click += nodeActor_click;
+            //this.Enabled = false;
+            this.Location = new Point(position_X, position_Y);
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+            switch (type)
+            {
+                case TRANSPORT_TYPE.TRAIN:
+                    this.BackgroundImage = GuiUtils.NODE_TRAIN;
+                    setNode(GuiUtils.NODE_TRAIN_SIZEX, GuiUtils.NODE_TRAIN_SIZEY);
+                    
+                    break;
+                case TRANSPORT_TYPE.BUS:
+                    this.BackgroundImage = GuiUtils.NODE_BUS;
+                    setNode(GuiUtils.NODE_BUS_SIZEX, GuiUtils.NODE_BUS_SIZEY);
+                    break;
+                case TRANSPORT_TYPE.WALK:
+                    this.BackgroundImage = GuiUtils.NODE_WALK;
+                    setNode(GuiUtils.NODE_WALK_SIZEX, GuiUtils.NODE_WALK_SIZEY);
+                    break;
+                default:
+                    break;
+            }
+
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+
+            this.Visible = true;
+            this.Anchor = AnchorStyles.Left | AnchorStyles.Top;
+            this.Text = _id.ToString();
+        }
 
         public int getPositionX()
         {
@@ -110,6 +115,15 @@ namespace CopAndRobber
         private void nodeActor_click(object sender, EventArgs e)
         {
             nodeClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void setNode(int x, int y)
+        {
+            this.Width = x;
+            this.Height = y;
+            Font segoeUiFont = new Font("Segoe UI", 8f);
+            this.Font = segoeUiFont;
+            this.BackColor = Color.FromArgb(94, 148, 255);
         }
     }
 }
