@@ -16,7 +16,7 @@ namespace CopAndRobber
 		private Dictionary<int, point>[] adj;
 		private int[] rate;
 
-		public Graph(int v)
+		public Graph(GameLogic gameLogic ,int v)
 		{
 			this.V = v;
 			this.E = 0;
@@ -28,6 +28,8 @@ namespace CopAndRobber
 			{
 				adj[num] = new Dictionary<int, point>();
 			}
+
+			this.readFromFile("NodeList.txt");
 		}
 
 		public int getRate(int vertex)
@@ -85,10 +87,6 @@ namespace CopAndRobber
 			}
 		}
 
-		public void updateDistance()
-		{
-			
-		}
 
 		public Dictionary<int, point> getAdj(int source)
 		{

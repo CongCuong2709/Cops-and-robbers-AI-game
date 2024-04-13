@@ -144,6 +144,15 @@ namespace CopAndRobber
             return this.state;
         }
 
+        public void setIsPlayable(bool isPlayer)
+        {
+            this.isPlayable = isPlayer;
+        }   
+
+        public bool isAIPlayer()
+        {
+            return !this.isPlayable;
+        }
 
 		public void startAnimation()
 		{

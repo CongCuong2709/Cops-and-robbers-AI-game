@@ -34,10 +34,7 @@ namespace CopAndRobber
             moveStack = new Stack<Move>();
             this.numCat = numCat;
 
-            graph = new Graph(256);
-            graph.readFromFile("NodeList.txt");
-            graph.updateDistance();
-            a_Star = new A_star(graph);
+            
         }
 
         public void stopGame(Character c)
@@ -53,6 +50,9 @@ namespace CopAndRobber
         public void startGame(GameScreen screen)
         {
             generateGame(screen, numCat);
+
+			graph = new Graph(this, 256);
+			a_Star = new A_star(graph);
 
 			Character currentCharacter = listTurnAction.Peek();
 
@@ -106,9 +106,16 @@ namespace CopAndRobber
 
         private void changeTurn(Character character)
         {
-            highLightAllNodeCanMove(character);
+            if (!character.isAIPlayer())
+            {
+				highLightAllNodeCanMove(character);
+			}
+            else
+            {
+                AIMove();
+            }
 
-        }
+		}
 
         private void isEndGame(Character character)
         {
@@ -121,6 +128,17 @@ namespace CopAndRobber
                     //stop game
                     //Hiện kết quả, 
                 }
+            }
+        }
+
+        private void AIMove()
+        {
+            if(listTurnAction.Peek().isAIPlayer())
+            {
+                Character character = listTurnAction.Peek();
+                a_Star.search(graph, character.getAtNode().getID(), 0, JerryAtNode.getID());
+                character.moveTo(GetNodeActorByID(a_Star.getEdgeTo(graph, 256)[0]));
+                //............
             }
         }
 
@@ -266,11 +284,13 @@ namespace CopAndRobber
                 {
                     case 0:
                         Character tom = new Character(GuiUtils.CHARACTER_NAME.TOM, nodeActor);
+                        tom.setIsPlayable(false);
                         gameScreen.GetPanelGameScreen().Controls.Add(tom);
                         listTurnAction.Enqueue(tom);
                         break;
                     case 1:
                         Character butch = new Character(GuiUtils.CHARACTER_NAME.BUTCH, nodeActor);
+                        butch.setIsPlayable(false);
                         gameScreen.GetPanelGameScreen().Controls.Add(butch);
                         listTurnAction.Enqueue(butch);
 
@@ -278,6 +298,7 @@ namespace CopAndRobber
                     case 2:
                         Character jones = new Character(GuiUtils.CHARACTER_NAME.JONES, nodeActor);
                         gameScreen.GetPanelGameScreen().Controls.Add(jones);
+                        jones.setIsPlayable(false);
                         listTurnAction.Enqueue(jones);
                         break;
                     default:

@@ -29,7 +29,7 @@ namespace CopAndRobber
 			edgeTo = new int[G.getV()];
 		}
 
-		public void search(Graph G, int source, int sourceHv, int finish)
+		public string search(Graph G, int source, int sourceHv, int finish)
 		{
 			int resultDistance = 0;
 			StringBuilder res = new StringBuilder();
@@ -111,6 +111,7 @@ namespace CopAndRobber
 			}
 
 			Console.WriteLine(res.ToString());
+			return res.ToString();
 		}
 
 
