@@ -35,22 +35,23 @@ namespace CopAndRobber
             this.SettingButton = new Guna.UI2.WinForms.Guna2ImageButton();
             this.PauseButton = new Guna.UI2.WinForms.Guna2ImageButton();
             this.SoundButton = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.buttonBack = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.lblTime = new System.Windows.Forms.Label();
             this.panelLogMove = new CopAndRobber.LogMove();
             this.panelTurnTable = new CopAndRobber.TurnTable();
-            this.textBoxConsole = new System.Windows.Forms.TextBox();
-            this.buttonBack = new Guna.UI2.WinForms.Guna2ImageButton();
             this.panelGameScreen.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelGameScreen
             // 
             this.panelGameScreen.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelGameScreen.Controls.Add(this.buttonBack);
+            this.panelGameScreen.Controls.Add(this.lblTime);
             this.panelGameScreen.Controls.Add(this.SettingButton);
             this.panelGameScreen.Controls.Add(this.PauseButton);
             this.panelGameScreen.Controls.Add(this.SoundButton);
             this.panelGameScreen.Controls.Add(this.panelLogMove);
             this.panelGameScreen.Controls.Add(this.panelTurnTable);
-            this.panelGameScreen.Controls.Add(this.textBoxConsole);
             this.panelGameScreen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGameScreen.Location = new System.Drawing.Point(0, 0);
             this.panelGameScreen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -60,12 +61,14 @@ namespace CopAndRobber
             // 
             // SettingButton
             // 
-            this.SettingButton.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.SettingButton.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.SettingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SettingButton.CheckedState.ImageSize = new System.Drawing.Size(48, 48);
+            this.SettingButton.HoverState.ImageSize = new System.Drawing.Size(48, 48);
             this.SettingButton.Image = global::CopAndRobber.Properties.Resources.settingbutton;
             this.SettingButton.ImageOffset = new System.Drawing.Point(0, 0);
             this.SettingButton.ImageRotate = 0F;
-            this.SettingButton.Location = new System.Drawing.Point(1114, 12);
+            this.SettingButton.ImageSize = new System.Drawing.Size(48, 48);
+            this.SettingButton.Location = new System.Drawing.Point(1276, 12);
             this.SettingButton.Name = "SettingButton";
             this.SettingButton.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.SettingButton.Size = new System.Drawing.Size(64, 54);
@@ -74,12 +77,14 @@ namespace CopAndRobber
             // 
             // PauseButton
             // 
-            this.PauseButton.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.PauseButton.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.PauseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PauseButton.CheckedState.ImageSize = new System.Drawing.Size(48, 48);
+            this.PauseButton.HoverState.ImageSize = new System.Drawing.Size(48, 48);
             this.PauseButton.Image = global::CopAndRobber.Properties.Resources.pausebutton;
             this.PauseButton.ImageOffset = new System.Drawing.Point(0, 0);
             this.PauseButton.ImageRotate = 0F;
-            this.PauseButton.Location = new System.Drawing.Point(1044, 12);
+            this.PauseButton.ImageSize = new System.Drawing.Size(48, 48);
+            this.PauseButton.Location = new System.Drawing.Point(1206, 12);
             this.PauseButton.Name = "PauseButton";
             this.PauseButton.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.PauseButton.Size = new System.Drawing.Size(64, 54);
@@ -88,17 +93,46 @@ namespace CopAndRobber
             // 
             // SoundButton
             // 
-            this.SoundButton.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.SoundButton.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.SoundButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SoundButton.CheckedState.ImageSize = new System.Drawing.Size(48, 48);
+            this.SoundButton.HoverState.ImageSize = new System.Drawing.Size(48, 48);
             this.SoundButton.Image = global::CopAndRobber.Properties.Resources.soundbutton;
             this.SoundButton.ImageOffset = new System.Drawing.Point(0, 0);
             this.SoundButton.ImageRotate = 0F;
-            this.SoundButton.Location = new System.Drawing.Point(974, 12);
+            this.SoundButton.ImageSize = new System.Drawing.Size(48, 48);
+            this.SoundButton.Location = new System.Drawing.Point(1136, 12);
             this.SoundButton.Name = "SoundButton";
             this.SoundButton.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.SoundButton.Size = new System.Drawing.Size(64, 54);
             this.SoundButton.TabIndex = 9;
             this.SoundButton.Click += new System.EventHandler(this.SoundButton_Click);
+            // 
+            // buttonBack
+            // 
+            this.buttonBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonBack.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonBack.CheckedState.ImageSize = new System.Drawing.Size(48, 48);
+            this.buttonBack.HoverState.ImageSize = new System.Drawing.Size(48, 48);
+            this.buttonBack.Image = global::CopAndRobber.Properties.Resources.buttonback;
+            this.buttonBack.ImageOffset = new System.Drawing.Point(0, 0);
+            this.buttonBack.ImageRotate = 0F;
+            this.buttonBack.ImageSize = new System.Drawing.Size(48, 48);
+            this.buttonBack.Location = new System.Drawing.Point(1346, 12);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.buttonBack.Size = new System.Drawing.Size(64, 54);
+            this.buttonBack.TabIndex = 12;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            // 
+            // lblTime
+            // 
+            this.lblTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTime.AutoSize = true;
+            this.lblTime.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.Location = new System.Drawing.Point(1037, 26);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(0, 27);
+            this.lblTime.TabIndex = 12;
             // 
             // panelLogMove
             // 
@@ -120,36 +154,11 @@ namespace CopAndRobber
             this.panelTurnTable.Size = new System.Drawing.Size(387, 156);
             this.panelTurnTable.TabIndex = 7;
             // 
-            // textBoxConsole
-            // 
-            this.textBoxConsole.Location = new System.Drawing.Point(381, 550);
-            this.textBoxConsole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxConsole.Multiline = true;
-            this.textBoxConsole.Name = "textBoxConsole";
-            this.textBoxConsole.Size = new System.Drawing.Size(706, 170);
-            this.textBoxConsole.TabIndex = 0;
-            // 
-            // buttonBack
-            // 
-            this.buttonBack.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonBack.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.buttonBack.HoverState.ImageSize = new System.Drawing.Size(64, 64);
-            this.buttonBack.Image = global::CopAndRobber.Properties.Resources.buttonback;
-            this.buttonBack.ImageOffset = new System.Drawing.Point(0, 0);
-            this.buttonBack.ImageRotate = 0F;
-            this.buttonBack.Location = new System.Drawing.Point(1194, 12);
-            this.buttonBack.Name = "buttonBack";
-            this.buttonBack.PressedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.buttonBack.Size = new System.Drawing.Size(64, 54);
-            this.buttonBack.TabIndex = 12;
-            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
-            // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1422, 720);
-            this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.panelGameScreen);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -166,12 +175,12 @@ namespace CopAndRobber
 
         #endregion
         private Guna.UI2.WinForms.Guna2Panel panelGameScreen;
-		private System.Windows.Forms.TextBox textBoxConsole;
         private Guna.UI2.WinForms.Guna2ImageButton PauseButton;
         private Guna.UI2.WinForms.Guna2ImageButton SoundButton;
         private Guna.UI2.WinForms.Guna2ImageButton SettingButton;
         private Guna.UI2.WinForms.Guna2ImageButton buttonBack;
 		private LogMove panelLogMove;
         private TurnTable panelTurnTable;
+        private Label lblTime;
     }
 }
