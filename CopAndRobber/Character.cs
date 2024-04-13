@@ -31,9 +31,8 @@ namespace CopAndRobber
         private int currentFrame;
 
         private SoundPlayer soundPlayer;
-        private bool isPlayable;
+        private bool isPlayable = false;
         private Boolean isChased;
-
 
         public Character()
         {
@@ -88,6 +87,7 @@ namespace CopAndRobber
 
 		public void moveTo(NodeActor nodeActor)
 		{
+            if (this.state != STATE_CHARACTER.WAIT) return;
 			this.endNode = nodeActor;
 			this.textBoxX.Text = endNode.getID().ToString();
 
@@ -149,7 +149,7 @@ namespace CopAndRobber
             this.isPlayable = isPlayer;
         }   
 
-        public bool isAIPlayer()
+        public bool isPlayer()
         {
             return !this.isPlayable;
         }
@@ -170,7 +170,7 @@ namespace CopAndRobber
         {
             currentFrame = 0;
 
-            if(this.state != state)
+            if(this.state != state && state == STATE_CHARACTER.WAIT)
             {
                 this.state = state;
                 onStateChanged(EventArgs.Empty);
@@ -241,6 +241,7 @@ namespace CopAndRobber
 							{
 								
 								setState(STATE_CHARACTER.WAIT);
+								
 								return;
 							}
 
@@ -256,8 +257,10 @@ namespace CopAndRobber
                             {
                                 if (newLocationX <= endNode.getPositionX()) newLocationX += deltaX;
                                 if (newLocationY <= endNode.getPositionY() - this.Height) newLocationY += deltaY;
-                                setState(STATE_CHARACTER.WAIT);
-                                return;
+								
+								setState(STATE_CHARACTER.WAIT);
+								
+								return;
                             }
 
                             this.Location = new Point(newLocationX, newLocationY);
@@ -284,8 +287,10 @@ namespace CopAndRobber
 
                             if (newLocationX >= endNode.getPositionX() && newLocationY >= endNode.getPositionY() - this.Height)
                             {
-                                setState(STATE_CHARACTER.WAIT);
-                                break;
+								
+								setState(STATE_CHARACTER.WAIT);
+								
+								return;
                             }
 
 
@@ -296,15 +301,18 @@ namespace CopAndRobber
                             int newLocationX = this.Location.X + deltaX;
                             int newLocationY = this.Location.Y - deltaY;
 
+							if (this.Location.X >= endNode.getPositionX() && this.Location.Y <= endNode.getPositionY() - this.Height)
+							{
 
+								setState(STATE_CHARACTER.WAIT);
 
-                            this.Location = new Point(newLocationX, newLocationY);
+								return;
+							}
+
+							this.Location = new Point(newLocationX, newLocationY);
                         }
 
-                        if (this.Location.X >= endNode.getPositionX() && this.Location.Y <= endNode.getPositionY() + this.Height)
-                        {
-                            setState(STATE_CHARACTER.WAIT);
-                        }
+                        
 
                         break;
                     }
@@ -320,11 +328,6 @@ namespace CopAndRobber
                             currentFrame = 0;
                         }
 
-                        /*if(endNode != null)
-						{
-							atNode = endNode;
-							endNode = null;
-						}*/
                         break;
                     }
                 case STATE_CHARACTER.CATCH:
@@ -361,5 +364,10 @@ namespace CopAndRobber
         {
             return animationTimer;
         }
-    }
+
+		public override string ToString()
+		{
+			return character.ToString();
+		}
+	}
 }

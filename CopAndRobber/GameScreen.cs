@@ -23,7 +23,7 @@ namespace CopAndRobber
 
         private Boolean isMute = false;
         private Boolean isPause = false;
-        public GameScreen(WaveOutEvent waveout, MainScreen mainccreen)
+        public GameScreen(WaveOutEvent waveout, MainScreen mainscreen)
         {
             InitializeComponent();
             game = new GameLogic(this, 2);
@@ -133,6 +133,9 @@ namespace CopAndRobber
         }
         
         //event menu 3 gạch -> show dialog
-        
+        public TextBox GetTextBoxConsole()
+        {
+            return this.textBoxConsole;
+        }
     }
 }

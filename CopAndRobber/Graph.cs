@@ -93,22 +93,22 @@ namespace CopAndRobber
 			return adj[source];
 		}
 
-		public int getGv(Character c)
+		public int getGv(int c)
 		{
 			return 0;
 		}
 
-		public int getFv(Character c)
+		public int getFv(int c)
 		{
 			return 0;
 		}
 
-		public int getDistance(Character c)
+		public int getDistance(int c)
 		{
 			return 0;
 		}
 
-		public int getid(Character c)
+		public int getid(int c)
 		{
 			return 0;
 		}
