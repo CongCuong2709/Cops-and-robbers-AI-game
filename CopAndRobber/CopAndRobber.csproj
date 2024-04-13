@@ -93,6 +93,7 @@
     <Compile Include="ActionBar.Designer.cs">
       <DependentUpon>ActionBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="A_star.cs" />
     <Compile Include="Character.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -100,6 +101,7 @@
       <DependentUpon>Character.cs</DependentUpon>
     </Compile>
     <Compile Include="GameLogic.cs" />
+    <Compile Include="Graph.cs" />
     <Compile Include="GuiUtils.cs" />
     <Compile Include="LogMove.cs">
       <SubType>UserControl</SubType>

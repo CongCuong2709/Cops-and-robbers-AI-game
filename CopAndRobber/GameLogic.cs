@@ -16,9 +16,11 @@ namespace CopAndRobber
         private Queue<Character> listTurnAction;
         private Stack<Move> moveStack;
 
+        private NodeActor JerryAtNode;
         private int numCat;
 
-        private bool isEndGame = false;
+        private Graph graph;
+        private A_star a_Star;
         public GameLogic()
         {
 
@@ -31,6 +33,11 @@ namespace CopAndRobber
             listTurnAction = new Queue<Character>();
             moveStack = new Stack<Move>();
             this.numCat = numCat;
+
+            graph = new Graph(256);
+            graph.readFromFile("NodeList.txt");
+            graph.updateDistance();
+            a_Star = new A_star(graph);
         }
 
         public void stopGame(Character c)
@@ -65,6 +72,11 @@ namespace CopAndRobber
 					}
 					if (currentCharacter == listTurnAction.Peek())
 					{
+                        if(currentCharacter.getCharacterName() == GuiUtils.CHARACTER_NAME.JERRY)
+                        {
+                            JerryAtNode = nodeActor;
+                        }
+
 						currentCharacter.moveTo(nodeActor);
 						
 						updateLogMove(screen, currentCharacter, currentCharacter.getAtNode(), nodeActor);
@@ -75,12 +87,17 @@ namespace CopAndRobber
 							Character character = (Character)s;
 							if(character.getState() == GuiUtils.STATE_CHARACTER.WAIT)
 							{
+                                //isEndGame(character);
+
 								character.setAtNode(nodeActor);
 								listTurnAction.Enqueue(listTurnAction.Dequeue());
 								changeTurn(listTurnAction.Peek());
 
 							}
-						};						
+							
+						};
+
+						currentCharacter.setAtNode(nodeActor);
 					}
 					
 				};
@@ -91,6 +108,20 @@ namespace CopAndRobber
         {
             highLightAllNodeCanMove(character);
 
+        }
+
+        private void isEndGame(Character character)
+        {
+            if(character.getCharacterName() != GuiUtils.CHARACTER_NAME.JERRY)
+            {
+                if(character.getAtNode() == JerryAtNode)
+                {
+                    character.setState(GuiUtils.STATE_CHARACTER.CATCH);
+                    //do end game
+                    //stop game
+                    //Hiện kết quả, 
+                }
+            }
         }
 
         public void highLightAllNodeCanMove(Character character)

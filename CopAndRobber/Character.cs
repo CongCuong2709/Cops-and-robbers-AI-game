@@ -144,13 +144,8 @@ namespace CopAndRobber
             return this.state;
         }
 
-		public STATE_CHARACTER getState()
-		{
-			return this.state;
-		}
 
-
-		private void startAnimation()
+		public void startAnimation()
 		{
 			currentFrame = 0;
 			animationTimer.Start();
@@ -162,7 +157,7 @@ namespace CopAndRobber
         }
 
 
-        private void setState(STATE_CHARACTER state)
+        public void setState(STATE_CHARACTER state)
         {
             currentFrame = 0;
 
