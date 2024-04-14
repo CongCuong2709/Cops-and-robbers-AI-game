@@ -5,6 +5,7 @@ using System.Linq;
 using System.Management;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Linq;
 
 namespace CopAndRobber
@@ -20,7 +21,6 @@ namespace CopAndRobber
 			marked = new HashSet<markedPoint>();
 			edgeTo = new int[G.getV()];
 			this.s = source;
-
 		}
 
 		public A_star(Graph G)
@@ -29,16 +29,14 @@ namespace CopAndRobber
 			edgeTo = new int[G.getV()];
 		}
 
-		public string search(Graph G, int source, int sourceHv, int finish)
+		public void search(Graph G, int source, int finish)
 		{
-			int resultDistance = 0;
-			StringBuilder res = new StringBuilder();
-			res.Append("Trang thai| TTK | K(u,v) | h(v) | g(v) | f(v) | danh sach L\n");
+			int resultDistance = int.MaxValue;
 			List<Graph.point> queue = new List<Graph.point>();
 
 
 			marked.Add(new markedPoint(source, 0)); // Mark the source
-			queue.Add(new Graph.point(source, 0, sourceHv, 0, 0)); // put source vertice on the queue.
+			queue.Add(new Graph.point(source, 0, 0, 0, 0)); // put source vertice on the queue.
 			while (queue.Count > 0)
 			{
 				Graph.point sourcePoint = queue[0];     // Remove next vertex from the queue.
@@ -46,18 +44,32 @@ namespace CopAndRobber
 				int sourceGv = sourcePoint.getGv();
 				int src = sourcePoint.getId();
 
-				res.Append($"{src}-{G.getRate(src)}|");
+				
 				if (src == finish)
-				{
-					res.Append("TTKT\n\n");
-					resultDistance = sourcePoint.getFv();
+				{		
+					bool flagNoNeedMoreSearch = true;
+					foreach(var point  in queue)
+					{
+						if(point.getId() == finish && point.getFv() <= resultDistance)
+						{
+							resultDistance = sourcePoint.getFv();
+							flagNoNeedMoreSearch = false;
+							break;
+						}
+					}
+
+					if (flagNoNeedMoreSearch)
+					{
+						resultDistance = sourcePoint.getFv();
+						return;
+					}
 					break;
 				}
 
 				foreach (var destination in G.getAdj(src))
 				{
 					Graph.point destinationPoint = destination.Value;
-					int destinationName = destination.Key;
+					int destinationName = destination.Value.getId();
 					int destinationHv = destinationPoint.getHv();
 					int destinationFv = destinationPoint.getFv();
 
@@ -76,42 +88,31 @@ namespace CopAndRobber
 
 						queue.Sort((kv1, kv2) => kv1.getFv().CompareTo(kv2.getFv()));
 
-						res.Append($"{destinationName}-{destinationHv}|");
-						res.Append($"{kuv}|");
-						res.Append($"{hv}|");
-						res.Append($"{gv}|");
-						res.Append($"{fv}|");
-
-						res.Append(" ");
 					}
 
 
 				}
 
-				res.Append("\n");
-				res.Append(new string('-', 60));
-				res.Append("\n");
 
-
+				/*DialogResult dialogResult = MessageBox.Show(queue.Count.ToString(), " ", MessageBoxButtons
+					.YesNo);*/
 			}
 
 			if (!hasPathTo(G, finish))
 			{
-				res.Append($"\nKhong ton tai duong di tu {source} den {finish}");
+				
+				DialogResult dialogResult = MessageBox.Show("Ko co duong di", " ", MessageBoxButtons.YesNo);
 			}
 			else
 			{
-				res.Append($"Duong di tu {source} den {finish}\n");
-				foreach (var character in getEdgeTo(G, finish))
-				{
-					res.Append($"{character}-{G.getRate(character)} -> ");
-				}
-				res.Remove(res.Length - 4, 4);
-				res.Append($"   Do dai: {resultDistance}");
+				/*DialogResult result = MessageBox.Show(getEdgeTo(G, 256).ToString(), "",
+					MessageBoxButtons.YesNo);*/
+				DialogResult dialogResult = MessageBox.Show("co duong di", " ", MessageBoxButtons.YesNo);
+				
+				
 			}
 
-			Console.WriteLine(res.ToString());
-			return res.ToString();
+
 		}
 
 
@@ -125,16 +126,29 @@ namespace CopAndRobber
 			return false;
 		}
 
-		public List<int> getEdgeTo(Graph G, int v)
+		public Queue<int> getEdgeTo(Graph G, int finish)
 		{
-			if (!hasPathTo(G, v)) return null;
-			List<int> path = new List<int>();
-			for (int x = v; x != s; x = edgeTo[x])
+			if (!hasPathTo(G, finish))
 			{
-				path.Insert(0, x);
+				DialogResult dialogResult = MessageBox.Show("Kho co edge to", " ", MessageBoxButtons.YesNo);
+				return null;
 			}
-			path.Insert(0, s);
+			Queue<int> path = new Queue<int>();
+			for (int x = finish; x != s; x = edgeTo[x])
+			{
+				path.Enqueue(x);
+			}
+			path.Enqueue(s);
 			return path;
+		}
+
+		public void clearEdgeTo()
+		{
+			int index = 0;
+			foreach(int id in edgeTo)
+			{
+				edgeTo[index++] = -1;
+			}
 		}
 	}
 
