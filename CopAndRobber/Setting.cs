@@ -18,7 +18,8 @@ namespace CopAndRobber
         WaveOutEvent waveOut;        
         private Boolean isMute = false;
         GameScreen gamescreen;
-
+        private Form activeForm = null;
+        SupportMethod supportMethod = new SupportMethod();
         public Setting(WaveOutEvent waveout, float volume, GameScreen gameScreen)
         {
             InitializeComponent();
@@ -47,9 +48,6 @@ namespace CopAndRobber
                 // Xử lý lỗi ở đây
                 Console.WriteLine("Đã xảy ra lỗi NullReferenceException: " + ex.Message);
             }
-
-
-
             this.Close();
         }
 
@@ -74,6 +72,16 @@ namespace CopAndRobber
                 isMute = false;
                 SoundButton.Image = Properties.Resources.soundbutton;
             }
+        }
+
+        private void buttonReset_Click(object sender, EventArgs e)
+        {           
+            MainScreen mainScreen = gamescreen.GetMainScreen();
+            gamescreen.Close();
+            gamescreen = new GameScreen(waveOut, mainScreen);
+            supportMethod.openChildFormDockFill(this.activeForm, new GameScreen(waveOut, mainScreen), mainScreen.getPanel());
+            this.Close();
+            this.Dispose();
         }
     }
 }

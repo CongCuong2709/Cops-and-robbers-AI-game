@@ -136,8 +136,8 @@ namespace CopAndRobber
             if(listTurnAction.Peek().isAIPlayer())
             {
                 Character character = listTurnAction.Peek();
-                a_Star.search(graph, character.getAtNode().getID(), 0, JerryAtNode.getID());
-                character.moveTo(GetNodeActorByID(a_Star.getEdgeTo(graph, 256)[0]));
+                /*a_Star.search(graph, character.getAtNode().getID(), 0, JerryAtNode.getID());
+                character.moveTo(GetNodeActorByID(a_Star.getEdgeTo(graph, 256)[0]));*/
                 //............
             }
         }

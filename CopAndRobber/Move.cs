@@ -22,7 +22,7 @@ namespace CopAndRobber
 			InitializeComponent();
 
 			this.Dock = DockStyle.Top;
-			pictureBoxIcon.Image = GuiUtils.getIcon(character);
+			pictureBoxIcon.BackgroundImage = GuiUtils.getIcon(character);
 			textBoxMove.Text = atNode.getID().ToString() + " -> " + endNode.getID().ToString();
 		}
 	}
