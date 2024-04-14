@@ -145,6 +145,7 @@ namespace CopAndRobber
             return this.state;
         }
 
+        
         public void setIsPlayable(bool isPlayer)
         {
             this.isPlayable = isPlayer;

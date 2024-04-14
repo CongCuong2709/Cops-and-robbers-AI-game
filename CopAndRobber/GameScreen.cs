@@ -73,6 +73,9 @@ namespace CopAndRobber
         {
             return game;
         }
+        public MainScreen GetMainScreen() { 
+            return this.mainScreen;
+        }
 
         private void GameScreen_Load(object sender, EventArgs e)
         {
@@ -126,6 +129,7 @@ namespace CopAndRobber
                     c.stopAnimation();
                     c.stopSound();
                     timer.Stop();
+                    PauseButton.Image = Properties.Resources.pausebutton;
                 }
                 isPause = true;
             }
@@ -136,6 +140,7 @@ namespace CopAndRobber
                     c.startAnimation();
                     c.playSound();
                     timer.Start();
+                    PauseButton.Image = Properties.Resources.pausebutton1;
                 }
                 isPause = false;
             }

@@ -30,6 +30,7 @@
         {
             this.btnExit = new Guna.UI2.WinForms.Guna2Button();
             this.volSlider = new NAudio.Gui.VolumeSlider();
+            this.buttonReset = new Guna.UI2.WinForms.Guna2ImageButton();
             this.SoundButton = new Guna.UI2.WinForms.Guna2ImageButton();
             this.SuspendLayout();
             // 
@@ -41,6 +42,7 @@
             this.btnExit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnExit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnExit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnExit.FillColor = System.Drawing.Color.SlateGray;
             this.btnExit.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnExit.ForeColor = System.Drawing.Color.White;
             this.btnExit.Location = new System.Drawing.Point(239, 429);
@@ -55,22 +57,38 @@
             this.volSlider.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.volSlider.BackColor = System.Drawing.SystemColors.Control;
             this.volSlider.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.volSlider.Location = new System.Drawing.Point(237, 350);
+            this.volSlider.Location = new System.Drawing.Point(239, 350);
             this.volSlider.Name = "volSlider";
             this.volSlider.Size = new System.Drawing.Size(128, 35);
             this.volSlider.TabIndex = 2;
             this.volSlider.VolumeChanged += new System.EventHandler(this.volSlider_VolumeChanged);
             // 
+            // buttonReset
+            // 
+            this.buttonReset.CheckedState.ImageSize = new System.Drawing.Size(48, 48);
+            this.buttonReset.HoverState.ImageSize = new System.Drawing.Size(48, 48);
+            this.buttonReset.Image = global::CopAndRobber.Properties.Resources.resetbutton;
+            this.buttonReset.ImageOffset = new System.Drawing.Point(0, 0);
+            this.buttonReset.ImageRotate = 0F;
+            this.buttonReset.ImageSize = new System.Drawing.Size(48, 48);
+            this.buttonReset.Location = new System.Drawing.Point(506, 331);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.PressedState.ImageSize = new System.Drawing.Size(48, 48);
+            this.buttonReset.Size = new System.Drawing.Size(64, 54);
+            this.buttonReset.TabIndex = 11;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
             // SoundButton
             // 
-            this.SoundButton.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.SoundButton.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.SoundButton.CheckedState.ImageSize = new System.Drawing.Size(48, 48);
+            this.SoundButton.HoverState.ImageSize = new System.Drawing.Size(48, 48);
             this.SoundButton.Image = global::CopAndRobber.Properties.Resources.soundbutton;
             this.SoundButton.ImageOffset = new System.Drawing.Point(0, 0);
             this.SoundButton.ImageRotate = 0F;
+            this.SoundButton.ImageSize = new System.Drawing.Size(48, 48);
             this.SoundButton.Location = new System.Drawing.Point(388, 340);
             this.SoundButton.Name = "SoundButton";
-            this.SoundButton.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.SoundButton.PressedState.ImageSize = new System.Drawing.Size(48, 48);
             this.SoundButton.Size = new System.Drawing.Size(64, 54);
             this.SoundButton.TabIndex = 10;
             this.SoundButton.Click += new System.EventHandler(this.SoundButton_Click);
@@ -81,6 +99,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.ClientSize = new System.Drawing.Size(1422, 720);
+            this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.SoundButton);
             this.Controls.Add(this.volSlider);
             this.Controls.Add(this.btnExit);
@@ -96,5 +115,6 @@
         private Guna.UI2.WinForms.Guna2Button btnExit;
         private NAudio.Gui.VolumeSlider volSlider;
         private Guna.UI2.WinForms.Guna2ImageButton SoundButton;
+        private Guna.UI2.WinForms.Guna2ImageButton buttonReset;
     }
 }
