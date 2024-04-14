@@ -63,7 +63,7 @@ namespace CopAndRobber
 			{
 				testActionTurn += item.ToString() + " || ";
 			}
-			screen.GetTextBoxConsole().Text = testActionTurn;
+			//screen.GetTextBoxConsole().Text = testActionTurn;
 			changeTurn(currentCharacter);
 
 			foreach (NodeActor node in listNode.Values)
