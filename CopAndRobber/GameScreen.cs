@@ -158,6 +158,9 @@ namespace CopAndRobber
         }
         
         //event menu 3 gạch -> show dialog
-        
+        public TextBox GetTextBoxConsole()
+        {
+            return this.textBoxConsole;
+        }
     }
 }

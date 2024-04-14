@@ -17,8 +17,11 @@ namespace CopAndRobber
         private Stack<Move> moveStack;
 
         private NodeActor JerryAtNode;
+        private NodeActor NodeClicked;
+        private Character currentCharacter;
         private int numCat;
 
+        private GameScreen screen;
         private Graph graph;
         private A_star a_Star;
         public GameLogic()
@@ -33,7 +36,7 @@ namespace CopAndRobber
             listTurnAction = new Queue<Character>();
             moveStack = new Stack<Move>();
             this.numCat = numCat;
-
+            this.screen = screen;
             
         }
 
@@ -49,71 +52,80 @@ namespace CopAndRobber
 
         public void startGame(GameScreen screen)
         {
+            this.screen = screen;   //???
             generateGame(screen, numCat);
-
+            string testActionTurn = string.Empty;
 			graph = new Graph(this, 256);
 			a_Star = new A_star(graph);
 
-			Character currentCharacter = listTurnAction.Peek();
-
+			currentCharacter = listTurnAction.Peek();
+			foreach (var item in listTurnAction)
+			{
+				testActionTurn += item.ToString() + " || ";
+			}
+			screen.GetTextBoxConsole().Text = testActionTurn;
 			changeTurn(currentCharacter);
-			//listTurnAction.Enqueue(jerry);
 
 			foreach (NodeActor node in listNode.Values)
 			{
-				node.nodeClicked += (sender, args) =>
-				{
-					NodeActor nodeActor = (NodeActor)sender;
-					if (currentCharacter.getState() == GuiUtils.STATE_CHARACTER.WAIT)
-					{
-						currentCharacter = listTurnAction.Peek();
-						//init button ...	
-						changeTurn(currentCharacter);
-					}
-					if (currentCharacter == listTurnAction.Peek())
-					{
-                        if(currentCharacter.getCharacterName() == GuiUtils.CHARACTER_NAME.JERRY)
-                        {
-                            JerryAtNode = nodeActor;
-                        }
-
-						currentCharacter.moveTo(nodeActor);
-						
-						updateLogMove(screen, currentCharacter, currentCharacter.getAtNode(), nodeActor);
-						setNodeAdjDisable(currentCharacter);
-
-						currentCharacter.StateChanged += (s, e) =>
-						{
-							Character character = (Character)s;
-							if(character.getState() == GuiUtils.STATE_CHARACTER.WAIT)
-							{
-                                //isEndGame(character);
-
-								character.setAtNode(nodeActor);
-								listTurnAction.Enqueue(listTurnAction.Dequeue());
-								changeTurn(listTurnAction.Peek());
-
-							}
-							
-						};
-
-						currentCharacter.setAtNode(nodeActor);
-					}
-					
-				};
+                node.nodeClicked += HandleNodeClicked;
+				
 			}
 		}
 
-        private void changeTurn(Character character)
+		void HandleNodeClicked(object sender, EventArgs args)
         {
-            if (!character.isAIPlayer())
-            {
-				highLightAllNodeCanMove(character);
+			NodeActor nodeActor = (NodeActor)sender;
+			if (currentCharacter.getState() == GuiUtils.STATE_CHARACTER.WAIT)
+			{
+				currentCharacter = listTurnAction.Peek();
+				//init button ...	
+				changeTurn(currentCharacter);
 			}
+			if (currentCharacter == listTurnAction.Peek())
+			{
+				if (currentCharacter.getCharacterName() == GuiUtils.CHARACTER_NAME.JERRY)
+				{
+					JerryAtNode = nodeActor;
+				}
+
+				currentCharacter.moveTo(nodeActor);
+				updateLogMove(screen, currentCharacter, currentCharacter.getAtNode(), nodeActor);
+				setNodeAdjDisable(currentCharacter);
+
+                currentCharacter.StateChanged -= HandleCharacterStateChanged;
+                currentCharacter.StateChanged += HandleCharacterStateChanged;
+
+				currentCharacter.setAtNode(nodeActor);
+			}
+		}
+
+		void HandleCharacterStateChanged(object sender, EventArgs args)
+		{
+			Character character = (Character)sender;
+			if (character.getState() == GuiUtils.STATE_CHARACTER.WAIT)
+			{
+				//isEndGame(character);
+
+				character.setAtNode(character.getAtNode()); // Không cần gán nodeActor ở đây vì đã được xử lý khi click
+				listTurnAction.Enqueue(listTurnAction.Dequeue());
+				/*testActionTurn += listTurnAction.Peek().ToString();
+				screen.GetTextBoxConsole().Text = testActionTurn;*/
+				changeTurn(listTurnAction.Peek());
+			}
+		}
+
+		private void changeTurn(Character nextCharacter)
+        {
+            /*if (nextCharacter.isPlayer())
+            {*/
+				highLightAllNodeCanMove(nextCharacter);
+			/*}
             else
             {
-                AIMove();
-            }
+                Console.WriteLine(" ");
+                //AIMove(nextCharacter);
+            }*/
 
 		}
 
@@ -131,15 +143,35 @@ namespace CopAndRobber
             }
         }
 
-        private void AIMove()
+        private void AIMove(Character character)
         {
-            if(listTurnAction.Peek().isAIPlayer())
+            if(!character.isPlayer())
             {
-                Character character = listTurnAction.Peek();
-                /*a_Star.search(graph, character.getAtNode().getID(), 0, JerryAtNode.getID());
-                character.moveTo(GetNodeActorByID(a_Star.getEdgeTo(graph, 256)[0]));*/
-                //............
-            }
+                if(character.getState() == GuiUtils.STATE_CHARACTER.WAIT)
+                {
+					a_Star.search(graph, character.getAtNode().getID(), 0, JerryAtNode.getID());
+                    List<int> shortestPath = a_Star.getEdgeTo(graph, 256);
+                    NodeActor nextNode = GetNodeActorByID(shortestPath[0]);
+					character.moveTo(nextNode);
+                    //............
+
+                    character.StateChanged += (sender, e) =>
+                    {
+                        Character characterAfterMove = (Character) sender;
+                        if(characterAfterMove.getState() == GuiUtils.STATE_CHARACTER.WAIT)
+                        {
+                            isEndGame(characterAfterMove);
+                            
+                            listTurnAction.Enqueue(listTurnAction.Dequeue());
+                            changeTurn(listTurnAction.Peek());
+                        }
+                    };
+
+					character.setAtNode(nextNode);
+				}
+
+
+			}
         }
 
         public void highLightAllNodeCanMove(Character character)
@@ -273,7 +305,6 @@ namespace CopAndRobber
 
             generateAllNode(gameScreen);
             /*Character jerry = new Character();
-
 			listTurnAction.Enqueue(jerry);*/
 
             for (int num = 0; num < numCat; num++)
@@ -284,13 +315,13 @@ namespace CopAndRobber
                 {
                     case 0:
                         Character tom = new Character(GuiUtils.CHARACTER_NAME.TOM, nodeActor);
-                        tom.setIsPlayable(false);
+                        tom.setIsPlayable(true);
                         gameScreen.GetPanelGameScreen().Controls.Add(tom);
                         listTurnAction.Enqueue(tom);
                         break;
                     case 1:
                         Character butch = new Character(GuiUtils.CHARACTER_NAME.BUTCH, nodeActor);
-                        butch.setIsPlayable(false);
+                        butch.setIsPlayable(true);
                         gameScreen.GetPanelGameScreen().Controls.Add(butch);
                         listTurnAction.Enqueue(butch);
 
