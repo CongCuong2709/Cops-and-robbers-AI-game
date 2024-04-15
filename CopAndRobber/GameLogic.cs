@@ -193,7 +193,13 @@ namespace CopAndRobber
                 }
             }
         }
-            private void changeTurn(Character nextCharacter)
+
+        public void HandleCharacterStateChangedAIMove(object sender, EventArgs args)
+        {
+            changeTurn(listTurnAction.Peek());
+        }
+
+			private void changeTurn(Character nextCharacter)
             {
                 if (countTimer != null)
                     stopCount();
@@ -266,7 +272,10 @@ namespace CopAndRobber
                         character.setAtNode(nextNode);
                         //isEndGame(character);
                         listTurnAction.Enqueue(listTurnAction.Dequeue());
-                        changeTurn(listTurnAction.Peek());
+                    //changeTurn(listTurnAction.Peek());
+
+                    character.AIStateChanged -= HandleCharacterStateChangedAIMove;
+                    character.AIStateChanged += HandleCharacterStateChangedAIMove;
                         if (countTimer != null)
                             stopCount();
 
@@ -441,12 +450,12 @@ namespace CopAndRobber
                     {
                         case 0:
                             Character tom = new Character(GuiUtils.CHARACTER_NAME.TOM, nodeActor);
-                            tom.setIsPlayable(true);
+                            tom.setIsPlayable(false);
                             gameScreen.GetPanelGameScreen().Controls.Add(tom);
                             listTurnAction.Enqueue(tom);
                             break;
                         case 1:
-                            Character butch = new Character(GuiUtils.CHARACTER_NAME.BUTCH, GetNodeActorByID(1));
+                            Character butch = new Character(GuiUtils.CHARACTER_NAME.BUTCH, GetNodeActorByID(3));
                             butch.setIsPlayable(false);
                             gameScreen.GetPanelGameScreen().Controls.Add(butch);
                             listTurnAction.Enqueue(butch);
