@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CopAndRobber
 {
@@ -30,6 +31,8 @@ namespace CopAndRobber
 			}
 
 			this.readFromFile("NodeList.txt");
+			//createGraph(gameLogic);
+			DialogResult dialogResult = MessageBox.Show(this.ToString(), "", MessageBoxButtons.YesNo);
 		}
 
 		public int getRate(int vertex)
@@ -39,12 +42,12 @@ namespace CopAndRobber
 
 		public int getV()
 		{
-			return V;
+			return this.V;
 		}
 
 		public int getE()
 		{
-			return E;
+			return this.E;
 		}
 
 
@@ -83,35 +86,45 @@ namespace CopAndRobber
 			}
 			catch (Exception e)
 			{
-
+				DialogResult dialogResult = MessageBox.Show(
+					"Chưa đọc file NodeList cho A*", " ", MessageBoxButtons.YesNo);
 			}
 		}
 
+		public void createGraph(GameLogic gameLogic)
+		{
+			foreach(NodeActor node in gameLogic.getListNode().Values)
+			{
+				foreach(int desID in node.getNodeAdj())
+				{
+					this.addEdge(node.getID(), desID, 1);
+				}
+			}
+		}
+
+		public override string ToString()
+		{
+			StringBuilder sb = new StringBuilder();
+
+			sb.AppendLine($"Graph with {V} vertices and {E} edges:");
+
+			foreach (var vertex in adj)
+			{
+				sb.AppendLine($"Vertex {vertex.Count}:");
+				foreach (var point in vertex.Values)
+				{
+					sb.AppendLine($"\t -> {point}");
+				}
+			}
+
+			return sb.ToString();
+		}
 
 		public Dictionary<int, point> getAdj(int source)
 		{
 			return adj[source];
 		}
 
-		public int getGv(int c)
-		{
-			return 0;
-		}
-
-		public int getFv(int c)
-		{
-			return 0;
-		}
-
-		public int getDistance(int c)
-		{
-			return 0;
-		}
-
-		public int getid(int c)
-		{
-			return 0;
-		}
 
 		public class point
 		{
@@ -137,7 +150,7 @@ namespace CopAndRobber
 
 			public int getId()
 			{
-				return id;
+				return this.id;
 			}
 
 			public void setId(int id)
@@ -147,7 +160,7 @@ namespace CopAndRobber
 
 			public int getDistance()
 			{
-				return distance;
+				return this.distance;
 			}
 
 			public void setDistance(int distance)
@@ -159,7 +172,7 @@ namespace CopAndRobber
 
 			public int getHv()
 			{
-				return hv;
+				return this.hv;
 			}
 
 			public void setHv(int hv)
@@ -169,7 +182,7 @@ namespace CopAndRobber
 
 			public int getGv()
 			{
-				return gv;
+				return this.gv;
 			}
 
 			public void setGv(int gv)
@@ -179,7 +192,7 @@ namespace CopAndRobber
 
 			public int getFv()
 			{
-				return fv;
+				return this.fv;
 			}
 
 			public void setFv(int fv)
@@ -195,6 +208,8 @@ namespace CopAndRobber
 				this.gv = gv;
 				this.fv = fv;
 			}
+
+
 		}
 	}
 }

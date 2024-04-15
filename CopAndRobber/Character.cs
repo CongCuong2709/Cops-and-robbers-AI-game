@@ -16,6 +16,7 @@ namespace CopAndRobber
     public partial class Character : UserControl
     {
         public event EventHandler StateChanged;
+        public event EventHandler AIMoving;
 
         private NodeActor atNode;
         private NodeActor endNode;
@@ -31,7 +32,7 @@ namespace CopAndRobber
         private int currentFrame;
 
         private SoundPlayer soundPlayer;
-        private bool isPlayable = false;
+        private bool isPlayable;
         private Boolean isChased;
 
         public Character()
@@ -154,7 +155,7 @@ namespace CopAndRobber
 
         public bool isPlayer()
         {
-            return !this.isPlayable;
+            return this.isPlayable;
         }
 
 		public void startAnimation()
@@ -211,6 +212,11 @@ namespace CopAndRobber
         {
 			StateChanged?.Invoke(this, e);
 		}
+
+        protected virtual void onAIMoving(EventArgs e)
+        {
+            AIMoving?.Invoke(this, e);
+        }
 
         private void animation_Tick(object sender, EventArgs e)
         {

@@ -67,17 +67,11 @@ namespace CopAndRobber
 			a_Star = new A_star(graph);
 
 			currentCharacter = listTurnAction.Peek();
-			foreach (var item in listTurnAction)
-			{
-				testActionTurn += item.ToString() + " || ";
-			}
-			//screen.GetTextBoxConsole().Text = testActionTurn;
 			changeTurn(currentCharacter);
 
 			foreach (NodeActor node in listNode.Values)
 			{
                 node.nodeClicked += HandleNodeClicked;
-				
 			}
 		}
 
@@ -178,17 +172,17 @@ namespace CopAndRobber
 
 		private void changeTurn(Character nextCharacter)
         {
-            /*if (nextCharacter.isPlayer())
-            {*/
-				highLightAllNodeCanMove(nextCharacter);
-			/*}
+            if (nextCharacter.isPlayer())
+            {
+                highLightAllNodeCanMove(nextCharacter);
+            }
             else
             {
-                Console.WriteLine(" ");
-                //AIMove(nextCharacter);
-            }*/
+                DialogResult dialogResult = MessageBox.Show("Ai tủn ", " ", MessageBoxButtons.YesNo);
+                AIMove(nextCharacter);
+            }
 
-		}
+}
 
         public void isEndGame(Character character)
         {
@@ -210,25 +204,26 @@ namespace CopAndRobber
             {
                 if(character.getState() == GuiUtils.STATE_CHARACTER.WAIT)
                 {
-					a_Star.search(graph, character.getAtNode().getID(), 0, JerryAtNode.getID());
-                    List<int> shortestPath = a_Star.getEdgeTo(graph, 256);
-                    NodeActor nextNode = GetNodeActorByID(shortestPath[0]);
+                    int finish = 8;
+                    a_Star.search(graph, character.getAtNode().getID(), finish);
+					Queue<int> shortestPath = a_Star.getEdgeTo(graph, finish);
+                    DialogResult dialogResult = MessageBox.Show("sap get ", "", MessageBoxButtons.YesNo);
+                    NodeActor nextNode = GetNodeActorByID(shortestPath.Peek());
+                    if(nextNode == null)
+                    {
+                        DialogResult dialogResult1 = MessageBox.Show("next node null: " + shortestPath.Dequeue(), "",
+                            MessageBoxButtons.YesNo);
+                    }
+
+                   // NodeActor nextNode = GetNodeActorByID(2);
+
 					character.moveTo(nextNode);
+					//character.moveTo(GetNodeActorByID(2));
                     //............
 
-                    character.StateChanged += (sender, e) =>
-                    {
-                        Character characterAfterMove = (Character) sender;
-                        if(characterAfterMove.getState() == GuiUtils.STATE_CHARACTER.WAIT)
-                        {
-                            isEndGame(characterAfterMove);
-                            
-                            listTurnAction.Enqueue(listTurnAction.Dequeue());
-                            changeTurn(listTurnAction.Peek());
-                        }
-                    };
-
 					character.setAtNode(nextNode);
+                    listTurnAction.Enqueue(listTurnAction.Dequeue());
+                    changeTurn(listTurnAction.Peek());
 				}
 
 
@@ -265,6 +260,11 @@ namespace CopAndRobber
 				}
 			}
 		}
+
+        public Dictionary<int, NodeActor> getListNode()
+        {
+            return listNode;
+        }
 
         public void updateLogMove(GameScreen screen, Character character, NodeActor atNode, NodeActor endNode)
         {
@@ -382,7 +382,7 @@ namespace CopAndRobber
                         break;
                     case 1:
                         Character butch = new Character(GuiUtils.CHARACTER_NAME.BUTCH, nodeActor);
-                        butch.setIsPlayable(true);
+                        butch.setIsPlayable(false);
                         gameScreen.GetPanelGameScreen().Controls.Add(butch);
                         listTurnAction.Enqueue(butch);
 
