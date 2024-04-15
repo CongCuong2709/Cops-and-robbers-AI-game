@@ -42,6 +42,8 @@ namespace CopAndRobber
             this.nodeAdj = nodeAdj;
             this.type = transportType;
 
+            this.BackgroundImage = Properties.Resources.grey;
+
             this.Click += nodeActor_click;
             //this.Enabled = false;
             this.Location = new Point(position_X, position_Y);
@@ -94,7 +96,8 @@ namespace CopAndRobber
 
         public void makeLightNodeActor()
         {
-
+            this.BackColor = Color.Red;
+            this.BackgroundImage = Properties.Resources.red;
         }
 
         public void notChoosen()
@@ -123,7 +126,7 @@ namespace CopAndRobber
             this.Height = y;
             Font segoeUiFont = new Font("Segoe UI", 8f);
             this.Font = segoeUiFont;
-            this.BackColor = Color.FromArgb(94, 148, 255);
+            
         }
     }
 }

@@ -9,6 +9,7 @@ using static CopAndRobber.NodeActor;
 using System.Windows.Forms;
 using NAudio.Wave;
 using System.Xml.Linq;
+using System.Drawing;
 
 namespace CopAndRobber
 {
@@ -107,15 +108,14 @@ namespace CopAndRobber
                 }
 
 
-                currentCharacter.moveTo(nodeActor);
-                updateLogMove(screen, currentCharacter, currentCharacter.getAtNode(), nodeActor);
-                setNodeAdjDisable(currentCharacter);
+				currentCharacter.moveTo(nodeActor);
+				updateLogMove(screen, currentCharacter, currentCharacter.getAtNode(), nodeActor);
 
                 currentCharacter.StateChanged -= HandleCharacterStateChanged;
                 currentCharacter.StateChanged += HandleCharacterStateChanged;
 
                 currentCharacter.setAtNode(nodeActor);
-
+                currentCharacter.getAtNode().Enabled = false;
                 if (countTimer != null)
                     stopCount();
 
@@ -190,6 +190,28 @@ namespace CopAndRobber
 
                     //createActionBar(listTurnAction.Peek(), character.getAtNode());
 
+            }
+		}
+
+		private void changeTurn(Character nextCharacter)
+        {
+            disableAllNode();
+            if (countTimer != null)
+                stopCount();
+            createActionBar(nextCharacter);
+            if (nextCharacter.isPlayer())
+            {
+                highLightAllNodeCanMove(nextCharacter);
+                
+            }
+            else
+            {
+                //DialogResult dialogResult = MessageBox.Show("Ai tủn ", " ", MessageBoxButtons.YesNo);
+                AIMove(nextCharacter);
+                
+            }
+            
+            
                 }
             }
         }
@@ -221,7 +243,6 @@ namespace CopAndRobber
 
 
 
-            }
 
             public void isEndGame(Character character)
             {
@@ -287,20 +308,30 @@ namespace CopAndRobber
                 }
             }
 
-            public void highLightAllNodeCanMove(Character character)
+        public void highLightAllNodeCanMove(Character character)
+        {
+            //String s = "";
+            NodeActor nodeActor = character.getAtNode();
+            foreach (int id in nodeActor.getNodeAdj())
             {
-                NodeActor nodeActor = character.getAtNode();
-                foreach (int id in nodeActor.getNodeAdj())
-                {
-                    NodeActor nodeAdj = GetNodeActorByID(id);
-                    nodeAdj.Enabled = true;
-                    nodeAdj.makeLightNodeActor();
-
-                }
-
-                //make light edge
-
+                NodeActor nodeAdj = GetNodeActorByID(id);
+                nodeAdj.Enabled = true;
+                nodeAdj.makeLightNodeActor();
+               // s += nodeAdj.ToString() + " ";
             }
+            //MessageBox.Show(s);
+            //make light edge
+
+        }
+
+        public void disableAllNode()
+        {
+            foreach(NodeActor node in listNode.Values)
+            {
+                node.Enabled = false;
+                node.BackgroundImage = Properties.Resources.minimalism_tom_and_jerry_wallpaper_preview;
+            }
+        }
 
             public void setNodeAdjDisable(Character character)
             {

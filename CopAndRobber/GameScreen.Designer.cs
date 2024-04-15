@@ -45,6 +45,8 @@ namespace CopAndRobber
             // panelGameScreen
             // 
             this.panelGameScreen.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelGameScreen.BackgroundImage = global::CopAndRobber.Properties.Resources.map1;
+            this.panelGameScreen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelGameScreen.Controls.Add(this.buttonBack);
             this.panelGameScreen.Controls.Add(this.lblTime);
             this.panelGameScreen.Controls.Add(this.SettingButton);
