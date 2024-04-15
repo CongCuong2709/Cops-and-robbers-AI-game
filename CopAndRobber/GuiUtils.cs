@@ -62,7 +62,6 @@ namespace CopAndRobber
 
         public static int getNumFrame(CHARACTER_NAME name, STATE_CHARACTER state)
         {
-            int numFrame = 0;
             if (name != CHARACTER_NAME.JERRY)
             {
                 if (state != STATE_CHARACTER.CATCH)
@@ -74,9 +73,8 @@ namespace CopAndRobber
             }
             else
             {
-                return 2;
+                return 4;
             }
-            return numFrame;
         }
 
 		public static Image getIcon(Character character)

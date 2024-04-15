@@ -119,13 +119,13 @@ namespace CopAndRobber
 			if (!hasPathTo(G, finish))
 			{
 				
-				DialogResult dialogResult = MessageBox.Show("Ko co duong di", " ", MessageBoxButtons.YesNo);
+				//DialogResult dialogResult = MessageBox.Show("Ko co duong di", " ", MessageBoxButtons.YesNo);
 			}
 			else
 			{
 				/*DialogResult result = MessageBox.Show(getEdgeTo(G, 256).ToString(), "",
 					MessageBoxButtons.YesNo);*/
-				DialogResult dialogResult = MessageBox.Show("co duong di", " ", MessageBoxButtons.YesNo);
+				//DialogResult dialogResult = MessageBox.Show("co duong di", " ", MessageBoxButtons.YesNo);
 				
 				
 			}

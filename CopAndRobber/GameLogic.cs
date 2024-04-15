@@ -69,7 +69,14 @@ namespace CopAndRobber
 			currentCharacter = listTurnAction.Peek();
 			changeTurn(currentCharacter);
 
-			foreach (NodeActor node in listNode.Values)
+            //new
+            /*foreach (Character c in listTurnAction)
+            {
+                c.StateChanged -= HandleCharacterStateChanged;
+                c.StateChanged += HandleCharacterStateChanged;
+            }*/
+
+            foreach (NodeActor node in listNode.Values)
 			{
                 node.nodeClicked += HandleNodeClicked;
 			}
@@ -149,24 +156,27 @@ namespace CopAndRobber
         void HandleCharacterStateChanged(object sender, EventArgs args)
 		{
 			Character character = (Character)sender;
-			if (character.getState() == GuiUtils.STATE_CHARACTER.WAIT)
-			{
-				//isEndGame(character);
-
-				character.setAtNode(character.getAtNode()); // Không cần gán nodeActor ở đây vì đã được xử lý khi click
-				listTurnAction.Enqueue(listTurnAction.Dequeue());
-				/*testActionTurn += listTurnAction.Peek().ToString();
-				screen.GetTextBoxConsole().Text = testActionTurn;*/
-				changeTurn(listTurnAction.Peek());
-                setCharacterAt(listTurnAction.Peek(), character.getAtNode());
-
-            }
-            else
+            if (character.isPlayer())
             {
-                if (countTimer != null && actionBar != null)
-                    screen.GetPanelTurnTable().GetActionBar().PauseCountDown();
+                if (character.getState() == GuiUtils.STATE_CHARACTER.WAIT)
+                {
+                    //isEndGame(character);
+
+                    character.setAtNode(character.getAtNode()); // Không cần gán nodeActor ở đây vì đã được xử lý khi click
+                    listTurnAction.Enqueue(listTurnAction.Dequeue());
+                    /*testActionTurn += listTurnAction.Peek().ToString();
+					screen.GetTextBoxConsole().Text = testActionTurn;*/
+                    changeTurn(listTurnAction.Peek());
+                    setCharacterAt(listTurnAction.Peek(), character.getAtNode());
+
+                }
+                else
+                {
+                    if (countTimer != null && actionBar != null)
+                        screen.GetPanelTurnTable().GetActionBar().PauseCountDown();
 
 
+                }
             }
 		}
 
@@ -178,8 +188,9 @@ namespace CopAndRobber
             }
             else
             {
-                DialogResult dialogResult = MessageBox.Show("Ai tủn ", " ", MessageBoxButtons.YesNo);
-                AIMove(nextCharacter);
+                //DialogResult dialogResult = MessageBox.Show("Ai tủn ", " ", MessageBoxButtons.YesNo);
+                if(nextCharacter.getState() == GuiUtils.STATE_CHARACTER.WAIT)
+                    AIMove(nextCharacter);
             }
 
 }
@@ -204,7 +215,7 @@ namespace CopAndRobber
             {
                 if(character.getState() == GuiUtils.STATE_CHARACTER.WAIT)
                 {
-                    int finish = 46;
+                    int finish = JerryAtNode.getID();
                     a_Star.search(graph, character.getAtNode().getID(), finish);
 					Stack<int> shortestPath = a_Star.getEdgeTo(graph, finish);
                     string path = string.Empty;
@@ -212,7 +223,7 @@ namespace CopAndRobber
                     {
                         path += item + " | ";
                     }
-                    DialogResult dialogResult = MessageBox.Show(path, "", MessageBoxButtons.YesNo);
+                    //DialogResult dialogResult = MessageBox.Show(path, "", MessageBoxButtons.YesNo);
                     NodeActor nextNode = GetNodeActorByID(shortestPath.Pop());
                     
 
@@ -366,10 +377,13 @@ namespace CopAndRobber
         {
 
             generateAllNode(gameScreen);
-            /*Character jerry = new Character();
-			listTurnAction.Enqueue(jerry);*/
 
-            for (int num = 0; num < numCat; num++)
+			Character jerry = new Character(GuiUtils.CHARACTER_NAME.JERRY, GetNodeActorByID(46));
+			jerry.setIsPlayable(true);
+			gameScreen.GetPanelGameScreen().Controls.Add(jerry);
+			listTurnAction.Enqueue(jerry);
+
+			for (int num = 0; num < numCat; num++)
             {
                 int nodeID = 1; //random
                 NodeActor nodeActor = GetNodeActorByID(nodeID);
@@ -397,7 +411,9 @@ namespace CopAndRobber
                     default:
                         break;
                 }
-            }
+
+				
+			}
         }
 
         

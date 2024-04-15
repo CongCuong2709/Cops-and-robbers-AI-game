@@ -32,7 +32,7 @@ namespace CopAndRobber
 
 			this.readFromFile("NodeList.txt");
 			//createGraph(gameLogic);
-			DialogResult dialogResult = MessageBox.Show(this.ToString(), "", MessageBoxButtons.YesNo);
+			//DialogResult dialogResult = MessageBox.Show(this.ToString(), "", MessageBoxButtons.YesNo);
 		}
 
 		public int getRate(int vertex)
@@ -86,8 +86,8 @@ namespace CopAndRobber
 			}
 			catch (Exception e)
 			{
-				DialogResult dialogResult = MessageBox.Show(
-					"Chưa đọc file NodeList cho A*", " ", MessageBoxButtons.YesNo);
+				//DialogResult dialogResult = MessageBox.Show(
+					//"Chưa đọc file NodeList cho A*", " ", MessageBoxButtons.YesNo);
 			}
 		}
 
