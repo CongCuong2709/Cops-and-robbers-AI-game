@@ -16,7 +16,7 @@ namespace CopAndRobber
     public partial class Character : UserControl
     {
         public event EventHandler StateChanged;
-        public event EventHandler AIMoving;
+        public event EventHandler AIStateChanged;
 
         private NodeActor atNode;
         private NodeActor endNode;
@@ -63,6 +63,7 @@ namespace CopAndRobber
             animationTimer.Interval = 100;
             animationTimer.Tick += animation_Tick;
 
+           //this.state = STATE_CHARACTER.WAIT;
 			setState(STATE_CHARACTER.WAIT);
 
 			this.character = name;
@@ -73,7 +74,7 @@ namespace CopAndRobber
             this.Location = new Point(atNode.getPositionX(), atNode.getPositionY() - this.Height);
             this.BackColor = Color.Transparent;
             pictureBoxCat.SizeMode = PictureBoxSizeMode.Zoom;
-            //this.Size = new Size(Size.Width, Size.Height);
+            //this.Size = new Size(Size.Width, Siz e.Height);
 
             frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
             soundPlayer = new SoundPlayer();
@@ -173,10 +174,15 @@ namespace CopAndRobber
         {
             currentFrame = 0;
 
-            if(this.state != state && state == STATE_CHARACTER.WAIT)
+            if(this.state != state && state == STATE_CHARACTER.WAIT && this.isPlayer())
             {
                 this.state = state;
                 onStateChanged(EventArgs.Empty);
+            }
+            if(this.state != state && state == STATE_CHARACTER.WAIT && !this.isPlayer())
+            {
+                this.state = state;
+                onAIStateChanged(EventArgs.Empty);
             }
             this.state = state;
 
@@ -208,9 +214,9 @@ namespace CopAndRobber
 			StateChanged?.Invoke(this, e);
 		}
 
-        protected virtual void onAIMoving(EventArgs e)
+		protected virtual void onAIStateChanged(EventArgs e)
         {
-            AIMoving?.Invoke(this, e);
+			AIStateChanged?.Invoke(this, e);
         }
 
         private void animation_Tick(object sender, EventArgs e)

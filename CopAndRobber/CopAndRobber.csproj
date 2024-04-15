@@ -94,6 +94,7 @@
       <DependentUpon>ActionBar.cs</DependentUpon>
     </Compile>
     <Compile Include="A_star.cs" />
+    <Compile Include="BreadthFirstPaths.cs" />
     <Compile Include="Character.cs">
       <SubType>UserControl</SubType>
     </Compile>

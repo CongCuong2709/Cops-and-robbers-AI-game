@@ -11,6 +11,90 @@ namespace CopAndRobber
 {
 	internal class Graph
 	{
+		private int V;                         // Số điểm
+		private int E;                         // Số cạnh
+		private Dictionary<int, HashSet<int>> adj;   // Danh sách các điểm kề
+
+		public Graph(int V)
+		{
+			this.V = V;
+			this.E = 0;
+			adj = new Dictionary<int, HashSet<int>>();
+
+			// Khởi tạo danh sách kề cho mỗi đỉnh
+			for (int v = 0; v < V; v++)
+			{
+				adj[v] = new HashSet<int>(); // Danh sách rỗng ban đầu
+			}
+			this.readFromFile("NodeList.txt");
+		}
+
+		public int VCount()
+		{
+			return V;
+		}
+
+		public int ECount()
+		{
+			return E;
+		}
+
+		public void addEdge(int source, int destination)
+		{
+			// Thêm cạnh từ source đến destination
+			if (!adj.ContainsKey(source))
+			{
+				adj[source] = new HashSet<int>();
+			}
+			adj[source].Add(destination);
+			E++;
+		}
+
+		public IEnumerable<int> Adj(int point)
+		{
+			// Trả về danh sách các điểm kề của một điểm
+			if (adj.ContainsKey(point))
+			{
+				return adj[point];
+			}
+			return new List<int>(); // Trả về danh sách rỗng nếu không có điểm kề
+		}
+
+		public void readFromFile(string fileName)
+		{
+			try
+			{
+				string res = string.Empty;
+				string path = Path.Combine(Directory.GetCurrentDirectory(), "Assets\\" + fileName);
+				using (StreamReader sr = new StreamReader(path))
+				{
+					while (!sr.EndOfStream)
+					{
+						string line = sr.ReadLine();
+						string[] paths = line.Split(' ');
+						int id = int.Parse(paths[0]);
+
+						if (paths.Length > 4)
+						{
+
+							for (int index = 4; index < paths.Length; index++)
+							{
+								this.addEdge(id, int.Parse(paths[index]));
+								res += (char)(id + 64) + " " + (char)(int.Parse(paths[index]) + 64) + "\n";
+							}
+						}
+					}
+					Clipboard.SetText(res);
+				}
+			}
+			catch (Exception e)
+			{
+				//DialogResult dialogResult = MessageBox.Show(
+				//"Chưa đọc file NodeList cho A*", " ", MessageBoxButtons.YesNo);
+			}
+		}
+	}
+	/*{
 		private int V;
 		private int E;
 
@@ -64,6 +148,7 @@ namespace CopAndRobber
 		{
 			try
 			{
+				string res = string.Empty;
 				string path = Path.Combine(Directory.GetCurrentDirectory(), "Assets\\" + fileName);
 				using (StreamReader sr = new StreamReader(path))
 				{
@@ -79,9 +164,11 @@ namespace CopAndRobber
 							for (int index = 4; index < paths.Length; index++)
 							{
 								this.addEdge(id ,int.Parse(paths[index]), 1);
+								res += (char) (id + 64) + " " + (char)(int.Parse(paths[index]) + 64)  + "\n";
 							}
 						}
 					}
+					Clipboard.SetText(res);
 				}
 			}
 			catch (Exception e)
@@ -211,5 +298,5 @@ namespace CopAndRobber
 
 
 		}
-	}
+	}*/
 }
