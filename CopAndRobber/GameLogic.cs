@@ -27,6 +27,7 @@ namespace CopAndRobber
         private GameScreen screen;
         private Graph graph;
         private A_star a_Star;
+        private BreadthFirstPaths BFS;
 
         ActionBar actionBar;
         Timer countTimer;
@@ -49,17 +50,17 @@ namespace CopAndRobber
             moveStack = new Stack<Move>();
             this.numCat = numCat;
             this.screen = screen;
-            
+
         }
 
         public void stopGame(Character c)
         {
-            
+
         }
 
         public void continueGame(GameScreen screen)
         {
-            
+
         }
 
         public void startGame(GameScreen screen)
@@ -68,11 +69,13 @@ namespace CopAndRobber
             generateGame(screen, numCat);
             generateAllEdge(screen);
             string testActionTurn = string.Empty;
-			graph = new Graph(this, 256);
-			a_Star = new A_star(graph);
+            // graph = new Graph(this, 256);
+            graph = new Graph(256);
+            BFS = new BreadthFirstPaths(graph);
+            //a_Star = new A_star(graph);
 
-			currentCharacter = listTurnAction.Peek();
-			changeTurn(currentCharacter);
+            currentCharacter = listTurnAction.Peek();
+            changeTurn(currentCharacter);
 
             //new
             /*foreach (Character c in listTurnAction)
@@ -82,31 +85,31 @@ namespace CopAndRobber
             }*/
 
             foreach (NodeActor node in listNode.Values)
-			{
+            {
                 node.nodeClicked += HandleNodeClicked;
-			}
-		}
+            }
+        }
 
-		void HandleNodeClicked(object sender, EventArgs args)
+        void HandleNodeClicked(object sender, EventArgs args)
         {
-			NodeActor nodeActor = (NodeActor)sender;
-			if (currentCharacter.getState() == GuiUtils.STATE_CHARACTER.WAIT)
-			{
-				currentCharacter = listTurnAction.Peek();
-				//init button ...	
-				changeTurn(currentCharacter);
-			}
-			if (currentCharacter == listTurnAction.Peek())
-			{
-				if (currentCharacter.getCharacterName() == GuiUtils.CHARACTER_NAME.JERRY)
-				{
-					JerryAtNode = nodeActor;
-				}
+            NodeActor nodeActor = (NodeActor)sender;
+            if (currentCharacter.getState() == GuiUtils.STATE_CHARACTER.WAIT)
+            {
+                currentCharacter = listTurnAction.Peek();
+                //init button ...	
+                changeTurn(currentCharacter);
+            }
+            if (currentCharacter == listTurnAction.Peek())
+            {
+                if (currentCharacter.getCharacterName() == GuiUtils.CHARACTER_NAME.JERRY)
+                {
+                    JerryAtNode = nodeActor;
+                }
 
 
-				currentCharacter.moveTo(nodeActor);
-				updateLogMove(screen, currentCharacter, currentCharacter.getAtNode(), nodeActor);
-				setNodeAdjDisable(currentCharacter);
+                currentCharacter.moveTo(nodeActor);
+                updateLogMove(screen, currentCharacter, currentCharacter.getAtNode(), nodeActor);
+                setNodeAdjDisable(currentCharacter);
 
                 currentCharacter.StateChanged -= HandleCharacterStateChanged;
                 currentCharacter.StateChanged += HandleCharacterStateChanged;
@@ -116,16 +119,16 @@ namespace CopAndRobber
                 if (countTimer != null)
                     stopCount();
 
-                
+
             }
-		}
-        public void createActionBar(Character c )
+        }
+        public void createActionBar(Character c)
         {
             screen.GetPanelTurnTable().Controls.Clear();
             actionBar = new ActionBar(c);
             screen.GetPanelTurnTable().Controls.Add(actionBar);
             actionBar.setImage();
-            
+
             startCount10s(10000);
         }
 
@@ -161,305 +164,310 @@ namespace CopAndRobber
         }
 
         void HandleCharacterStateChanged(object sender, EventArgs args)
-		{
-			Character character = (Character)sender;
+        {
+            Character character = (Character)sender;
             if (character.isPlayer())
             {
                 if (character.getState() == GuiUtils.STATE_CHARACTER.WAIT)
                 {
                     //isEndGame(character);
 
-				character.setAtNode(character.getAtNode()); // Không cần gán nodeActor ở đây vì đã được xử lý khi click
-				listTurnAction.Enqueue(listTurnAction.Dequeue());
-				/*testActionTurn += listTurnAction.Peek().ToString();
-				screen.GetTextBoxConsole().Text = testActionTurn;*/
-				changeTurn(listTurnAction.Peek());
-                
+                    character.setAtNode(character.getAtNode()); // Không cần gán nodeActor ở đây vì đã được xử lý khi click
+                    listTurnAction.Enqueue(listTurnAction.Dequeue());
+                    /*testActionTurn += listTurnAction.Peek().ToString();
+                    screen.GetTextBoxConsole().Text = testActionTurn;*/
+                    changeTurn(listTurnAction.Peek());
 
+
+                }
+                else
+                {
+                    if (countTimer != null)
+
+                        screen.GetPanelTurnTable().GetActionBar().PauseCountDown();
+
+
+
+                    //createActionBar(listTurnAction.Peek(), character.getAtNode());
+
+                }
             }
-            else
+        }
+            private void changeTurn(Character nextCharacter)
             {
                 if (countTimer != null)
+                    stopCount();
+                createActionBar(nextCharacter);
+                if (nextCharacter.isPlayer())
+                {
+                    highLightAllNodeCanMove(nextCharacter);
 
-                    screen.GetPanelTurnTable().GetActionBar().PauseCountDown();
-
-                    
-
-                //createActionBar(listTurnAction.Peek(), character.getAtNode());
-
-            }
-		}
-
-		private void changeTurn(Character nextCharacter)
-        {
-            if (countTimer != null)
-                stopCount();
-            createActionBar(nextCharacter);
-            if (nextCharacter.isPlayer())
-            {
-                highLightAllNodeCanMove(nextCharacter);
-                
-            }
-            else
-            {
-                //DialogResult dialogResult = MessageBox.Show("Ai tủn ", " ", MessageBoxButtons.YesNo);
-                AIMove(nextCharacter);
-                
-                //DialogResult dialogResult = MessageBox.Show("Ai tủn ", " ", MessageBoxButtons.YesNo);
-                if(nextCharacter.getState() == GuiUtils.STATE_CHARACTER.WAIT)
+                }
+                else
+                {
+                    //DialogResult dialogResult = MessageBox.Show("Ai tủn ", " ", MessageBoxButtons.YesNo);
                     AIMove(nextCharacter);
-            }
-            
-            
 
-        }
-
-        public void isEndGame(Character character)
-        {
-            if(character.getCharacterName() != GuiUtils.CHARACTER_NAME.JERRY)
-            {
-                if(character.getAtNode() == JerryAtNode)
-                {
-                    //character.setState(GuiUtils.STATE_CHARACTER.CATCH);
-                    
-                    if (countTimer != null)
-                        stopCount();
-                    screen.endGame();
-                    //do end game
-                    //stop game
-                    //Hiện kết quả, lưu vào file 
+                    //DialogResult dialogResult = MessageBox.Show("Ai tủn ", " ", MessageBoxButtons.YesNo);
+                    if (nextCharacter.getState() == GuiUtils.STATE_CHARACTER.WAIT)
+                        AIMove(nextCharacter);
                 }
-            }
-        }
 
-        private void AIMove(Character character)
-        {
-            if(!character.isPlayer())
+
+
+            }
+
+            public void isEndGame(Character character)
             {
-                if(character.getState() == GuiUtils.STATE_CHARACTER.WAIT)
+                if (character.getCharacterName() != GuiUtils.CHARACTER_NAME.JERRY)
                 {
-                    int finish = JerryAtNode.getID();
-                    a_Star.search(graph, character.getAtNode().getID(), finish);
-					Stack<int> shortestPath = a_Star.getEdgeTo(graph, finish);
-                    string path = string.Empty;
-                    foreach(int item in shortestPath)
+                    if (character.getAtNode() == JerryAtNode)
                     {
-                        path += item + " | ";
+                        //character.setState(GuiUtils.STATE_CHARACTER.CATCH);
+
+                        if (countTimer != null)
+                            stopCount();
+                        screen.endGame();
+                        //do end game
+                        //stop game
+                        //Hiện kết quả, lưu vào file 
                     }
-                    //DialogResult dialogResult = MessageBox.Show(path, "", MessageBoxButtons.YesNo);
-                    NodeActor nextNode = GetNodeActorByID(shortestPath.Pop());
-                    
+                }
+            }
 
-                   // NodeActor nextNode = GetNodeActorByID(2);
+            private void AIMove(Character character)
+            {
+                if (!character.isPlayer())
+                {
+                    if (character.getState() == GuiUtils.STATE_CHARACTER.WAIT)
+                    {
+                        int finish = JerryAtNode.getID();
+                       // a_Star.search(graph, character.getAtNode().getID(), finish);
+                       BFS.bfs(graph, character.getAtNode().getID());
+                        DialogResult dialogResult1 = MessageBox.Show(
+                        character.getAtNode().getID() + " " + finish, "", MessageBoxButtons.YesNo);
+                    //Stack<int> shortestPath = a_Star.getEdgeTo(graph, finish);
+                    Queue<int> shortestPath = new Queue<int>(BFS.PathTo(finish));
+					string path = string.Empty;
+                        foreach (int item in shortestPath)
+                        {
+                            path += item + " | ";
+                        }
+                        DialogResult dialogResult = MessageBox.Show(path, "", MessageBoxButtons.YesNo);
+                        NodeActor nextNode = GetNodeActorByID(shortestPath.Dequeue());
 
-					character.moveTo(nextNode);
-                    //character.moveTo(GetNodeActorByID(2));
-                    //............
-                    updateLogMove(screen, character, character.getAtNode(), nextNode);                  
-                    character.setAtNode(nextNode);
-                    //isEndGame(character);
-                    listTurnAction.Enqueue(listTurnAction.Dequeue());
-                    changeTurn(listTurnAction.Peek());
-                    if (countTimer != null)
-                        stopCount();
 
-                    
+                        // NodeActor nextNode = GetNodeActorByID(2);
+
+                        character.moveTo(nextNode);
+                        //character.moveTo(GetNodeActorByID(2));
+                        //............
+                        updateLogMove(screen, character, character.getAtNode(), nextNode);
+                        character.setAtNode(nextNode);
+                        //isEndGame(character);
+                        listTurnAction.Enqueue(listTurnAction.Dequeue());
+                        changeTurn(listTurnAction.Peek());
+                        if (countTimer != null)
+                            stopCount();
+
+
+
+                    }
+
+
+                }
+            }
+
+            public void highLightAllNodeCanMove(Character character)
+            {
+                NodeActor nodeActor = character.getAtNode();
+                foreach (int id in nodeActor.getNodeAdj())
+                {
+                    NodeActor nodeAdj = GetNodeActorByID(id);
+                    nodeAdj.Enabled = true;
+                    nodeAdj.makeLightNodeActor();
 
                 }
 
-
-			}
-        }
-
-        public void highLightAllNodeCanMove(Character character)
-        {
-            NodeActor nodeActor = character.getAtNode();
-            foreach (int id in nodeActor.getNodeAdj())
-            {
-                NodeActor nodeAdj = GetNodeActorByID(id);
-                nodeAdj.Enabled = true;
-                nodeAdj.makeLightNodeActor();
+                //make light edge
 
             }
 
-            //make light edge
-
-        }
-
-		public void setNodeAdjDisable(Character character)
-		{
-			foreach(int id in character.getAtNode().getNodeAdj())
-			{
-				try
-				{
-					NodeActor nodeAdj = GetNodeActorByID(id);
-					nodeAdj.Enabled = false;
-				}
-				catch (Exception ex)
-				{
-					Console.WriteLine(ex.Message);
-				}
-			}
-		}
-
-        public Dictionary<int, NodeActor> getListNode()
-        {
-            return listNode;
-        }
-
-        public void updateLogMove(GameScreen screen, Character character, NodeActor atNode, NodeActor endNode)
-        {
-            Move move = new Move(character, atNode, endNode);
-            moveStack.Push(move);
-            Stack<Move> moves = new Stack<Move>();
-
-            foreach (var item in moveStack)
+            public void setNodeAdjDisable(Character character)
             {
-                moves.Push(item);
-            }
-            screen.GetPanelMoveLog().Controls.Clear();
-            foreach (Move move1 in moves)
-            {
-                screen.GetPanelMoveLog().Controls.Add(move1);
-            }
-
-        }
-
-        public void updateActionTable(Character character)
-        {
-
-        }
-
-        public void generateAllNode(GameScreen gameScreen)
-        {
-            try
-            {
-                string path = Path.Combine(Directory.GetCurrentDirectory(), "Assets\\NodeList.txt");
-                using (StreamReader sr = new StreamReader(path))
+                foreach (int id in character.getAtNode().getNodeAdj())
                 {
-                    while (!sr.EndOfStream)
+                    try
                     {
-                        string line = sr.ReadLine();
-                        string[] paths = line.Split(' ');
-                        int id = int.Parse(paths[0]);
-                        TRANSPORT_TYPE transportType;
-                        if (paths[1].Equals("T"))
-                        {
-                            transportType = TRANSPORT_TYPE.TRAIN;
-                        }
-                        else if (paths[1].Equals("B"))
-                        {
-                            transportType = TRANSPORT_TYPE.BUS;
-                        }
-                        else
-                        {
-                            transportType = TRANSPORT_TYPE.WALK;
-                        }
-                        int locationX = int.Parse(paths[2]);
-                        int locationY = int.Parse(paths[3]);
-                        HashSet<int> nodeAdj = new HashSet<int>();
-                        if (paths.Length > 4)
-                        {
+                        NodeActor nodeAdj = GetNodeActorByID(id);
+                        nodeAdj.Enabled = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
 
-                            for (int index = 4; index < paths.Length; index++)
+            public Dictionary<int, NodeActor> getListNode()
+            {
+                return listNode;
+            }
+
+            public void updateLogMove(GameScreen screen, Character character, NodeActor atNode, NodeActor endNode)
+            {
+                Move move = new Move(character, atNode, endNode);
+                moveStack.Push(move);
+                Stack<Move> moves = new Stack<Move>();
+
+                foreach (var item in moveStack)
+                {
+                    moves.Push(item);
+                }
+                screen.GetPanelMoveLog().Controls.Clear();
+                foreach (Move move1 in moves)
+                {
+                    screen.GetPanelMoveLog().Controls.Add(move1);
+                }
+
+            }
+
+            public void updateActionTable(Character character)
+            {
+
+            }
+
+            public void generateAllNode(GameScreen gameScreen)
+            {
+                try
+                {
+                    string path = Path.Combine(Directory.GetCurrentDirectory(), "Assets\\NodeList.txt");
+                    using (StreamReader sr = new StreamReader(path))
+                    {
+                        while (!sr.EndOfStream)
+                        {
+                            string line = sr.ReadLine();
+                            string[] paths = line.Split(' ');
+                            int id = int.Parse(paths[0]);
+                            TRANSPORT_TYPE transportType;
+                            if (paths[1].Equals("T"))
                             {
-                                nodeAdj.Add(int.Parse(paths[index]));
+                                transportType = TRANSPORT_TYPE.TRAIN;
                             }
+                            else if (paths[1].Equals("B"))
+                            {
+                                transportType = TRANSPORT_TYPE.BUS;
+                            }
+                            else
+                            {
+                                transportType = TRANSPORT_TYPE.WALK;
+                            }
+                            int locationX = int.Parse(paths[2]);
+                            int locationY = int.Parse(paths[3]);
+                            HashSet<int> nodeAdj = new HashSet<int>();
+                            if (paths.Length > 4)
+                            {
+
+                                for (int index = 4; index < paths.Length; index++)
+                                {
+                                    nodeAdj.Add(int.Parse(paths[index]));
+                                }
+                            }
+
+                            NodeActor nodeActor = new NodeActor(id, transportType, locationX, locationY, nodeAdj);
+                            listNode.Add(id, nodeActor);
+                            gameScreen.GetPanelGameScreen().Controls.Add(nodeActor);
+                            Console.WriteLine(nodeActor);
                         }
-
-                        NodeActor nodeActor = new NodeActor(id, transportType, locationX, locationY, nodeAdj);
-                        listNode.Add(id, nodeActor);
-                        gameScreen.GetPanelGameScreen().Controls.Add(nodeActor);
-                        Console.WriteLine(nodeActor);
                     }
+
+
                 }
-
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-        }
-
-        public NodeActor GetNodeActorByID(int id)
-        {
-            if (listNode.ContainsKey(id))
-            {
-                return listNode[id];
-            }
-            return null;
-        }
-
-        public void generateAllEdge(GameScreen gameScreen)
-        {
-            NodeActor nodeActor1 = new NodeActor(13, TRANSPORT_TYPE.TRAIN, 30, 80, null);
-            NodeActor nodeActor2 = new NodeActor(20, TRANSPORT_TYPE.TRAIN, 130, 190, null);
-
-            gameScreen.GetPanelGameScreen().Controls.Add(new EdgeActor(nodeActor1, nodeActor2));
-
-            foreach(NodeActor nodeActor in listNode.Values)
-            {
-                foreach(int nodeId in nodeActor.getNodeAdj())
+                catch (Exception e)
                 {
-                    NodeActor endNode = GetNodeActorByID((int)nodeId);
-                    EdgeActor edgeActor = new EdgeActor(nodeActor, endNode);
-                    listEdge.Add(edgeActor);
-                    gameScreen.Controls.Add(edgeActor);
+                    Console.WriteLine(e.ToString());
                 }
-
             }
-        }
 
-        public Queue<Character> getListTurnAction()
-        {
-            return listTurnAction;
-        }
-
-        public void generateGame(GameScreen gameScreen, int numCat)
-        {
-
-            generateAllNode(gameScreen);
-            jerry = new Character(GuiUtils.CHARACTER_NAME.JERRY, GetNodeActorByID(2));
-            jerry.setIsPlayable(true);
-            gameScreen.GetPanelGameScreen().Controls.Add(jerry);
-            listTurnAction.Enqueue(jerry);
-            
-
-			for (int num = 0; num < numCat; num++)
+            public NodeActor GetNodeActorByID(int id)
             {
-                int nodeID = 1; //random
-                NodeActor nodeActor = GetNodeActorByID(nodeID);
-                switch (num)
+                if (listNode.ContainsKey(id))
                 {
-                    case 0:
-                        Character tom = new Character(GuiUtils.CHARACTER_NAME.TOM, nodeActor);
-                        tom.setIsPlayable(true);
-                        gameScreen.GetPanelGameScreen().Controls.Add(tom);
-                        listTurnAction.Enqueue(tom);
-                        break;
-                    case 1:
-                        Character butch = new Character(GuiUtils.CHARACTER_NAME.BUTCH, GetNodeActorByID(1));
-                        butch.setIsPlayable(false);
-                        gameScreen.GetPanelGameScreen().Controls.Add(butch);
-                        listTurnAction.Enqueue(butch);
-
-                        break;
-                    case 2:
-                        Character jones = new Character(GuiUtils.CHARACTER_NAME.JONES, nodeActor);
-                        gameScreen.GetPanelGameScreen().Controls.Add(jones);
-                        jones.setIsPlayable(false);
-                        listTurnAction.Enqueue(jones);
-                        break;
-                    default:
-                        break;
+                    return listNode[id];
                 }
+                return null;
+            }
 
-				
-			}
-        }
+            public void generateAllEdge(GameScreen gameScreen)
+            {
+                NodeActor nodeActor1 = new NodeActor(13, TRANSPORT_TYPE.TRAIN, 30, 80, null);
+                NodeActor nodeActor2 = new NodeActor(20, TRANSPORT_TYPE.TRAIN, 130, 190, null);
+
+                gameScreen.GetPanelGameScreen().Controls.Add(new EdgeActor(nodeActor1, nodeActor2));
+
+                foreach (NodeActor nodeActor in listNode.Values)
+                {
+                    foreach (int nodeId in nodeActor.getNodeAdj())
+                    {
+                        NodeActor endNode = GetNodeActorByID((int)nodeId);
+                        EdgeActor edgeActor = new EdgeActor(nodeActor, endNode);
+                        listEdge.Add(edgeActor);
+                        gameScreen.Controls.Add(edgeActor);
+                    }
+
+                }
+            }
+
+            public Queue<Character> getListTurnAction()
+            {
+                return listTurnAction;
+            }
+
+            public void generateGame(GameScreen gameScreen, int numCat)
+            {
+
+                generateAllNode(gameScreen);
+                jerry = new Character(GuiUtils.CHARACTER_NAME.JERRY, GetNodeActorByID(2));
+                jerry.setIsPlayable(true);
+                gameScreen.GetPanelGameScreen().Controls.Add(jerry);
+                listTurnAction.Enqueue(jerry);
+
+
+                for (int num = 0; num < numCat; num++)
+                {
+                    int nodeID = 1; //random
+                    NodeActor nodeActor = GetNodeActorByID(nodeID);
+                    switch (num)
+                    {
+                        case 0:
+                            Character tom = new Character(GuiUtils.CHARACTER_NAME.TOM, nodeActor);
+                            tom.setIsPlayable(true);
+                            gameScreen.GetPanelGameScreen().Controls.Add(tom);
+                            listTurnAction.Enqueue(tom);
+                            break;
+                        case 1:
+                            Character butch = new Character(GuiUtils.CHARACTER_NAME.BUTCH, GetNodeActorByID(1));
+                            butch.setIsPlayable(false);
+                            gameScreen.GetPanelGameScreen().Controls.Add(butch);
+                            listTurnAction.Enqueue(butch);
+
+                            break;
+                        case 2:
+                            Character jones = new Character(GuiUtils.CHARACTER_NAME.JONES, nodeActor);
+                            gameScreen.GetPanelGameScreen().Controls.Add(jones);
+                            jones.setIsPlayable(false);
+                            listTurnAction.Enqueue(jones);
+                            break;
+                        default:
+                            break;
+                    }
+
+
+                }
+            }
+
+
 
         
-
     }
 }
