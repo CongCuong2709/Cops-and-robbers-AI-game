@@ -92,7 +92,6 @@ namespace CopAndRobber
 		{
             if (this.state != STATE_CHARACTER.WAIT) return;
 			this.endNode = nodeActor;
-			this.textBoxX.Text = endNode.getID().ToString();
 
             int destinationX = endNode.getPositionX();
             int destinationY = endNode.getPositionY() - this.Height;
@@ -186,22 +185,18 @@ namespace CopAndRobber
                 case STATE_CHARACTER.WAIT:
                     stopSound();
                     frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
-                    this.textBoxY.Text = state.ToString();
                     break;
                 case STATE_CHARACTER.GO_LEFT:
                     playSound();
                     frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
-                    this.textBoxY.Text = state.ToString();
                     break;
                 case STATE_CHARACTER.GO_RIGHT:
                     playSound();
                     frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
-                    this.textBoxY.Text = state.ToString();
                     break;
                 case STATE_CHARACTER.CATCH:
                     playSound();
                     frames = GuiUtils.getSprite(character, state, GuiUtils.getNumFrame(character, state));
-                    this.textBoxY.Text = state.ToString();
                     break;
                 default: break;
             }

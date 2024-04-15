@@ -105,9 +105,6 @@ namespace CopAndRobber
 		}
         public void setCharacterAt(Character c, NodeActor node)
         {
-            c.setAtNode(node);
-            //currentCharacter.setAtNode(nodeActor);
-            actionBar = new ActionBar(c);
             screen.GetPanelTurnTable().Controls.Clear();
             screen.GetPanelTurnTable().Controls.Add(actionBar);
             actionBar.setImage();
@@ -158,14 +155,12 @@ namespace CopAndRobber
 				/*testActionTurn += listTurnAction.Peek().ToString();
 				screen.GetTextBoxConsole().Text = testActionTurn;*/
 				changeTurn(listTurnAction.Peek());
-                setCharacterAt(listTurnAction.Peek(), character.getAtNode());
 
             }
             else
             {
                 if (countTimer != null && actionBar != null)
                     screen.GetPanelTurnTable().GetActionBar().PauseCountDown();
-
 
             }
 		}
@@ -204,16 +199,17 @@ namespace CopAndRobber
             {
                 if(character.getState() == GuiUtils.STATE_CHARACTER.WAIT)
                 {
-                    int finish = 8;
+                    int finish = 46;
                     a_Star.search(graph, character.getAtNode().getID(), finish);
-					Queue<int> shortestPath = a_Star.getEdgeTo(graph, finish);
-                    DialogResult dialogResult = MessageBox.Show("sap get ", "", MessageBoxButtons.YesNo);
-                    NodeActor nextNode = GetNodeActorByID(shortestPath.Peek());
-                    if(nextNode == null)
+					Stack<int> shortestPath = a_Star.getEdgeTo(graph, finish);
+                    string path = string.Empty;
+                    foreach(int item in shortestPath)
                     {
-                        DialogResult dialogResult1 = MessageBox.Show("next node null: " + shortestPath.Dequeue(), "",
-                            MessageBoxButtons.YesNo);
+                        path += item + " | ";
                     }
+                    DialogResult dialogResult = MessageBox.Show(path, "", MessageBoxButtons.YesNo);
+                    NodeActor nextNode = GetNodeActorByID(shortestPath.Pop());
+                    
 
                    // NodeActor nextNode = GetNodeActorByID(2);
 

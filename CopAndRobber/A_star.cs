@@ -31,6 +31,13 @@ namespace CopAndRobber
 
 		public void search(Graph G, int source, int finish)
 		{
+			for (int index = 0; index < edgeTo.Length; index++)
+			{
+				edgeTo[index] = 0;
+			}
+
+			marked.Clear();
+
 			int resultDistance = int.MaxValue;
 			List<Graph.point> queue = new List<Graph.point>();
 
@@ -44,8 +51,8 @@ namespace CopAndRobber
 				int sourceGv = sourcePoint.getGv();
 				int src = sourcePoint.getId();
 
-				
-				if (src == finish)
+
+				/*if (src == finish)
 				{		
 					bool flagNoNeedMoreSearch = true;
 					foreach(var point  in queue)
@@ -61,10 +68,16 @@ namespace CopAndRobber
 					if (flagNoNeedMoreSearch)
 					{
 						resultDistance = sourcePoint.getFv();
-						return;
+						break;
 					}
 					break;
-				}
+				}*/
+
+				/*if (src == finish)
+				{
+					resultDistance = sourcePoint.getFv();
+					break;
+				}*/
 
 				foreach (var destination in G.getAdj(src))
 				{
@@ -86,6 +99,11 @@ namespace CopAndRobber
 						destinationPoint.set(destinationName, kuv, hv, gv, fv);
 						queue.Add(destinationPoint);
 
+						if (destinationName == finish)
+						{
+							resultDistance = destinationPoint.getFv();
+							return;
+						}
 						queue.Sort((kv1, kv2) => kv1.getFv().CompareTo(kv2.getFv()));
 
 					}
@@ -126,30 +144,27 @@ namespace CopAndRobber
 			return false;
 		}
 
-		public Queue<int> getEdgeTo(Graph G, int finish)
+		public Stack<int> getEdgeTo(Graph G, int finish)
 		{
+			Stack<int> path = new Stack<int>();
 			if (!hasPathTo(G, finish))
 			{
 				DialogResult dialogResult = MessageBox.Show("Kho co edge to", " ", MessageBoxButtons.YesNo);
-				return null;
+				path.Push(finish);
+				return path;
 			}
-			Queue<int> path = new Queue<int>();
-			for (int x = finish; x != s; x = edgeTo[x])
+			else
 			{
-				path.Enqueue(x);
+				for (int x = finish; x != s; x = edgeTo[x])
+				{
+					path.Push(x);
+				}
+				path.Pop();
+				return path;
 			}
-			path.Enqueue(s);
-			return path;
+			
 		}
 
-		public void clearEdgeTo()
-		{
-			int index = 0;
-			foreach(int id in edgeTo)
-			{
-				edgeTo[index++] = -1;
-			}
-		}
 	}
 
 	class markedPoint

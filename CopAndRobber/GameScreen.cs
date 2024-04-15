@@ -26,7 +26,6 @@ namespace CopAndRobber
         private Boolean isMute = false;
         private Boolean isPause = false;
 
-        
         public GameScreen(WaveOutEvent waveout, MainScreen screen)
         {
             InitializeComponent();
