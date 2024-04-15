@@ -216,6 +216,9 @@ namespace CopAndRobber
 
         
 
+
+
+
             public void isEndGame(Character character)
             {
                 if (character.getCharacterName() != GuiUtils.CHARACTER_NAME.JERRY)
@@ -275,7 +278,10 @@ namespace CopAndRobber
                         character.setAtNode(nextNode);
                         isEndGame(character);
                         listTurnAction.Enqueue(listTurnAction.Dequeue());
-                        changeTurn(listTurnAction.Peek());
+                    //changeTurn(listTurnAction.Peek());
+
+                    character.AIStateChanged -= HandleCharacterStateChangedAIMove;
+                    character.AIStateChanged += HandleCharacterStateChangedAIMove;
                         if (countTimer != null)
                             stopCount();
 
@@ -473,7 +479,7 @@ namespace CopAndRobber
                             listTurnAction.Enqueue(tom);
                             break;
                         case 1:
-                            Character butch = new Character(GuiUtils.CHARACTER_NAME.BUTCH, GetNodeActorByID(1));
+                            Character butch = new Character(GuiUtils.CHARACTER_NAME.BUTCH, GetNodeActorByID(3));
                             butch.setIsPlayable(false);
                             gameScreen.GetPanelGameScreen().Controls.Add(butch);
                             listTurnAction.Enqueue(butch);
