@@ -113,11 +113,8 @@ namespace CopAndRobber
 
                 currentCharacter.StateChanged -= HandleCharacterStateChanged;
                 currentCharacter.StateChanged += HandleCharacterStateChanged;
-
                 currentCharacter.setAtNode(nodeActor);
                 currentCharacter.getAtNode().Enabled = false;
-                if (countTimer != null)
-                    stopCount();
 
 
             }
@@ -182,7 +179,6 @@ namespace CopAndRobber
                 }
                 else
                 {
-                    if (countTimer != null)
 
                         screen.GetPanelTurnTable().GetActionBar().PauseCountDown();
 
@@ -245,7 +241,6 @@ namespace CopAndRobber
 
         public void isWin()
         {
-            
                     if (countTimer != null)
                         stopCount();
                     screen.endGame();
