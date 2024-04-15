@@ -9,6 +9,7 @@ using static CopAndRobber.NodeActor;
 using System.Windows.Forms;
 using NAudio.Wave;
 using System.Xml.Linq;
+using System.Drawing;
 
 namespace CopAndRobber
 {
@@ -104,7 +105,7 @@ namespace CopAndRobber
                 currentCharacter.StateChanged += HandleCharacterStateChanged;
 
                 currentCharacter.setAtNode(nodeActor);
-
+                currentCharacter.getAtNode().Enabled = false;
                 if (countTimer != null)
                     stopCount();
 
@@ -182,6 +183,7 @@ namespace CopAndRobber
 
 		private void changeTurn(Character nextCharacter)
         {
+            disableAllNode();
             if (countTimer != null)
                 stopCount();
             createActionBar(nextCharacter);
@@ -260,17 +262,27 @@ namespace CopAndRobber
 
         public void highLightAllNodeCanMove(Character character)
         {
+            //String s = "";
             NodeActor nodeActor = character.getAtNode();
             foreach (int id in nodeActor.getNodeAdj())
             {
                 NodeActor nodeAdj = GetNodeActorByID(id);
                 nodeAdj.Enabled = true;
                 nodeAdj.makeLightNodeActor();
-
+               // s += nodeAdj.ToString() + " ";
             }
-
+            //MessageBox.Show(s);
             //make light edge
 
+        }
+
+        public void disableAllNode()
+        {
+            foreach(NodeActor node in listNode.Values)
+            {
+                node.Enabled = false;
+                node.BackgroundImage = Properties.Resources.minimalism_tom_and_jerry_wallpaper_preview;
+            }
         }
 
 		public void setNodeAdjDisable(Character character)

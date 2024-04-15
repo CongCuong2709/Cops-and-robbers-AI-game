@@ -123,9 +123,20 @@ namespace CopAndRobber
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            this.Close();
-            this.Dispose();
-            
+            // Hiển thị MessageBox hỏi người dùng có muốn thoát không
+            DialogResult result = MessageBox.Show("Bạn có muốn thoát không?", "Xác nhận", MessageBoxButtons.OKCancel);
+
+            // Nếu người dùng chọn OK, đóng form và giải phóng tài nguyên
+            if (result == DialogResult.OK)
+            {
+                this.Close();
+                this.Dispose();
+            }
+            // Nếu người dùng chọn Cancel, không làm gì cả
+            else if (result == DialogResult.Cancel)
+            {
+                // Không cần thực hiện hành động nào
+            }
         }
 
         private void SettingButton_Click(object sender, EventArgs e)

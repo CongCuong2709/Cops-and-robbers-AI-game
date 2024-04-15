@@ -266,6 +266,12 @@
     <None Include="Resources\buttonreplay.png" />
     <None Include="Resources\jerryWin.png" />
     <None Include="Resources\jerryface.png" />
+    <None Include="bin\Debug\Assets\map.png" />
+    <None Include="Resources\map.png" />
+    <None Include="Resources\red.jpg" />
+    <None Include="Resources\grey.jpg" />
+    <None Include="Resources\1209673.jpg" />
+    <None Include="Resources\12096731.jpg" />
     <Content Include="Resources\soundbuttonmute.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
