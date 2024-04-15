@@ -99,7 +99,6 @@ namespace CopAndRobber
 
 				currentCharacter.moveTo(nodeActor);
 				updateLogMove(screen, currentCharacter, currentCharacter.getAtNode(), nodeActor);
-				setNodeAdjDisable(currentCharacter);
 
                 currentCharacter.StateChanged -= HandleCharacterStateChanged;
                 currentCharacter.StateChanged += HandleCharacterStateChanged;
