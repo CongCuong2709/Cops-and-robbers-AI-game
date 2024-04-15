@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +13,17 @@ namespace CopAndRobber
 {
 	public partial class TurnTable : UserControl
 	{
-		public TurnTable()
+		ActionBar actionBar;
+
+        public TurnTable()
 		{
 			InitializeComponent();
-			ActionBar actionBar = new ActionBar();
-			this.Controls.Add(actionBar);
+            
+			//this.Controls.Add(actionBar);
 		}
-	}
+		public ActionBar GetActionBar()
+		{
+			return actionBar;
+		}
+    }
 }

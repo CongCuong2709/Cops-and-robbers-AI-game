@@ -100,6 +100,12 @@
     <Compile Include="Character.Designer.cs">
       <DependentUpon>Character.cs</DependentUpon>
     </Compile>
+    <Compile Include="endGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="endGame.Designer.cs">
+      <DependentUpon>endGame.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameLogic.cs" />
     <Compile Include="Graph.cs" />
     <Compile Include="GuiUtils.cs" />
@@ -171,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Character.resx">
       <DependentUpon>Character.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="endGame.resx">
+      <DependentUpon>endGame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogMove.resx">
       <DependentUpon>LogMove.cs</DependentUpon>
@@ -252,6 +261,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\pausebutton1.png" />
+    <None Include="Resources\jerrygameover.png" />
+    <None Include="Resources\buttonreplay.png" />
+    <None Include="Resources\jerryWin.png" />
     <Content Include="Resources\soundbuttonmute.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -81,7 +81,9 @@ namespace CopAndRobber
 
         }
 
-		public NodeActor getAtNode()
+        
+
+        public NodeActor getAtNode()
 		{
 			return atNode;
 		}

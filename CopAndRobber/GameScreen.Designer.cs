@@ -138,9 +138,11 @@ namespace CopAndRobber
             // 
             this.panelLogMove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panelLogMove.BackColor = System.Drawing.Color.MistyRose;
+            this.panelLogMove.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelLogMove.Location = new System.Drawing.Point(1093, 550);
             this.panelLogMove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelLogMove.Name = "panelLogMove";
+            this.panelLogMove.Padding = new System.Windows.Forms.Padding(5);
             this.panelLogMove.Size = new System.Drawing.Size(329, 170);
             this.panelLogMove.TabIndex = 8;
             // 
@@ -148,9 +150,11 @@ namespace CopAndRobber
             // 
             this.panelTurnTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panelTurnTable.BackColor = System.Drawing.SystemColors.Info;
+            this.panelTurnTable.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelTurnTable.Location = new System.Drawing.Point(0, 564);
             this.panelTurnTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelTurnTable.Name = "panelTurnTable";
+            this.panelTurnTable.Padding = new System.Windows.Forms.Padding(5);
             this.panelTurnTable.Size = new System.Drawing.Size(387, 156);
             this.panelTurnTable.TabIndex = 7;
             // 

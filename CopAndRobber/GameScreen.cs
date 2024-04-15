@@ -1,4 +1,5 @@
-﻿using NAudio.Wave;
+﻿using Guna.UI2.WinForms;
+using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +17,7 @@ namespace CopAndRobber
 
         WaveOutEvent waveOut;
         private Form activeForm = null;
-        MainScreen mainScreen = null;
+        MainScreen mainScreen;
         SupportMethod supportMethod = new SupportMethod();
 
         private Timer timer;
@@ -24,13 +25,15 @@ namespace CopAndRobber
 
         private Boolean isMute = false;
         private Boolean isPause = false;
-        public GameScreen(WaveOutEvent waveout, MainScreen mainscreen)
+
+        
+        public GameScreen(WaveOutEvent waveout, MainScreen screen)
         {
             InitializeComponent();
             game = new GameLogic(this, 2);
-            mainScreen = mainscreen;
+            mainScreen = screen;
             waveOut = waveout;
-
+            
             timer = new Timer();
             timer.Interval = 1000;
 
@@ -48,11 +51,17 @@ namespace CopAndRobber
             lblTime.Text = TimeSpan.FromSeconds(seconds).ToString(@"mm\:ss");
         }
 
-
+        
         public GameScreen(int numCat)
         {
             InitializeComponent();
             game = new GameLogic(this, numCat);
+        }
+
+        public GameScreen()
+        {
+            InitializeComponent();
+            
         }
 
         public TurnTable GetPanelTurnTable()
@@ -75,6 +84,11 @@ namespace CopAndRobber
         }
         public MainScreen GetMainScreen() { 
             return this.mainScreen;
+        }
+
+        public WaveOutEvent GetWaveOut()
+        {
+            return waveOut;
         }
 
         private void GameScreen_Load(object sender, EventArgs e)
@@ -119,9 +133,19 @@ namespace CopAndRobber
 
         }
 
+        public void endGame()
+        {
+            supportMethod.AddChildFormDockFill(new endGame(mainScreen, waveOut), mainScreen.getPanel());
+        }
+
+        public Guna2Panel getPanelGameScreen()
+        {
+            return panelGameScreen;
+        }
+
         //event nút tắt bật dừng
         private void PauseButton_Click(object sender, EventArgs e)
-        {
+        {                       
             if (!isPause)
             {
                 foreach (Character c in game.getListTurnAction())
@@ -130,6 +154,7 @@ namespace CopAndRobber
                     c.stopSound();
                     timer.Stop();
                     PauseButton.Image = Properties.Resources.pausebutton;
+                    game.stopCount();
                 }
                 isPause = true;
             }
@@ -141,6 +166,7 @@ namespace CopAndRobber
                     c.playSound();
                     timer.Start();
                     PauseButton.Image = Properties.Resources.pausebutton1;
+                    //game.resumeCount();
                 }
                 isPause = false;
             }
@@ -156,8 +182,17 @@ namespace CopAndRobber
         {
             isPause = b;
         }
-        
+        public Boolean GetIsMute()
+        {
+            return isMute;
+        }
+        public Guna2ImageButton getSoundButton()
+        {
+            return SoundButton;
+        }
         //event menu 3 gạch -> show dialog
         
+        
+           
     }
 }

@@ -88,9 +88,19 @@ namespace CopAndRobber
 			formName.Show();
 		}
 
+        public void openTurnTableDockFill(Form activeForm, ActionBar formName, TurnTable panelName)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+            formName.Dock = DockStyle.Fill;
+            panelName.Controls.Add(formName);
+            panelName.Tag = formName;
+            formName.BringToFront();
+            formName.Show();
+        }
 
-		//func get form main
-		public Form getFormMain(Form container)
+        //func get form main
+        public Form getFormMain(Form container)
 		{
 			Form containerControl = container;
 			while (containerControl.ParentForm != null)
