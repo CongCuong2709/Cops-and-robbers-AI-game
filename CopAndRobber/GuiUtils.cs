@@ -74,7 +74,7 @@ namespace CopAndRobber
             }
             else
             {
-                return 2;
+                return 4;
             }
             return numFrame;
         }

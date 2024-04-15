@@ -201,7 +201,7 @@ namespace CopAndRobber
                 default: break;
             }
 
-        }
+        }       
 
         protected virtual void onStateChanged(EventArgs e)
         {

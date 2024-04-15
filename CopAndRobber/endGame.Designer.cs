@@ -34,12 +34,14 @@
             // 
             // buttonReplay
             // 
+            this.buttonReplay.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonReplay.BackColor = System.Drawing.Color.Transparent;
-            this.buttonReplay.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.buttonReplay.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.buttonReplay.CheckedState.ImageSize = new System.Drawing.Size(48, 48);
+            this.buttonReplay.HoverState.ImageSize = new System.Drawing.Size(48, 48);
             this.buttonReplay.Image = global::CopAndRobber.Properties.Resources.buttonreplay;
             this.buttonReplay.ImageOffset = new System.Drawing.Point(0, 0);
             this.buttonReplay.ImageRotate = 0F;
+            this.buttonReplay.ImageSize = new System.Drawing.Size(48, 48);
             this.buttonReplay.Location = new System.Drawing.Point(602, 545);
             this.buttonReplay.Name = "buttonReplay";
             this.buttonReplay.PressedState.ImageSize = new System.Drawing.Size(64, 64);
@@ -49,12 +51,14 @@
             // 
             // guna2ImageButton1
             // 
+            this.guna2ImageButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2ImageButton1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(48, 48);
+            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(48, 48);
             this.guna2ImageButton1.Image = global::CopAndRobber.Properties.Resources.buttonback;
             this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
             this.guna2ImageButton1.ImageRotate = 0F;
+            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(48, 48);
             this.guna2ImageButton1.Location = new System.Drawing.Point(767, 545);
             this.guna2ImageButton1.Name = "guna2ImageButton1";
             this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(64, 64);

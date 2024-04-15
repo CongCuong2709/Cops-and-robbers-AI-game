@@ -93,6 +93,16 @@ namespace CopAndRobber.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap jerryface {
+            get {
+                object obj = ResourceManager.GetObject("jerryface", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap jerrygameover {
             get {
                 object obj = ResourceManager.GetObject("jerrygameover", resourceCulture);
@@ -186,6 +196,16 @@ namespace CopAndRobber.Properties {
         internal static System.Drawing.Bitmap soundbuttonmute {
             get {
                 object obj = ResourceManager.GetObject("soundbuttonmute", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TOM {
+            get {
+                object obj = ResourceManager.GetObject("TOM", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

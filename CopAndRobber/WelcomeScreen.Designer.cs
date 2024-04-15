@@ -31,7 +31,6 @@
             this.buttonSetting = new Guna.UI2.WinForms.Guna2GradientButton();
             this.buttonExit = new Guna.UI2.WinForms.Guna2GradientButton();
             this.buttonPlay = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.buttonNumCat = new Guna.UI2.WinForms.Guna2GradientButton();
             this.SuspendLayout();
             // 
             // buttonSetting
@@ -45,7 +44,7 @@
             this.buttonSetting.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.buttonSetting.Font = new System.Drawing.Font("Courier New", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSetting.ForeColor = System.Drawing.Color.White;
-            this.buttonSetting.Location = new System.Drawing.Point(173, 362);
+            this.buttonSetting.Location = new System.Drawing.Point(171, 302);
             this.buttonSetting.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSetting.Name = "buttonSetting";
             this.buttonSetting.Size = new System.Drawing.Size(195, 80);
@@ -91,24 +90,6 @@
             this.buttonPlay.Text = "Play";
             this.buttonPlay.Click += new System.EventHandler(this.buttonPlay_Click);
             // 
-            // buttonNumCat
-            // 
-            this.buttonNumCat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonNumCat.BorderRadius = 15;
-            this.buttonNumCat.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.buttonNumCat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.buttonNumCat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.buttonNumCat.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.buttonNumCat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.buttonNumCat.Font = new System.Drawing.Font("Courier New", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNumCat.ForeColor = System.Drawing.Color.White;
-            this.buttonNumCat.Location = new System.Drawing.Point(171, 258);
-            this.buttonNumCat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonNumCat.Name = "buttonNumCat";
-            this.buttonNumCat.Size = new System.Drawing.Size(195, 80);
-            this.buttonNumCat.TabIndex = 6;
-            this.buttonNumCat.Text = "Level";
-            // 
             // WelcomeScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -116,7 +97,6 @@
             this.BackgroundImage = global::CopAndRobber.Properties.Resources.minimalism_tom_and_jerry_wallpaper_preview;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1422, 720);
-            this.Controls.Add(this.buttonNumCat);
             this.Controls.Add(this.buttonSetting);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonPlay);
@@ -133,6 +113,5 @@
 		private Guna.UI2.WinForms.Guna2GradientButton buttonSetting;
 		private Guna.UI2.WinForms.Guna2GradientButton buttonExit;
 		private Guna.UI2.WinForms.Guna2GradientButton buttonPlay;
-		private Guna.UI2.WinForms.Guna2GradientButton buttonNumCat;
 	}
 }

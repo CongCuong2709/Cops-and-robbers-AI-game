@@ -87,12 +87,12 @@
             // pictureBoxIcon
             // 
             this.pictureBoxIcon.BackColor = System.Drawing.SystemColors.Info;
-            this.pictureBoxIcon.BackgroundImage = global::CopAndRobber.Properties.Resources.buttonreplay;
+            this.pictureBoxIcon.BackgroundImage = global::CopAndRobber.Properties.Resources.jerryface;
             this.pictureBoxIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBoxIcon.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBoxIcon.ErrorImage = null;
             this.pictureBoxIcon.FillColor = System.Drawing.SystemColors.Info;
-            this.pictureBoxIcon.Image = global::CopAndRobber.Properties.Resources.buttonreplay;
+            this.pictureBoxIcon.Image = global::CopAndRobber.Properties.Resources.TOM;
             this.pictureBoxIcon.ImageRotate = 0F;
             this.pictureBoxIcon.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxIcon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

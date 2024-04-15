@@ -38,6 +38,8 @@ namespace CopAndRobber
 
         private void guna2ImageButton1_Click(object sender, EventArgs e)
         {
+            waveOut.Stop();
+            supportMethod.AddChildFormDockFill(new WelcomeScreen(mainScreen), mainScreen.getPanel());
             this.Close();
             this.Dispose();
 

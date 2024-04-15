@@ -25,7 +25,8 @@ namespace CopAndRobber
 
         private Boolean isMute = false;
         private Boolean isPause = false;
-
+        ActionBar actionBar;
+        
         public GameScreen(WaveOutEvent waveout, MainScreen screen)
         {
             InitializeComponent();
@@ -39,6 +40,10 @@ namespace CopAndRobber
             // Đăng ký sự kiện Tick của Timer
             timer.Tick += Timer_Tick;
             timer.Start();
+
+            actionBar = new ActionBar();
+            GetPanelTurnTable().Controls.Add(actionBar);
+            actionBar.startCountDown(10000);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -134,7 +139,8 @@ namespace CopAndRobber
 
         public void endGame()
         {
-            supportMethod.AddChildFormDockFill(new endGame(mainScreen, waveOut), mainScreen.getPanel());
+            supportMethod.AddChildFormDockFill(new endGame(mainScreen, waveOut), mainScreen.getPanel());            
+            this.Close();
         }
 
         public Guna2Panel getPanelGameScreen()
