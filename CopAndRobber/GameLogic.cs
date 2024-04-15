@@ -193,7 +193,13 @@ namespace CopAndRobber
                 }
             }
         }
-            private void changeTurn(Character nextCharacter)
+
+
+        public void HandleCharacterStateChangedAIMove(object sender, EventArgs args)
+        {
+            changeTurn(listTurnAction.Peek());
+        }
+        private void changeTurn(Character nextCharacter)
             {
                 disableAllNode();
                 if (countTimer != null)
@@ -212,7 +218,7 @@ namespace CopAndRobber
                 }
             createActionBar(nextCharacter);
 
-        }
+            }
 
         
 
