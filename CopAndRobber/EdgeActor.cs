@@ -39,24 +39,15 @@ namespace CopAndRobber
 			InitializeComponent();
 		}
 
-		protected override void OnPaint(PaintEventArgs pe)
-		{
-			base.OnPaint(pe);
-			Point[] destinationPoints = {
-				new Point(200, 20),   // destination for upper-left point of
-                      // original
-				new Point(110, 100),  // destination for upper-right point of
-                      // original
-				new Point(250, 30)};  // destination for lower-left point of
-									  // original
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            base.OnPaint(pe);
 
-			Image image = Properties.Resources.menuInterface;
-
-			// Draw the image unaltered with its upper-left corner at (0, 0).
-			pe.Graphics.DrawImage(image, 0, 0);
-
-			// Draw the image mapped to the parallelogram.
-			pe.Graphics.DrawImage(image, destinationPoints);
-		}
-	}
+            using (Pen pen = new Pen(Color.Black, 30)) // Tạo một bút đen với độ dày 2
+            {
+                // Vẽ đường thẳng nối giữa hai nút
+                pe.Graphics.DrawLine(pen, startPositionX, startPositionY, endPositionX, endPositionY);
+            }
+        }
+    }
 }

@@ -64,7 +64,7 @@ namespace CopAndRobber
             }
             if(gamescreen.GetIsMute())
                 gamescreen.getSoundButton().Image = Properties.Resources.soundbutton;
-            gamescreen.GetPanelTurnTable().GetActionBar().ContinueCountDown();
+            //gamescreen.GetPanelTurnTable().GetActionBar().ContinueCountDown();
             this.Close();
         }
 

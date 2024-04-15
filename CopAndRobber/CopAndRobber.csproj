@@ -260,10 +260,12 @@
     <None Include="Resources\resetbutton.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\TOM.png" />
     <None Include="Resources\pausebutton1.png" />
     <None Include="Resources\jerrygameover.png" />
     <None Include="Resources\buttonreplay.png" />
     <None Include="Resources\jerryWin.png" />
+    <None Include="Resources\jerryface.png" />
     <Content Include="Resources\soundbuttonmute.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
