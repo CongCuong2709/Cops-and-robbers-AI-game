@@ -37,9 +37,9 @@ namespace CopAndRobber
         public static Image NODE_BUS = LOGO;
         public static Image NODE_WALK = LOGO;
 
-        public static SoundPlayer SOUND_CAT_WALK = getSoundPlayer("bruh.wav");
-        public static SoundPlayer SOUND_CAT_CATCH = getSoundPlayer("bruh.wav");
-        public static String  BGM = "Not A Hero.wav";
+        public static SoundPlayer SOUND_CAT_WALK = getSoundPlayer("running.wav");
+        public static SoundPlayer SOUND_CAT_CATCH = getSoundPlayer("running.wav");
+        public static String  BGM = "theme.wav";
 
         
 

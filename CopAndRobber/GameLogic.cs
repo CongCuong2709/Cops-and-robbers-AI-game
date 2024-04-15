@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using static CopAndRobber.NodeActor;
 using System.Windows.Forms;
+using NAudio.Wave;
 
 namespace CopAndRobber
 {
@@ -24,6 +25,13 @@ namespace CopAndRobber
         private GameScreen screen;
         private Graph graph;
         private A_star a_Star;
+
+        ActionBar actionBar;
+        Timer countTimer;
+        private int remainingTime = 0;
+
+        SupportMethod supportMethod = new SupportMethod();
+        private Form activeForm = null;
         public GameLogic()
         {
 
@@ -96,11 +104,55 @@ namespace CopAndRobber
                 currentCharacter.StateChanged -= HandleCharacterStateChanged;
                 currentCharacter.StateChanged += HandleCharacterStateChanged;
 
-				currentCharacter.setAtNode(nodeActor);
-			}
-		}
+                if (countTimer != null)
+                    stopCount();
 
-		void HandleCharacterStateChanged(object sender, EventArgs args)
+            }
+		}
+        public void setCharacterAt(Character c, NodeActor node)
+        {
+            c.setAtNode(node);
+            //currentCharacter.setAtNode(nodeActor);
+            actionBar = new ActionBar(c);
+            screen.GetPanelTurnTable().Controls.Clear();
+            screen.GetPanelTurnTable().Controls.Add(actionBar);
+            actionBar.setImage();
+            
+            startCount10s(10000);
+        }
+
+        public void startCount10s(int durationMilliseconds)
+        {
+            // Khởi tạo Timer
+            countTimer = new Timer();
+            countTimer.Interval = durationMilliseconds;
+            remainingTime = durationMilliseconds;
+            countTimer.Tick += (sender, e) =>
+            {
+                countTimer.Stop();
+                screen.endGame();
+            };
+
+            // Bắt đầu đếm ngược
+            countTimer.Start();
+        }
+        public void stopCount()
+        {
+            if (countTimer != null)
+            {
+                countTimer.Stop();
+                // Lưu thời gian còn lại
+                //remainingTime -= countTimer.Interval;
+            }
+        }
+
+        public void resumeCount()
+        {
+            // Tiếp tục đếm ngược với thời gian còn lại
+            startCount10s(remainingTime);
+        }
+
+        void HandleCharacterStateChanged(object sender, EventArgs args)
 		{
 			Character character = (Character)sender;
 			if (character.getState() == GuiUtils.STATE_CHARACTER.WAIT)
@@ -112,7 +164,16 @@ namespace CopAndRobber
 				/*testActionTurn += listTurnAction.Peek().ToString();
 				screen.GetTextBoxConsole().Text = testActionTurn;*/
 				changeTurn(listTurnAction.Peek());
-			}
+                setCharacterAt(listTurnAction.Peek(), character.getAtNode());
+
+            }
+            else
+            {
+                if (countTimer != null && actionBar != null)
+                    screen.GetPanelTurnTable().GetActionBar().PauseCountDown();
+
+
+            }
 		}
 
 		private void changeTurn(Character nextCharacter)
@@ -129,7 +190,7 @@ namespace CopAndRobber
 
 		}
 
-        private void isEndGame(Character character)
+        public void isEndGame(Character character)
         {
             if(character.getCharacterName() != GuiUtils.CHARACTER_NAME.JERRY)
             {
@@ -337,5 +398,8 @@ namespace CopAndRobber
                 }
             }
         }
+
+        
+
     }
 }

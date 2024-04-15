@@ -26,7 +26,16 @@ namespace CopAndRobber
             waveOut = waveout;
             volSlider.Volume = volume;
             gamescreen = gameScreen;
-
+            if (gamescreen.GetIsMute())
+            {
+                SoundButton.Image = Properties.Resources.soundbuttonmute;
+            }
+            else
+            {
+                SoundButton.Image = Properties.Resources.soundbutton;
+                   
+            }
+                
 
 
         }
@@ -48,6 +57,14 @@ namespace CopAndRobber
                 // Xử lý lỗi ở đây
                 Console.WriteLine("Đã xảy ra lỗi NullReferenceException: " + ex.Message);
             }
+            gamescreen.setIsPause(false);
+            foreach (Character c in gamescreen.getGameLogic().getListTurnAction())
+            {
+                c.playSound();
+            }
+            if(gamescreen.GetIsMute())
+                gamescreen.getSoundButton().Image = Properties.Resources.soundbutton;
+            gamescreen.GetPanelTurnTable().GetActionBar().ContinueCountDown();
             this.Close();
         }
 
