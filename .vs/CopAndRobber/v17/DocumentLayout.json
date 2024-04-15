@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|solutionrelative:copandrobber\\gamescreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|d:\\workspace\\ai\\cops-and-robbers-ai-game\\copandrobber\\actionbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\copandrobber\\actionbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{212843A3-1879-44BB-A1E5-8FC79AC7836A}|CopAndRobber\\CopAndRobber.csproj|solutionrelative:copandrobber\\actionbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 299,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -41,10 +41,6 @@
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "GameScreen.cs",
@@ -52,7 +48,7 @@
               "RelativeDocumentMoniker": "CopAndRobber\\GameScreen.cs",
               "ToolTip": "D:\\Workspace\\AI\\Cops-and-robbers-AI-game\\CopAndRobber\\GameScreen.cs",
               "RelativeToolTip": "CopAndRobber\\GameScreen.cs",
-              "ViewState": "AQIAALcAAAAAAAAAAIAwwMIAAAAIAAAA",
+              "ViewState": "AQIAALcAAAAAAAAAAIAwwLwAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-15T04:22:43.596Z",
               "EditorCaption": ""
@@ -67,8 +63,7 @@
               "RelativeToolTip": "CopAndRobber\\ActionBar.cs",
               "ViewState": "AQIAAA8AAAAAAAAAAAA/wFAAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-15T02:35:06.508Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-15T02:35:06.508Z"
             }
           ]
         },
