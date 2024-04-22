@@ -20,11 +20,13 @@ namespace CopAndRobber
         
         public static WaveOutEvent waveOut ;      
 
-        public endGame(MainScreen main, WaveOutEvent wave)
+        public endGame(MainScreen main, WaveOutEvent wave, Boolean c)
         {
             InitializeComponent();
             mainScreen = main;
             waveOut = wave;
+            if (c) this.BackgroundImage = Properties.Resources.jerryWin;
+            else this.BackgroundImage = Properties.Resources.jerrygameover;
         }
         public endGame()
         {
@@ -47,6 +49,10 @@ namespace CopAndRobber
 
         private void buttonReplay_Click(object sender, EventArgs e)
         {
+            foreach(Control  c in mainScreen.getPanel().Controls)
+            {
+                c.Dispose();
+            }
             supportMethod.AddChildFormDockFill(new GameScreen(waveOut, mainScreen), mainScreen.getPanel());
             //waveOut.Play();
         }

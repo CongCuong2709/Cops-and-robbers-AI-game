@@ -261,6 +261,7 @@
     <None Include="Resources\resetbutton.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\yellow.png" />
     <None Include="Resources\TOM.png" />
     <None Include="Resources\pausebutton1.png" />
     <None Include="Resources\jerrygameover.png" />

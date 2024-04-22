@@ -40,20 +40,20 @@ namespace CopAndRobber
 			}
 			
 			Queue<int> queue = new Queue<int>();
-			marked[source] = true;                  // Mark the source
-			queue.Enqueue(source);                  // put source vertex on the queue.
+			marked[source] = true;                  
+			queue.Enqueue(source);                  
 
 			while (queue.Count > 0)
 			{
-				int src = queue.Dequeue();          // Remove next vertex from the queue.
+				int src = queue.Dequeue();          
 
 				foreach (int destination in G.Adj(src))
 				{
-					if (!marked[destination])       // for each unmarked adjacent point
+					if (!marked[destination])       
 					{
-						edgeTo[destination] = src;  // save last edge on a shortest path,
-						marked[destination] = true; // mark it because path is known,
-						queue.Enqueue(destination); // and add it to the queue.
+						edgeTo[destination] = src;  
+						marked[destination] = true; 
+						queue.Enqueue(destination); 
 					}
 				}
 			}

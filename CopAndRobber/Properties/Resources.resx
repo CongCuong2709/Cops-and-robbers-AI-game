@@ -124,6 +124,9 @@
   <data name="map" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Assets\map.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="pausebutton1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pausebutton1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pausebutton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pausebutton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -133,20 +136,20 @@
   <data name="jerryWin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\jerryWin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="1209673" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1209673.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="grey" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\grey.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="resetbutton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\resetbutton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="minimalism-tom-and-jerry-wallpaper-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\minimalism-tom-and-jerry-wallpaper-preview.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="jerryface" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\jerryface.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="jerry_tom_skating_board_building_background_hd_tom__jerry-1600x900" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\jerry_tom_skating_board_building_background_hd_tom__jerry-1600x900.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="map1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\map.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="soundbuttonmute" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\soundbuttonmute.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,14 +160,17 @@
   <data name="menuInterface" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Assets\menuInterface.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="map1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\map.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="minimalism-tom-and-jerry-wallpaper-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\minimalism-tom-and-jerry-wallpaper-preview.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pausebutton1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pausebutton1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="1209673" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1209673.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="red" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\red.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="12096731" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\12096731.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="jerrygameover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\jerrygameover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,10 +181,7 @@
   <data name="soundbutton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\soundbutton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="grey" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\grey.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="12096731" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\12096731.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="yellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\yellow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

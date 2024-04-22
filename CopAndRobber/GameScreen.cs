@@ -148,10 +148,17 @@ namespace CopAndRobber
 
         }
 
-        public void endGame()
+        public void endGame(Boolean c)
         {
-            supportMethod.AddChildFormDockFill(new endGame(mainScreen, waveOut), mainScreen.getPanel());            
+            foreach (Character d in game.getListTurnAction())
+            {
+                d.stopAnimation();
+                timer.Stop();
+                game.stopCount();
+            }
+            supportMethod.AddChildFormDockFill(new endGame(mainScreen, waveOut, c), mainScreen.getPanel());            
             this.Close();
+            this.Dispose();
         }
 
         public Guna2Panel getPanelGameScreen()
